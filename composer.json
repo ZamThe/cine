@@ -1,0 +1,17 @@
+{
+    "name": "vendor/agricola-actividades",
+    "description": "Proyecto para agrcioal del caribe",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Vendor\\AgricolaActividades\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mateo Guio",
+            "email": "amgmworks22@gmail.com"
+        }
+    ],
+    "require": {}
+}
