@@ -19,12 +19,12 @@
     }
 
     //Traer información sobre el usuario 
-    $traerDatosUsuario = $connect->prepare("SELECT * from users WHERE id = '$idUsuario'");
+    $traerDatosUsuario = $connect->prepare("SELECT * FROM users WHERE id = '$idUsuario'");
     if($traerDatosUsuario->execute()){
-        $usuario = $traerDatosUsuario->fetch();
+        $usuario = $traerDatosUsuario->fetch(PDO::FETCH_ASSOC);
+        //print_r($usuario);
     }
 
-    print_r($usuario);
 
 ?>
 <!doctype html>
@@ -74,7 +74,7 @@
             </div>
         </nav>
         <div class="bg-success w-100 text-center">
-            <p class="text-white fw-bold fs-6 p-3">Modulos <?php echo ' '.$usuario['name'];?> </p>
+            <p class="text-white fw-bold fs-6 p-3">Modulos </p>
         </div>
         <div class="container p-2 mt-5 rounded-3 opacity9" style="padding-right: 0px;padding-left:0px;overflow:hidden;">
             <div class="row text-center justify-content-around" style="padding-right: 0px;padding-left:0px;">
@@ -94,12 +94,12 @@
                         </div>
                         <div class="col-10 col-sm-10 col-md-6 col-lg-3 col-xl-3 mt-1">
                             <a href="programarAutorizacion.php" class="text-white btn bg-success bg-gradient p-4 mt-2 mb-2 fw-bold main-buttons" style="text-decoration:none;width: 100%;border-radius: 10px;border: 2px solid">
-                                Administrar 
+                                Administrar labores
                             </a>
                         </div>
                         <div class="col-10 col-sm-10 col-md-6 col-lg-3 col-xl-3 mt-1">
                             <a href="programarAutorizacion.php" class="text-white btn bg-success bg-gradient p-4 mt-2 mb-2 fw-bold main-buttons" style="text-decoration:none;width: 100%;border-radius: 10px;border: 2px solid">
-                                Radicación
+                                Detalle labores
                             </a>
                         </div>
                         ';
