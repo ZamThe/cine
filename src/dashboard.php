@@ -1,5 +1,6 @@
 <?php
 
+    /*Header Backend*/
     session_start();
 
     require 'database/database.php';
@@ -25,7 +26,6 @@
         //print_r($usuario);
     }
 
-
 ?>
 <!doctype html>
 <html lang="es">
@@ -49,17 +49,17 @@
         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body class="bg-main">
-        <nav class="navbar navbar-expand-lg bg-light navbar-light border-bottom border-4 border-white w-100">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-light border-bottom border-4 border-white w-100 opacity9">
             <div class="container p-2">
-                <a class="navbar-brand fs-6 text-dark" href="homeUser.php"> <i class="bi bi-house-door-fill fs-5"></i> Inicio </a>
+                <a class="navbar-brand fs-6 text-light" href="homeUser.php"> <i class="bi bi-house-door-fill fs-5 text-light"></i> Inicio </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="bi bi-list text-secondary fs-5"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
                         <!--<li><a class="dropdown-item text-secondary fs-6" href="homeAdmin.php"><i class="bi bi-arrow-left-square-fill fs-5"></i> Atras</a></li>-->
-                        <li><a class="dropdown-item text-dark fs-6" href="#"><i class="bi bi-person-circle fs-5"></i> <?php echo ' '.$usuario['name']; ?> </a></li>
-                        <li><a class="dropdown-item text-dark fs-6" href="logout.php"><i class="bi bi-door-open-fill fs-5"></i> Salir</a></li>
+                        <li><a class="dropdown-item text-light fs-6" href="#"><i class="bi bi-person-circle fs-5"></i> <?php echo ' '.$usuario['name']; ?> </a></li>
+                        <li><a class="dropdown-item text-light fs-6" href="logout.php"><i class="bi bi-door-open-fill fs-5"></i> Salir</a></li>
                         <!--<li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-person-circle text-white fs-4"></i>
@@ -73,8 +73,8 @@
                 </div>            
             </div>
         </nav>
-        <div class="bg-success w-100 text-center">
-            <p class="text-white fw-bold fs-6 p-3">Modulos </p>
+        <div class="bg-success w-100 text-center bg-gradient">
+            <p class="text-white fs-6 p-3">Modulos </p>
         </div>
         <div class="container p-2 mt-5 rounded-3 opacity9" style="padding-right: 0px;padding-left:0px;overflow:hidden;">
             <div class="row text-center justify-content-around" style="padding-right: 0px;padding-left:0px;">
@@ -83,22 +83,22 @@
                     case '1':
                         echo '
                         <div class="col-10 col-sm-10 col-md-6 col-lg-3 col-xl-3 mt-1">
-                            <a href="programarAutorizacion.php" class="text-white btn bg-success bg-gradient p-4 mt-2 mb-2 fw-bold main-buttons" style="text-decoration:none;width: 100%;border-radius: 10px;border: 2px solid">
+                            <a href="personalGestion.php" class="text-white btn bg-success bg-gradient p-4 mt-2 mb-2 main-buttons" style="text-decoration:none;width: 100%;border-radius: 10px;border: 2px solid">
                                 Personal
                             </a>
                         </div>
                         <div class="col-10 col-sm-10 col-md-6 col-lg-3 col-xl-3 mt-1">
-                            <a href="programarAutorizacion.php" class="text-white btn bg-success bg-gradient p-4 mt-2 mb-2 fw-bold main-buttons" style="text-decoration:none;width: 100%;border-radius: 10px;border: 2px solid">
+                            <a href="programarAutorizacion.php" class="text-white btn bg-success bg-gradient p-4 mt-2 mb-2 main-buttons" style="text-decoration:none;width: 100%;border-radius: 10px;border: 2px solid">
                                 Labores/actividades
                             </a>
                         </div>
                         <div class="col-10 col-sm-10 col-md-6 col-lg-3 col-xl-3 mt-1">
-                            <a href="programarAutorizacion.php" class="text-white btn bg-success bg-gradient p-4 mt-2 mb-2 fw-bold main-buttons" style="text-decoration:none;width: 100%;border-radius: 10px;border: 2px solid">
+                            <a href="programarAutorizacion.php" class="text-white btn bg-success bg-gradient p-4 mt-2 mb-2 main-buttons" style="text-decoration:none;width: 100%;border-radius: 10px;border: 2px solid">
                                 Administrar labores
                             </a>
                         </div>
                         <div class="col-10 col-sm-10 col-md-6 col-lg-3 col-xl-3 mt-1">
-                            <a href="programarAutorizacion.php" class="text-white btn bg-success bg-gradient p-4 mt-2 mb-2 fw-bold main-buttons" style="text-decoration:none;width: 100%;border-radius: 10px;border: 2px solid">
+                            <a href="programarAutorizacion.php" class="text-white btn bg-success bg-gradient p-4 mt-2 mb-2 main-buttons" style="text-decoration:none;width: 100%;border-radius: 10px;border: 2px solid">
                                 Detalle labores
                             </a>
                         </div>
