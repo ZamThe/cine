@@ -38,6 +38,14 @@
         $tiposCargo = $traerTiposCargo->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    //Traer todos los tipos de contrato
+    $traerTiposContrato = $connect->prepare("SELECT * FROM tipos_contratos");
+    if($traerTiposContrato->execute()) {
+        $tiposContrato = $traerTiposContrato->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    //print_r($tiposContrato);
+
     //Detectar envio de fomulario 
     if(isset($_POST['guardarPersonal'])){
 
@@ -47,12 +55,14 @@
         $identificacion = $_POST['identificacion'];
         $idCargo = $_POST['cargo'];
         $fechaIngreso = $_POST['fechaIngreso'];
+        $idTipoContrato = $_POST['tipoContrato'];
+        $salario = $_POST['salarioFormateado'];
         $tallaBuso = $_POST['tallaBuso'];
         $tallaPantalon = $_POST['tallaPantalon'];
         $tallaBotas = $_POST['tallaBotas'];
 
         //Guardar registro
-        $guardarPersonal = $connect->prepare("INSERT INTO personal (nombre,id_tipo_identificacion,identificacion,id_cargo,fecha_ingreso,talla_buso,talla_pantalon,talla_botas) VALUES ('$nombre','$tipoIdentificacion','$identificacion','$idCargo','$fechaIngreso','$tallaBuso','$tallaPantalon','$tallaBotas')");
+        $guardarPersonal = $connect->prepare("INSERT INTO personal (nombre,id_tipo_identificacion,identificacion,id_cargo,fecha_ingreso,id_tipo_contrato,salario,talla_buso,talla_pantalon,talla_botas) VALUES ('$nombre','$tipoIdentificacion','$identificacion','$idCargo','$fechaIngreso','$idTipoContrato','$salario','$tallaBuso','$tallaPantalon','$tallaBotas')");
         if($guardarPersonal->execute()){
             echo "<script>location.href='personalGestion.php';</script>";
         }
@@ -71,12 +81,14 @@
         <title>Control de actividades - Agricola del Caribe</title>
         <!-- Favicon-->
         <!--<link rel="icon" type="image/x-icon" href="img/logoSolo.ico"/>-->
-        <!-- Bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <!-- Animations css -->
-        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <!-- Bootstrap NPM -->
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
         <!-- Bs icons -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+        <!-- Select2 Bower -->
+        <link href="../bower_components/select2/dist/css/select2.min.css" rel="stylesheet" />
+        <!-- Sweet alert2 -->
+        <link rel="stylesheet" href="../node_modules/sweetalert2/dist/sweetalert2.css">
         <!-- Main css -->
         <link rel="stylesheet" href="css/styles.css">
     </head>
@@ -89,9 +101,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                        <li><a class="dropdown-item text-light fs-6" href="personalGestion.php"><i class="bi bi-arrow-left-square-fill fs-5"></i> Atras</a></li>
-                        <li><a class="dropdown-item text-light fs-6" href="#"><i class="bi bi-person-circle fs-5"></i> <?php echo ' '.$usuario['name']; ?> </a></li>
-                        <li><a class="dropdown-item text-light fs-6" href="logout.php"><i class="bi bi-door-open-fill fs-5"></i> Salir</a></li>
+                        <li><a class="dropdown-item text-light fs-6 me-3" href="personalGestion.php"><i class="bi bi-arrow-left-square-fill fs-5"></i> Atras</a></li>
+                        <li><a class="dropdown-item text-light fs-6 me-3" href="#"><i class="bi bi-person-circle fs-5"></i> <?php echo ' '.$usuario['name']; ?> </a></li>
+                        <li><a class="dropdown-item text-light fs-6 me-3" href="logout.php"><i class="bi bi-door-open-fill fs-5"></i> Salir</a></li>
                         <!--<li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-person-circle text-white fs-4"></i>
@@ -165,23 +177,44 @@
                                 </div>
                                 <div class="col-10 col-xl-6 p-2">
                                     <div class="form-group">
+                                        <label for="tipoContrato" class="form-label text-white">Tipo contrato <b class="text-danger">*</b></label>
+                                        <select id="tipoContrato" name="tipoContrato" class="form-select" required>
+                                            <option value="" selected disabled>Seleccione un tipo de contrato</option>
+                                            <?php
+                                            foreach ($tiposContrato as $tipoContrato) {
+                                                echo '<option value="'.$tipoContrato['id'].'">'.$tipoContrato['tipo_contrato'].'</option>';
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center p-2">
+                                <div class="col-10 col-xl-6 p-2">
+                                    <label for="salarioFormateado" class="form-label text-white">Salario <b class="text-danger">*</b></label>
+                                    <div class="input-group">
+                                        <label for="" class="input-group-text" id="verSalarioLetras">$</label>
+                                        <input id="salarioFormateado" name="salarioFormateado" type="text" class="form-control numeric" required/>
+                                    </div>
+                                </div>
+                                <div class="col-10 col-xl-6 p-2">
+                                    <div class="form-group">
                                         <label for="tallaBuso" class="form-label text-white">Talla buso <b class="text-danger">*</b></label>
                                         <input id="tallaBuso" name="tallaBuso" type="text" class="form-control" required/>
                                     </div>
                                 </div>
-                               
                             </div>
                             <div class="row justify-content-start p-2">
                                 <div class="col-10 col-xl-6 p-2">
                                     <div class="form-group">
                                         <label for="tallaBotas" class="form-label text-white">Talla botas <b class="text-danger">*</b></label>
-                                        <input id="tallaBotas" name="tallaBotas" type="text" class="form-control"/>
+                                        <input id="tallaBotas" name="tallaBotas" type="text" class="form-control" required/>
                                     </div>
                                 </div>
                                 <div class="col-10 col-xl-6 p-2">
                                     <div class="form-group">
                                         <label for="tallaPantalon" class="form-label text-white">Talla pantalón <b class="text-danger">*</b></label>
-                                        <input id="tallaPantalon" name="tallaPantalon" type="text" class="form-control"/>
+                                        <input id="tallaPantalon" name="tallaPantalon" type="text" class="form-control" required/>
                                     </div>
                                 </div>
                             </div>
@@ -200,8 +233,54 @@
                 </div>
             </div>
         </div>
+        <!-- Jquery -->
+        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- Select2 -->
+        <script src="../bower_components/select2/dist/js/select2.min.js"></script>        
+        <!-- Jquery numeric -->
+        <script src="../node_modules/jquery.numeric/jquery.numeric.js"></script>
+        <!-- Bootstrap -->
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- Sweet alert -->
+        <script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+        <!-- Numeros a letras -->
+        <script src="js/numeroALetras.js"></script>
+        <!-- Script --> 
         <script type="text/javascript">
 
+            window.addEventListener("load", function(event) {
+
+                //Instanciar formateador de numeros
+                const formatterPeso = new Intl.NumberFormat('es-CO',
+                {
+                    style: 'currency',
+                    currency: 'COP',
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+
+                //Funciónn para formatear valores
+                function formatear_valores_pesos (valor)
+                {
+                    return formatterPeso.format(valor);
+                }
+
+                //Capturar valor de salario 
+                var salarioFormateado = document.getElementById('salarioFormateado');
+
+                //Permitir solo numeros en un input 
+                $("#salarioFormateado").numeric();
+                var verSalarioLetras = document.getElementById("verSalarioLetras")
+                verSalarioLetras.addEventListener('click', ()=>{
+                    Swal.fire({
+                        //icon: 'error',
+                        title: 'Valor en letras',
+                        text: NumeroALetras(salarioFormateado.value)
+                    })
+                    //alert('Valor de: '+NumeroALetras(salarioFormateado.value))
+                })
+            });
+            
         </script>        
     </body>
 </html>

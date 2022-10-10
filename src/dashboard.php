@@ -39,12 +39,12 @@
         <title>Control de actividades - Agricola del Caribe</title>
         <!-- Favicon-->
         <!--<link rel="icon" type="image/x-icon" href="img/logoSolo.ico"/>-->
-        <!-- Bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <!-- Animations css -->
-        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <!-- Bootstrap NPM -->
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
         <!-- Bs icons -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+        <!-- Select2 Bower -->
+        <link href="../bower_components/select2/dist/css/select2.min.css" rel="stylesheet" />
         <!-- Main css -->
         <link rel="stylesheet" href="css/styles.css">
     </head>
@@ -58,8 +58,8 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
                         <!--<li><a class="dropdown-item text-secondary fs-6" href="homeAdmin.php"><i class="bi bi-arrow-left-square-fill fs-5"></i> Atras</a></li>-->
-                        <li><a class="dropdown-item text-light fs-6" href="#"><i class="bi bi-person-circle fs-5"></i> <?php echo ' '.$usuario['name']; ?> </a></li>
-                        <li><a class="dropdown-item text-light fs-6" href="logout.php"><i class="bi bi-door-open-fill fs-5"></i> Salir</a></li>
+                        <li><a class="dropdown-item text-light fs-6 me-3" href="#"><i class="bi bi-person-circle fs-5"></i> <?php echo ' '.$usuario['name']; ?> </a></li>
+                        <li><a class="dropdown-item text-light fs-6 me-3" href="logout.php"><i class="bi bi-door-open-fill fs-5"></i> Salir</a></li>
                         <!--<li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-person-circle text-white fs-4"></i>
@@ -88,12 +88,12 @@
                             </a>
                         </div>
                         <div class="col-10 col-sm-10 col-md-6 col-lg-3 col-xl-3 mt-1">
-                            <a href="programarAutorizacion.php" class="text-white btn bg-success bg-gradient p-4 mt-2 mb-2 main-buttons" style="text-decoration:none;width: 100%;border-radius: 10px;border: 2px solid">
+                            <a href="laboresGestion.php" class="text-white btn bg-success bg-gradient p-4 mt-2 mb-2 main-buttons" style="text-decoration:none;width: 100%;border-radius: 10px;border: 2px solid">
                                 Labores/actividades
                             </a>
                         </div>
                         <div class="col-10 col-sm-10 col-md-6 col-lg-3 col-xl-3 mt-1">
-                            <a href="programarAutorizacion.php" class="text-white btn bg-success bg-gradient p-4 mt-2 mb-2 main-buttons" style="text-decoration:none;width: 100%;border-radius: 10px;border: 2px solid">
+                            <a href="laboresPersonalGestion.php" class="text-white btn bg-success bg-gradient p-4 mt-2 mb-2 main-buttons" style="text-decoration:none;width: 100%;border-radius: 10px;border: 2px solid">
                                 Administrar labores
                             </a>
                         </div>
@@ -126,10 +126,12 @@
                 ?>
             </div>
         </div>
-        <!-- Option 1: Bootstrap Bundle with Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-        <!-- Sweet Alert -->
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <!-- Jquery Bower -->
+        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- Select2 bower -->
+        <script src="../bower_components/select2/dist/js/select2.min.js"></script>        
+        <!-- JavaScript Bundle with Popper -->
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/js/bootstrap.min.js">
         <script>
            
         </script>

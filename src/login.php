@@ -57,12 +57,12 @@
         <title>Control de actividades - Agricola del Caribe</title>
         <!-- Favicon-->
         <!--<link rel="icon" type="image/x-icon" href="img/logoSolo.ico"/>-->
-        <!-- Bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <!-- Animations css -->
-        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <!-- Bootstrap NPM -->
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
         <!-- Bs icons -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+        <!-- Select2 Bower -->
+        <link href="../bower_components/select2/dist/css/select2.min.css" rel="stylesheet" />
         <!-- Main css -->
         <link rel="stylesheet" href="css/styles.css">
     </head>
@@ -100,10 +100,12 @@
                 </div>
             </div>
         </div> 
-        <!-- Animations js-->
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <!-- Jquery Bower -->
+        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- Select2 bower -->
+        <script src="../bower_components/select2/dist/js/select2.min.js"></script>        
         <!-- JavaScript Bundle with Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/js/bootstrap.min.js">
         <script>
 
             //Capture button for change icon 

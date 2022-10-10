@@ -26,10 +26,10 @@
         //print_r($usuario);
     }
 
-    //Traer todos los registros del personal 
-    $traerPersonal = $connect->prepare("SELECT * FROM personal");
-    if($traerPersonal->execute()) {
-        $guardarPersonal = $traerPersonal->fetchAll(PDO::FETCH_ASSOC);
+    //Traer todos los registros de labores
+    $traerLabores = $connect->prepare("SELECT * FROM labores");
+    if($traerLabores->execute()) {
+        $labores = $traerLabores->fetchAll(PDO::FETCH_ASSOC);
     }
 
 ?>
@@ -51,6 +51,8 @@
         <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
         <!-- Select2 Bower -->
         <link href="../bower_components/select2/dist/css/select2.min.css" rel="stylesheet" />
+        <!-- Sweet alert2 -->
+        <link rel="stylesheet" href="../node_modules/sweetalert2/dist/sweetalert2.css">
         <!-- Main css -->
         <link rel="stylesheet" href="css/styles.css">
     </head>
@@ -63,9 +65,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                        <li><a class="dropdown-item text-light fs-6 me-3" href="dashboard.php"><i class="bi bi-arrow-left-square-fill fs-5"></i> Atras</a></li>
-                        <li><a class="dropdown-item text-light fs-6 me-3" href="#"><i class="bi bi-person-circle fs-5"></i> <?php echo ' '.$usuario['name']; ?> </a></li>
-                        <li><a class="dropdown-item text-light fs-6 me-3" href="logout.php"><i class="bi bi-door-open-fill fs-5"></i> Salir</a></li>
+                        <li><a class="dropdown-item text-light fs-6 ms-3" href="dashboard.php"><i class="bi bi-arrow-left-square-fill fs-5"></i> Atras</a></li>
+                        <li><a class="dropdown-item text-light fs-6 ms-3" href="#"><i class="bi bi-person-circle fs-5"></i> <?php echo ' '.$usuario['name']; ?> </a></li>
+                        <li><a class="dropdown-item text-light fs-6 ms-3" href="logout.php"><i class="bi bi-door-open-fill fs-5"></i> Salir</a></li>
                         <!--<li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-person-circle text-white fs-4"></i>
@@ -80,14 +82,14 @@
             </div>
         </nav>
         <div class="bg-success w-100 text-center">
-            <p class="text-white fw-bold fs-6 p-3">Personal Gestión</p>
+            <p class="text-white fw-bold fs-6 p-3">Gestión labores</p>
         </div>
         <div class="container">
             <div class="bg-dark overflow-hidden shadow-sm sm:rounded-lg opacity9">
                 <div class="row justify-content-around mt-3">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
-                        <a href="registrarPersonal.php">
-                            <button type="button" class="btn btn-success">Registrar personal</button>
+                        <a href="registrarLabor.php">
+                            <button type="button" class="btn btn-success">Registrar labor</button>
                         </a>
                     </div>
                 </div>            
@@ -121,16 +123,10 @@
                             <table class="table table-dark table-striped table-bordered mb-2" id="tablaPersonal" style="width: 100%">
                                 <thead>
                                     <tr>
+                                        <th>Código</th>
                                         <th>Nombre</th>
-                                        <th>Tipo identificación</th>
-                                        <th>Identifiación</th>
-                                        <th>Cargo</th>
-                                        <th>Tipo Contrato</th>
-                                        <th>Salario</th>
-                                        <th>Antiguedad</th>
-                                        <th>T.Buso</th>
-                                        <th>Pantalon</th>
-                                        <th>Botas</th>
+                                        <th>Unidad medida</th>
+                                        <th>Precio</th>
                                         <th>Borrar</th>
                                         <th>Editar</th>
                                     </tr>
@@ -138,20 +134,14 @@
                                 <tbody>
                                     <tr>
                                         <?php
-                                        foreach ($guardarPersonal as $personal) {
+                                        foreach ($labores as $labor) {
                                             echo '</tr>
-                                            <td valign="middle" align="center">'.$personal['nombre'].'</td>
-                                            <td valign="middle" align="center">'.$personal['id'].'</td>
-                                            <td valign="middle" align="center">'.$personal['identificacion'].'</td>
-                                            <td valign="middle" align="center">'.$personal['id'].'</td>
-                                            <td valign="middle" align="center">'.$personal['id'].'</td>
-                                            <td valign="middle" align="center">'.$personal['salario'].'</td>
-                                            <td valign="middle" align="center">'.$personal['id'].'</td>
-                                            <td valign="middle" align="center">'.$personal['talla_buso'].'</td>
-                                            <td valign="middle" align="center">'.$personal['talla_pantalon'].'</td>
-                                            <td valign="middle" align="center">'.$personal['talla_botas'].'</td>
-                                            <td valign="middle" align="center"><a href="'.$personal['talla_botas'].'"<i class="bi bi-pencil-square"></i></a></td>
-                                            <td valign="middle" align="center"><a href="'.$personal['talla_botas'].'"<i class="bi bi-x-circle-fill"></i></a></td>
+                                            <td valign="middle" align="center">'.$labor['codigo_labor'].'</td>
+                                            <td valign="middle" align="center">'.$labor['nombre_labor'].'</td>
+                                            <td valign="middle" align="center">'.$labor['unidad_medida'].'</td>
+                                            <td valign="middle" align="center">'.$labor['precio_labor'].'</td>
+                                            <td valign="middle" align="center"><a href="'.$labor['precio_labor'].'"<i class="bi bi-pencil-square"></i></a></td>
+                                            <td valign="middle" align="center"><a href="'.$labor['precio_labor'].'"<i class="bi bi-x-circle-fill"></i></a></td>
                                             </tr>
                                             ';
                                         }
@@ -165,13 +155,13 @@
             </div>            
             <!-- /div -->
         </div>
+        <!-- link rel="stylesheet" href="{{ asset('css/app.css') }}" -->
         <!-- Jquery Bower -->
         <script src="../bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Select2 bower -->
         <script src="../bower_components/select2/dist/js/select2.min.js"></script>        
         <!-- JavaScript Bundle with Popper -->
         <link rel="stylesheet" href="../node_modules/bootstrap/dist/js/bootstrap.min.js">
-        <!-- link rel="stylesheet" href="{{ asset('css/app.css') }}" -->
         <script type="text/javascript">
 
             //Definir formatter de pesos

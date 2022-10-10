@@ -4,6 +4,7 @@
     session_start();
 
     require 'database/database.php';
+    //require '../vendor/autoload.php';
 
     //Establecer zona horario y variables de hora/fecha actual
     date_default_timezone_set('America/Bogota');
@@ -26,10 +27,10 @@
         //print_r($usuario);
     }
 
-    //Traer todos los registros del personal 
-    $traerPersonal = $connect->prepare("SELECT * FROM personal");
-    if($traerPersonal->execute()) {
-        $guardarPersonal = $traerPersonal->fetchAll(PDO::FETCH_ASSOC);
+    //Traer todos los registros de labores
+    $traerLabores = $connect->prepare("SELECT * FROM labores");
+    if($traerLabores->execute()) {
+        $labores = $traerLabores->fetchAll(PDO::FETCH_ASSOC);
     }
 
 ?>
@@ -49,10 +50,12 @@
         <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
         <!-- Bs icons -->
         <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
-        <!-- Select2 Bower -->
-        <link href="../bower_components/select2/dist/css/select2.min.css" rel="stylesheet" />
         <!-- Main css -->
         <link rel="stylesheet" href="css/styles.css">
+        <!-- Select2 Bower -->
+        <link href="../bower_components/select2/dist/css/select2.min.css" rel="stylesheet" />
+        <!-- Sweet alert2 -->
+        <link rel="stylesheet" href="../node_modules/sweetalert2/dist/sweetalert2.css">
     </head>
     <body class="bg-main">
         <nav class="navbar navbar-expand-lg bg-dark navbar-light border-bottom border-4 opacity9 w-100">
@@ -80,14 +83,14 @@
             </div>
         </nav>
         <div class="bg-success w-100 text-center">
-            <p class="text-white fw-bold fs-6 p-3">Personal Gestión</p>
+            <p class="text-white fw-bold fs-6 p-3">Gestión labores - personal</p>
         </div>
         <div class="container">
             <div class="bg-dark overflow-hidden shadow-sm sm:rounded-lg opacity9">
                 <div class="row justify-content-around mt-3">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
-                        <a href="registrarPersonal.php">
-                            <button type="button" class="btn btn-success">Registrar personal</button>
+                        <a href="registrarLaborPersonal.php">
+                            <button type="button" class="btn btn-success" id="btnModalRelacionar">Registrar labor a personal</button>
                         </a>
                     </div>
                 </div>            
@@ -121,37 +124,23 @@
                             <table class="table table-dark table-striped table-bordered mb-2" id="tablaPersonal" style="width: 100%">
                                 <thead>
                                     <tr>
+                                        <th>Código</th>
                                         <th>Nombre</th>
-                                        <th>Tipo identificación</th>
-                                        <th>Identifiación</th>
-                                        <th>Cargo</th>
-                                        <th>Tipo Contrato</th>
-                                        <th>Salario</th>
-                                        <th>Antiguedad</th>
-                                        <th>T.Buso</th>
-                                        <th>Pantalon</th>
-                                        <th>Botas</th>
+                                        <th>Unidad medida</th>
+                                        <th>Precio</th>
                                         <th>Borrar</th>
-                                        <th>Editar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <?php
-                                        foreach ($guardarPersonal as $personal) {
+                                        foreach ($labores as $labor) {
                                             echo '</tr>
-                                            <td valign="middle" align="center">'.$personal['nombre'].'</td>
-                                            <td valign="middle" align="center">'.$personal['id'].'</td>
-                                            <td valign="middle" align="center">'.$personal['identificacion'].'</td>
-                                            <td valign="middle" align="center">'.$personal['id'].'</td>
-                                            <td valign="middle" align="center">'.$personal['id'].'</td>
-                                            <td valign="middle" align="center">'.$personal['salario'].'</td>
-                                            <td valign="middle" align="center">'.$personal['id'].'</td>
-                                            <td valign="middle" align="center">'.$personal['talla_buso'].'</td>
-                                            <td valign="middle" align="center">'.$personal['talla_pantalon'].'</td>
-                                            <td valign="middle" align="center">'.$personal['talla_botas'].'</td>
-                                            <td valign="middle" align="center"><a href="'.$personal['talla_botas'].'"<i class="bi bi-pencil-square"></i></a></td>
-                                            <td valign="middle" align="center"><a href="'.$personal['talla_botas'].'"<i class="bi bi-x-circle-fill"></i></a></td>
+                                            <td valign="middle" align="center">'.$labor['codigo_labor'].'</td>
+                                            <td valign="middle" align="center">'.$labor['nombre_labor'].'</td>
+                                            <td valign="middle" align="center">'.$labor['unidad_medida'].'</td>
+                                            <td valign="middle" align="center">'.$labor['precio_labor'].'</td>
+                                            <td valign="middle" align="center"><a href="'.$labor['precio_labor'].'"<i class="bi bi-x-circle-fill text-success"></i></a></td>
                                             </tr>
                                             ';
                                         }
@@ -163,14 +152,52 @@
                     </div>
                 </div>
             </div>            
-            <!-- /div -->
+            <!-- Modal -->
+            <div class="modal fade" id="relacionarPersonalLabor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Asignar labor a personal</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-6">
+                                <label for="" class="form-label">Seleccionar personal</label>
+                                <select class="form-select" aria-label="Default select example" id="seleccionarPersonal">
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                            <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-6">
+                                <label for="" class="form-label">Seleccionar labor</label>
+                                <select class="form-select" aria-label="Default select example" id="seleccionarLabor">
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- Jquery Bower -->
         <script src="../bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Select2 bower -->
         <script src="../bower_components/select2/dist/js/select2.min.js"></script>        
         <!-- JavaScript Bundle with Popper -->
-        <link rel="stylesheet" href="../node_modules/bootstrap/dist/js/bootstrap.min.js">
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Sweet alert -->
+        <script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
         <!-- link rel="stylesheet" href="{{ asset('css/app.css') }}" -->
         <script type="text/javascript">
 
@@ -188,6 +215,11 @@
             {
                 return formatterPeso.format(valor);
             }
+
+            window.addEventListener("load", function(event) {
+
+            });
+
 
             //Inicializar data table
             /*let tablaAuto = $("#tablaPersonal").DataTable({
