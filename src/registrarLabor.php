@@ -57,14 +57,15 @@
         <title>Control de actividades - Agricola del Caribe</title>
         <!-- Favicon-->
         <!--<link rel="icon" type="image/x-icon" href="img/logoSolo.ico"/>-->
-        <!-- Bootstrap NPM -->
-        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <!--<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">-->
         <!-- Bs icons -->
-        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+        <!-- <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"> -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
         <!-- Select2 Bower -->
-        <link href="../bower_components/select2/dist/css/select2.min.css" rel="stylesheet" />
-        <!-- Sweet alert2 -->
-        <link rel="stylesheet" href="../node_modules/sweetalert2/dist/sweetalert2.css">
+        <!-- <link href="../bower_components/select2/dist/css/select2.min.css" rel="stylesheet" /> -->
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
         <!-- Main css -->
         <link rel="stylesheet" href="css/styles.css">
     </head>
@@ -124,7 +125,7 @@
                                     </div>
                                 </div>
                                 <div class="col-10 col-xl-6 p-2">
-                                    <label for="precio_labor" class="form-label text-white">Salario <b class="text-danger">*</b></label>
+                                    <label for="precio_labor" class="form-label text-white">Precio labor <b class="text-danger">*</b></label>
                                     <div class="input-group">
                                         <label for="" class="input-group-text" id="verPrecioLetras">$</label>
                                         <input id="precio_labor" name="precio_labor" type="text" class="form-control numeric" required/>
@@ -146,16 +147,21 @@
                 </div>
             </div>
         </div>
-        <!-- Jquery Bower -->
-       <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- <script src="../bower_components/jquery/dist/jquery.min.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <!-- Select2 bower -->
-        <script src="../bower_components/select2/dist/js/select2.min.js"></script>        
+        <!-- <script src="../bower_components/select2/dist/js/select2.min.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <!-- JavaScript Bundle with Popper -->
-        <link rel="stylesheet" href="../node_modules/bootstrap/dist/js/bootstrap.min.js">
+        <!--<link rel="stylesheet" href="../node_modules/bootstrap/dist/js/bootstrap.min.js">-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
         <!-- Sweet alert -->
-        <script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+        <!--<script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>-->
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <!-- Numeros a letras -->
         <script src="js/numeroALetras.js"></script>
+        <!-- Jquery numeric -->
+        <script src="https://cdn.jsdelivr.net/npm/jquery.numeric@1.0.0/jquery.numeric.min.js"></script>
         <!-- Main js -->
         <script type="text/javascript">
 
