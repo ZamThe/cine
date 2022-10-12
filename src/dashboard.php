@@ -101,7 +101,7 @@
                             </a>
                         </div>
                         <div class="col-10 col-sm-10 col-md-6 col-lg-3 col-xl-3 mt-1">
-                            <a href="programarAutorizacion.php" class="text-white btn bg-success bg-gradient p-4 mt-2 mb-2 main-buttons" style="text-decoration:none;width: 100%;border-radius: 10px;border: 2px solid">
+                            <a href="laboresPersonalDetalle.php" class="text-white btn bg-success bg-gradient p-4 mt-2 mb-2 main-buttons" style="text-decoration:none;width: 100%;border-radius: 10px;border: 2px solid">
                                 Detalle labores
                             </a>
                         </div>

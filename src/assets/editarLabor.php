@@ -3,7 +3,9 @@
     //** HEADER BACKEND
     session_start();
 
-    require 'database/database.php';
+    header("Content-Type: text/html;charset=utf-8");
+
+    require '../database/database.php';
 
     //Establecer zona horario y variables de hora/fecha actual
     date_default_timezone_set('America/Bogota');
@@ -19,6 +21,9 @@
         $permisos = $_SESSION['permisos'];
     }
 
+    //Capture number of authorization
+    $idLabor = $_GET['idLabor'];
+
     //Traer información sobre el usuario 
     $traerDatosUsuario = $connect->prepare("SELECT * FROM users WHERE id = '$idUsuario'");
     if($traerDatosUsuario->execute()){
@@ -26,22 +31,37 @@
         //print_r($usuario);
     }
 
-    //print_r($tiposContrato);
-
-    //Detectar envio de fomulario 
-    if(isset($_POST['guardarLabor'])){
+    //Detectar si el usuario quiere cambiar los datos del usuario 
+    if(isset($_POST['actualizarLabor'])){
 
         //Capturar los datos enviados por el formulario
-        $nombre_valor = $_POST['nombre_labor'];
+        $nombre_labor = $_POST['nombre_labor'];
         $unidad_medida = $_POST['unidad_medida'];
         $precio_labor = $_POST['precio_labor'];
 
-        //Guardar registro
-        $guardarLabor = $connect->prepare("INSERT INTO labores (nombre_labor,unidad_medida,precio_labor) VALUES ('$nombre_valor','$unidad_medida','$precio_labor')");
-        if($guardarLabor->execute()){
-            echo "<script>location.href='laboresGestion.php';</script>";
+        /*//Debug values 
+        echo 'Nombre: '.$nombre.'<br>';
+        echo 'TipoIdentificación: '.$tipoIdentificacion.'<br>';
+        echo 'Identificación: '.$identificacion.'<br>';
+        echo 'IdCargo: '.$idCargo.'<br>';
+        echo 'fechaIngreso: '.$fechaIngreso.'<br>';
+        echo 'idTipoContrato: '.$idTipoContrato.'<br>';
+        echo 'salario: '.$salario.'<br>';
+        echo 'tallBuso: '.$tallaBuso.'<br>';
+        echo 'tallaPantalon: '.$tallaPantalon.'<br>';
+        echo 'tallaBotas: '.$tallaBotas.'<br>';*/
+
+        //(nombre,id_tipo_identificacion,identificacion,id_cargo,fecha_ingreso,id_tipo_contrato,salario,talla_buso,talla_pantalon,talla_botas) 
+
+
+        //Actualizar labor
+        $actualizarLabor = $connect->prepare("UPDATE labores SET nombre_labor = '$nombre_labor', unidad_medida = '$unidad_medida', precio_labor = '$precio_labor' WHERE id = '$idLabor'");
+        if($actualizarLabor->execute()){
+            echo '<script>location.href="../laboresGestion.php"</script>';
         }
+
     }
+    
 
 ?>
 <!doctype html>
@@ -66,7 +86,7 @@
         <!-- <link href="../bower_components/select2/dist/css/select2.min.css" rel="stylesheet" /> -->
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
         <!-- Main css -->
-        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="../css/styles.css">
     </head>
     <body class="bg-main">
         <nav class="navbar navbar-expand-lg bg-dark navbar-light border-bottom border-4 opacity9 w-100">
@@ -77,7 +97,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                        <li><a class="dropdown-item text-light fs-6 me-3" href="laboresGestion.php"><i class="bi bi-arrow-left-square-fill fs-5"></i> Atras</a></li>
+                        <li><a class="dropdown-item text-light fs-6 me-3" href="../laboresGestion.php"><i class="bi bi-arrow-left-square-fill fs-5"></i> Atras</a></li>
                         <li><a class="dropdown-item text-light fs-6 me-3" href="#"><i class="bi bi-person-circle fs-5"></i> <?php echo ' '.$usuario['name']; ?> </a></li>
                         <li><a class="dropdown-item text-light fs-6 me-3" href="logout.php"><i class="bi bi-door-open-fill fs-5"></i> Salir</a></li>
                         <!--<li class="nav-item dropdown">
@@ -94,7 +114,7 @@
             </div>
         </nav>
         <div class="bg-success w-100 text-center">
-            <p class="text-white fw-bold fs-6 p-3">Registrar labor</p>
+            <p class="text-white fw-bold fs-6 p-3">Editar labor</p>
         </div>
         <div class="container">
             <div class="row justify-content-center">
@@ -102,7 +122,7 @@
                     <div class="bg-dark overflow-hidden shadow-sm sm:rounded-lg p-2 rounded-3 opacity9">
                         <!-- div class="p-6 bg-white border-b border-gray-200" -->
                         <form action="" method="post" enctype="multipart/form-data">
-                            <div class="row justify-content-center p-2">
+                        <div class="row justify-content-center p-2">
                                 <!--<div class="col-10 col-xl-6 p-2">
                                     <div class="form-group">
                                         <label for="codigo_labor" class="form-label text-white">Código <b class="text-danger">*</b></label>
@@ -112,7 +132,7 @@
                                 <div class="col-10 col-xl-6 p-2">
                                     <div class="form-group">
                                         <label for="nombre_labor" class="form-label text-white">Nombre <b class="text-danger">*</b></label>
-                                        <input id="nombre_labor" name="nombre_labor" type="text" class="form-control" required/>
+                                        <input id="nombre_labor" name="nombre_labor" type="text" class="form-control" placeholder="Nombre de la labor" required/>
                                     </div>
                                 </div>
                             </div>
@@ -120,14 +140,14 @@
                                 <div class="col-10 col-xl-6 p-2">
                                     <div class="form-group">
                                         <label for="unidad_medida" class="form-label text-white">Unidad de medida <b class="text-danger">*</b></label>
-                                        <input id="unidad_medida" name="unidad_medida" type="text" class="form-control" required/>
+                                        <input id="unidad_medida" name="unidad_medida" type="text" class="form-control" placeholder="Unidad de medida" required/>
                                     </div>
                                 </div>
                                 <div class="col-10 col-xl-6 p-2">
                                     <label for="precio_labor" class="form-label text-white">Precio labor <b class="text-danger">*</b></label>
                                     <div class="input-group">
                                         <label for="" class="input-group-text" id="verPrecioLetras">$</label>
-                                        <input id="precio_labor" name="precio_labor" type="text" class="form-control numeric" required/>
+                                        <input id="precio_labor" name="precio_labor" type="text" class="form-control numeric" placeholder="Precio valor individual" required/>
                                     </div>
                                 </div>
                             </div>
@@ -138,7 +158,7 @@
                             </div>
                             <div class="row justify-content-center align-items-center mb-2">
                                 <div class="col-12 col-xl-4">
-                                    <input class="btn btn-success btn-submit form-control" name="guardarLabor" type="submit" value="Guardar">
+                                    <input class="btn btn-success btn-submit form-control" name="actualizarLabor" type="submit" value="Guardar">
                                 </div>
                             </div>
                         </form>
@@ -146,6 +166,7 @@
                 </div>
             </div>
         </div>
+        <!-- Jquery Bower -->
         <!-- <script src="../bower_components/jquery/dist/jquery.min.js"></script> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <!-- Select2 bower -->
@@ -157,11 +178,11 @@
         <!-- Sweet alert -->
         <!--<script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>-->
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <!-- Numeros a letras -->
-        <script src="js/numeroALetras.js"></script>
         <!-- Jquery numeric -->
         <script src="https://cdn.jsdelivr.net/npm/jquery.numeric@1.0.0/jquery.numeric.min.js"></script>
-        <!-- Main js -->
+        <!-- Numeros a letras -->
+        <script src="../js/numeroALetras.js"></script>
+        <!-- Script --> 
         <script type="text/javascript">
 
             window.addEventListener("load", function(event) {
@@ -182,19 +203,10 @@
                 }
 
                 //Capturar valor de salario 
-                var precioFormateado = document.getElementById('precio_labor');
+                var salarioFormateado = document.getElementById('salarioFormateado');
 
                 //Permitir solo numeros en un input 
-                $("#precio_labor").numeric();
-                var verPrecioLetras = document.getElementById("verPrecioLetras")
-                verPrecioLetras.addEventListener('click', ()=>{
-                    Swal.fire({
-                        //icon: 'error',
-                        title: 'Valor en letras',
-                        text: NumeroALetras(precioFormateado.value)
-                    })
-                    //alert('Valor de: '+NumeroALetras(salarioFormateado.value))
-                })
+                $("#salarioFormateado").numeric();
             });
             
         </script>        

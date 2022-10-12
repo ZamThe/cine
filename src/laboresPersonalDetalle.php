@@ -4,6 +4,7 @@
     session_start();
 
     require 'database/database.php';
+    //require '../vendor/autoload.php';
 
     //Establecer zona horario y variables de hora/fecha actual
     date_default_timezone_set('America/Bogota');
@@ -26,28 +27,14 @@
         //print_r($usuario);
     }
 
-    //Traer todos los registros del personal 
-    $traerPersonal = $connect->prepare("SELECT ps.id, ps.nombre as nombrePersonal, ti.nombreTipoIdentificacion as tipoIdentificacion, ps.identificacion, cg.nombre_cargo as nombreCargo, tc.tipo_contrato as tipoContrato, ps.salario, ps.fecha_ingreso, ps.talla_buso, ps.talla_botas, ps.talla_pantalon FROM personal ps INNER JOIN cargos cg ON ps.id_cargo = cg.id INNER JOIN tipos_contratos tc ON ps.id_tipo_contrato = tc.id INNER JOIN tipos_identificacion ti ON ps.id_tipo_identificacion = ti.id");
-    if($traerPersonal->execute()) {
-        $guardarPersonal = $traerPersonal->fetchAll(PDO::FETCH_ASSOC);
-
-        //Cantidad resultados
-        $contarResultados = count($guardarPersonal);
-
-        /*echo $guardarPersonal[0]['fecha_ingreso'];
-        echo $fechaActual;*/
-        for ($i=0; $i < $contarResultados; $i++) { 
-            $timestampFechaActual = strtotime($fechaActual);
-            $timestampFechaIngreso = strtotime($guardarPersonal[$i]['fecha_ingreso']);
-
-            //Calcular diferencia
-            $diferencia = $timestampFechaActual - $timestampFechaIngreso;
-            $noches = $diferencia / (3600 * 24);
-            $diasPasados = $noches + 1;
-
-            $guardarPersonal[$i]['antiguedad'] = $diasPasados;
-        }
+    //Traer los registros de personal_labores 
+    $traerPersonalLabores = $connect->prepare("SELECT pl.id, ps.nombre as nombrePersonal, lb.nombre_labor as nombreLabor, pl.cantidad, pl.valor_total, pl.fecha_realizacion as fecha FROM personal_labores pl INNER JOIN personal ps ON pl.id_personal = ps.id INNER JOIN labores lb ON pl.id_labor = lb.id");
+    if($traerPersonalLabores->execute()){
+        $guardarPersonalLabores = $traerPersonalLabores->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    //Instanciar formateador de numeros 
+    $fmt = new \NumberFormatter('es_CO', \NumberFormatter::CURRENCY);
 
 ?>
 <!doctype html>
@@ -64,12 +51,9 @@
         <!--<link rel="icon" type="image/x-icon" href="img/logoSolo.ico"/>-->
         <!-- CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-        <!--<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">-->
         <!-- Bs icons -->
-        <!-- <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"> -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-        <!-- Select2 Bower -->
-        <!-- <link href="../bower_components/select2/dist/css/select2.min.css" rel="stylesheet" /> -->
+        <!-- Select2 -->
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
         <!-- Main css -->
         <link rel="stylesheet" href="css/styles.css">
@@ -100,17 +84,19 @@
             </div>
         </nav>
         <div class="bg-success w-100 text-center">
-            <p class="text-white fw-bold fs-6 p-3">Personal Gestión</p>
+            <p class="text-white fw-bold fs-6 p-3">Labores - personal detalle</p>
         </div>
         <div class="container">
             <div class="bg-dark overflow-hidden shadow-sm sm:rounded-lg opacity9">
-                <div class="row justify-content-around mt-3">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
-                        <a href="registrarPersonal.php">
-                            <button type="button" class="btn btn-success">Registrar personal</button>
-                        </a>
+                <div class="row justify-content-center mt-3">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-2 text-center">
+                        <input type="text" class="form-control" placeholder="Ingrese una cedula">
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-1 col-xl-1 text-center">
+                        <button type="submit" class="btn btn-success"><i class="bi bi-eye-fill"></i></button>
                     </div>
                 </div>            
+                
                 <div class="row justify-content-center">
                     <div class="col-12 col-lg-12 col-xl-12">
                         <hr class="bg-success" style="height: 5px;">
@@ -140,60 +126,37 @@
                         <div class="table-responsive p-2">
                             <table class="table table-dark table-striped table-bordered mb-2" id="tablaPersonal" style="width: 100%">
                                 <thead>
-                                    <tr>
-                                        <th>Nombre</th>
-                                        <th>Tipo identificación</th>
-                                        <th>Identifiación</th>
-                                        <th>Cargo</th>
-                                        <th>Tipo Contrato</th>
-                                        <th>Salario</th>
-                                        <th>Antiguedad</th>
-                                        <th>T.Buso</th>
-                                        <th>T.Pantalon</th>
-                                        <th>T.Botas</th>
-                                        <th>Editar</th>
+                                    <tr class="text-center">
+                                        <th>Nombre personal</th>
+                                        <th>Actividad</th>
+                                        <th>Cantidad</th>
+                                        <th>Valor total</th>
+                                        <th>Fecha</th>
                                         <th>Borrar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <?php
-                                        foreach ($guardarPersonal as $personal) {
-                                            echo '</tr>
-                                            <td valign="middle" align="center">'.$personal['nombrePersonal'].'</td>
-                                            <td valign="middle" align="center">'.$personal['tipoIdentificacion'].'</td>
-                                            <td valign="middle" align="center">'.$personal['identificacion'].'</td>
-                                            <td valign="middle" align="center">'.$personal['nombreCargo'].'</td>
-                                            <td valign="middle" align="center">'.$personal['tipoContrato'].'</td>
-                                            <td valign="middle" align="center">'.$personal['salario'].'</td>
-                                            <td valign="middle" align="center">'.$personal['antiguedad'].' días'.'</td>
-                                            <td valign="middle" align="center">'.$personal['talla_buso'].'</td>
-                                            <td valign="middle" align="center">'.$personal['talla_pantalon'].'</td>
-                                            <td valign="middle" align="center">'.$personal['talla_botas'].'</td>
-                                            <td valign="middle" align="center"><a href="assets/editarPersonal.php?idPersonal='.$personal['id'].'"><i class="bi bi-pencil-square"></i></a></td>
-                                            <td valign="middle" align="center"><a href="assets/borrarPersonal.php?idPersonal='.$personal['id'].'"<i class="bi bi-x-circle-fill"></i></a></td>
-                                            </tr>
-                                            ';
-                                        }
-                                        ?>
-                                    </tr>
+                                    <?php
+                                  
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>            
-            <!-- /div -->
         </div>
-        <!-- Jquery Bower -->
-        <!-- <script src="../bower_components/jquery/dist/jquery.min.js"></script> -->
+        <!-- Jquery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <!-- Select2 bower -->
-        <!-- <script src="../bower_components/select2/dist/js/select2.min.js"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <!-- JavaScript Bundle with Popper -->
-        <!--<link rel="stylesheet" href="../node_modules/bootstrap/dist/js/bootstrap.min.js">-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+        <!-- Sweet alert -->
+        <!--<script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>-->
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <!-- Numeros a letras -->
+        <script src="js/numeroALetras.js"></script>
         <!-- link rel="stylesheet" href="{{ asset('css/app.css') }}" -->
         <script type="text/javascript">
 
@@ -211,6 +174,11 @@
             {
                 return formatterPeso.format(valor);
             }
+
+            window.addEventListener("load", function(event) {
+
+            });
+
 
             //Inicializar data table
             /*let tablaAuto = $("#tablaPersonal").DataTable({

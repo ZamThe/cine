@@ -123,13 +123,12 @@
                         <div class="table-responsive p-2">
                             <table class="table table-dark table-striped table-bordered mb-2" id="tablaPersonal" style="width: 100%">
                                 <thead>
-                                    <tr>
-                                        <th>Código</th>
+                                    <tr class="text-center">
                                         <th>Nombre</th>
                                         <th>Unidad medida</th>
                                         <th>Precio</th>
-                                        <th>Borrar</th>
                                         <th>Editar</th>
+                                        <th>Borrar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -137,11 +136,10 @@
                                         <?php
                                         foreach ($labores as $labor) {
                                             echo '</tr>
-                                            <td valign="middle" align="center">'.$labor['codigo_labor'].'</td>
                                             <td valign="middle" align="center">'.$labor['nombre_labor'].'</td>
                                             <td valign="middle" align="center">'.$labor['unidad_medida'].'</td>
                                             <td valign="middle" align="center">'.$labor['precio_labor'].'</td>
-                                            <td valign="middle" align="center"><a href="'.$labor['precio_labor'].'"<i class="bi bi-pencil-square"></i></a></td>
+                                            <td valign="middle" align="center"><a href="assets/editarLabor.php?idLabor='.$labor['id'].'"><i class="bi bi-pencil-square"></i></a></td>
                                             <td valign="middle" align="center"><a href="'.$labor['precio_labor'].'"<i class="bi bi-x-circle-fill"></i></a></td>
                                             </tr>
                                             ';
