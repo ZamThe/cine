@@ -15,7 +15,7 @@ body {
 
 /* Fondo para el login */
 .bg-login {
-    background-image: url("../assets/img/fondo1.png");
+    background-image: url("../assets/img/fondo1.webp");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -24,7 +24,7 @@ body {
 
 /* Fondo para las demas pestañas */
 .bg-main {
-    background-image: url("../assets/img/fondo1.png");
+    background-image: url("../assets/img/fondo1.webp");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

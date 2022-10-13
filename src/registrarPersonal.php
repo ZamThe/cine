@@ -201,7 +201,7 @@
                                 <div class="col-10 col-xl-6 p-2">
                                     <div class="form-group">
                                         <label for="tallaBuso" class="form-label text-white">Talla buso <b class="text-danger">*</b></label>
-                                        <input id="tallaBuso" name="tallaBuso" type="text" class="form-control" required/>
+                                        <input id="tallaBuso" name="tallaBuso" type="text" class="form-control"/>
                                     </div>
                                 </div>
                             </div>
@@ -209,13 +209,13 @@
                                 <div class="col-10 col-xl-6 p-2">
                                     <div class="form-group">
                                         <label for="tallaBotas" class="form-label text-white">Talla botas <b class="text-danger">*</b></label>
-                                        <input id="tallaBotas" name="tallaBotas" type="text" class="form-control" required/>
+                                        <input id="tallaBotas" name="tallaBotas" type="text" class="form-control"/>
                                     </div>
                                 </div>
                                 <div class="col-10 col-xl-6 p-2">
                                     <div class="form-group">
                                         <label for="tallaPantalon" class="form-label text-white">Talla pantalón <b class="text-danger">*</b></label>
-                                        <input id="tallaPantalon" name="tallaPantalon" type="text" class="form-control" required/>
+                                        <input id="tallaPantalon" name="tallaPantalon" type="text" class="form-control"/>
                                     </div>
                                 </div>
                             </div>

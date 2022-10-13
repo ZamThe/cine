@@ -104,7 +104,7 @@
             <div class="bg-dark overflow-hidden shadow-sm sm:rounded-lg opacity9">         
                 <div class="row justify-content-center align-items-center mt-3 mb-2">
                     <div class="col-10 col-sm-10 col-md-10 col-lg-4 col-xl-3 text-center">
-                        <label for="" class="form label text-white">Salario hasta la fecha en labores</label>
+                        <label for="" class="form label text-white">Valor total</label>
                     </div>
                     <div class="col-10 col-sm-10 col-md-10 col-lg-4 col-xl-3 text-center">
                         <input type="text" placeholder="Salario en labores" class="form-control" value="<?php echo $salarioLabores; ?>" readonly>

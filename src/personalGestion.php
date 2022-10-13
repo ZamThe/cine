@@ -49,6 +49,9 @@
         }
     }
 
+    //Instanciar formateador de numeros 
+    $fmt = new \NumberFormatter('es_CO', \NumberFormatter::CURRENCY);
+
 ?>
 <!doctype html>
 <html lang="es">
@@ -165,7 +168,7 @@
                                             <td valign="middle" align="center">'.$personal['identificacion'].'</td>
                                             <td valign="middle" align="center">'.$personal['nombreCargo'].'</td>
                                             <td valign="middle" align="center">'.$personal['tipoContrato'].'</td>
-                                            <td valign="middle" align="center">'.$personal['salario'].'</td>
+                                            <td valign="middle" align="center">'.$fmt->formatCurrency($personal['salario'], 'COP').'</td>
                                             <td valign="middle" align="center">'.$personal['antiguedad'].' días'.'</td>
                                             <td valign="middle" align="center">'.$personal['talla_buso'].'</td>
                                             <td valign="middle" align="center">'.$personal['talla_pantalon'].'</td>
