@@ -140,7 +140,7 @@
                                             <td valign="middle" align="center">'.$labor['unidad_medida'].'</td>
                                             <td valign="middle" align="center">'.$labor['precio_labor'].'</td>
                                             <td valign="middle" align="center"><a href="assets/editarLabor.php?idLabor='.$labor['id'].'"><i class="bi bi-pencil-square"></i></a></td>
-                                            <td valign="middle" align="center"><a href="'.$labor['precio_labor'].'"<i class="bi bi-x-circle-fill"></i></a></td>
+                                            <td valign="middle" align="center"><a href="assets/borrarLabor.php?idLabor='.$labor['id'].'"<i class="bi bi-x-circle-fill"></i></a></td>
                                             </tr>
                                             ';
                                         }

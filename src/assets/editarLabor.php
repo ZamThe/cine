@@ -21,14 +21,19 @@
         $permisos = $_SESSION['permisos'];
     }
 
-    //Capture number of authorization
-    $idLabor = $_GET['idLabor'];
-
     //Traer información sobre el usuario 
     $traerDatosUsuario = $connect->prepare("SELECT * FROM users WHERE id = '$idUsuario'");
     if($traerDatosUsuario->execute()){
         $usuario = $traerDatosUsuario->fetch(PDO::FETCH_ASSOC);
         //print_r($usuario);
+    }
+
+    //Capture number of authorization
+    $idLabor = $_GET['idLabor'];
+    //Capturar datos de la labor 
+    $traerDatosLabor = $connect->prepare("SELECT * FROM labores WHERE id = '$idLabor'");
+    if($traerDatosLabor->execute()){
+        $datosLabor = $traerDatosLabor->fetch(PDO::FETCH_ASSOC);
     }
 
     //Detectar si el usuario quiere cambiar los datos del usuario 
@@ -132,7 +137,7 @@
                                 <div class="col-10 col-xl-6 p-2">
                                     <div class="form-group">
                                         <label for="nombre_labor" class="form-label text-white">Nombre <b class="text-danger">*</b></label>
-                                        <input id="nombre_labor" name="nombre_labor" type="text" class="form-control" placeholder="Nombre de la labor" required/>
+                                        <input id="nombre_labor" name="nombre_labor" type="text" class="form-control" placeholder="Nombre de la labor" value="<?php echo $datosLabor['nombre_labor'] ?>" required/>
                                     </div>
                                 </div>
                             </div>
@@ -140,14 +145,14 @@
                                 <div class="col-10 col-xl-6 p-2">
                                     <div class="form-group">
                                         <label for="unidad_medida" class="form-label text-white">Unidad de medida <b class="text-danger">*</b></label>
-                                        <input id="unidad_medida" name="unidad_medida" type="text" class="form-control" placeholder="Unidad de medida" required/>
+                                        <input id="unidad_medida" name="unidad_medida" type="text" class="form-control" placeholder="Unidad de medida" value="<?php echo $datosLabor['unidad_medida'] ?>" required/>
                                     </div>
                                 </div>
                                 <div class="col-10 col-xl-6 p-2">
                                     <label for="precio_labor" class="form-label text-white">Precio labor <b class="text-danger">*</b></label>
                                     <div class="input-group">
                                         <label for="" class="input-group-text" id="verPrecioLetras">$</label>
-                                        <input id="precio_labor" name="precio_labor" type="text" class="form-control numeric" placeholder="Precio valor individual" required/>
+                                        <input id="precio_labor" name="precio_labor" type="text" class="form-control numeric" placeholder="Precio valor individual" value="<?php echo $datosLabor['precio_labor'] ?>" required/>
                                     </div>
                                 </div>
                             </div>

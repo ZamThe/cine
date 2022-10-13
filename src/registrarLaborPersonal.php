@@ -230,13 +230,17 @@
 
             window.addEventListener("load", function(event) {
 
+                function financial(x) {
+                    return Number.parseFloat(x).toFixed(2);
+                }
+
                 //Instanciar formateador de numeros
                 const formatterPeso = new Intl.NumberFormat('es-CO',
                 {
                     style: 'currency',
                     currency: 'COP',
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 1
                 });
 
                 //Funciónn para formatear valores
@@ -308,8 +312,13 @@
                     var valorConSigno = $("#valor_labor").val()
                     //Quitar signo 
                     var valorSinSigno = Number(valorConSigno.replace(/[^0-9]+/g, ""))
+                    var valorSinDecimales = financial(valorSinSigno)
                     //Calcular total
                     var total = cantidad * valorSinSigno
+
+                    /*console.log(cantidad)
+                    console.log(valorSinSigno)
+                    console.log(valorSinDecimales)*/
                     
                     //Poner valor total en su input
                     $("#valorTotalOculto").val(total)

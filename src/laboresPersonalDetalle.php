@@ -87,64 +87,74 @@
             <p class="text-white fw-bold fs-6 p-3">Labores - personal detalle</p>
         </div>
         <div class="container">
-            <div class="bg-dark overflow-hidden shadow-sm sm:rounded-lg opacity9">
-                <div class="row justify-content-center mt-3">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-2 text-center">
-                        <input type="text" class="form-control" placeholder="Ingrese una cedula">
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-1 col-xl-1 text-center">
-                        <button type="submit" class="btn btn-success"><i class="bi bi-eye-fill"></i></button>
-                    </div>
-                </div>            
-                
-                <div class="row justify-content-center">
-                    <div class="col-12 col-lg-12 col-xl-12">
-                        <hr class="bg-success" style="height: 5px;">
-                    </div>
-                </div> 
-                <!--<div class="row justify-content-center mt-3">
-                    <div class="col-4 col-lg-4 col-xl-4">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text bg-dark text-white">Total ejecutados</span>
-                            <input type="text" class="form-control bg-warning text-dark fw-bold" id="totalEjecutado" placeholder="" value="" readonly style="border:0px">
+            <div class="row justify-content-center">
+                <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+                    <div class="bg-dark overflow-hidden shadow-sm sm:rounded-lg opacity9 rounded">
+                        <div class="row justify-content-center align-items-center text-center mt-3">
+                            <h6 class="h6 text-white">Busqueda de personal por cedula</h6>
                         </div>
-                    </div>
-                    <div class="col-4 col-lg-4 col-xl-4">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text bg-dark text-white">Total en tabla</span>
-                            <input type="text" class="form-control bg-warning text-dark fw-bold" id="totalEnVista" placeholder="" value="" readonly style="border:0px">
+                        <form action="informes/reportePorCedula.php" method="POST">
+                            <div class="row justify-content-center mt-3">
+                                <div class="col-10 col-sm-10 col-md-5 col-lg-4 col-xl-4 text-center">
+                                    <input type="text" class="form-control" name="cedula" placeholder="Ingrese una cedula">
+                                    <input type="hidden" name="reportePorSoloCedula" value="1">
+                                </div>
+                                <div class="col-10 col-sm-10 col-md-5 col-lg-4 col-xl-1 text-center">
+                                    <button type="submit" class="btn btn-success"><i class="bi bi-eye-fill"></i></button>
+                                </div>
+                            </div>            
+                        </form>
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-lg-12 col-xl-12">
+                                <hr class="bg-success" style="height: 5px;">
+                            </div>
+                        </div> 
+                        <div class="row justify-content-center align-items-center text-center mt-1">
+                            <h6 class="h6 text-white">Busqueda por fecha y cedula de labores realizadas </h6>
                         </div>
-                    </div>
+                        <form action="informes/reportePorCedula.php" method="POST">
+                            <div class="row justify-content-center mt-3">
+                                <div class="col-10 col-sm-10 col-md-5 col-lg-4 col-xl-4 text-center">
+                                    <input type="text" class="form-control" placeholder="Ingrese una cedula">
+                                </div>
+                                <div class="col-10 col-sm-10 col-md-5 col-lg-4 col-xl-3 text-center">
+                                    <input type="date" class="form-control" placeholder="Ingrese la fecha de ingreso">
+                                </div>
+                                <div class="col-10 col-sm-10 col-md-5 col-lg-4 col-xl-3 text-center">
+                                    <input type="date" class="form-control" placeholder="Ingrese la fecha de ingreso">
+                                </div>
+                                <div class="col-10 col-sm-10 col-md-5 col-lg-4 col-xl-1 text-center">
+                                    <button type="submit" class="btn btn-success"><i class="bi bi-eye-fill"></i></button>
+                                </div>
+                            </div> 
+                        </form>
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-lg-12 col-xl-12">
+                                <hr class="bg-success" style="height: 5px;">
+                            </div>
+                        </div> 
+                        <div class="row justify-content-center align-items-center text-center mt-1">
+                            <h6 class="h6 text-white">Busqueda por fecha de labores realizadas</h6>
+                        </div>
+                        <div class="row justify-content-center mt-3">
+                            <div class="col-10 col-sm-10 col-md-5 col-lg-4 col-xl-3 text-center">
+                                <input type="date" class="form-control" placeholder="Ingrese la fecha de ingreso">
+                            </div>
+                            <div class="col-10 col-sm-10 col-md-5 col-lg-4 col-xl-3 text-center">
+                                <input type="date" class="form-control" placeholder="Ingrese la fecha de ingreso">
+                            </div>
+                            <div class="col-10 col-sm-10 col-md-5 col-lg-4 col-xl-1 text-center">
+                                <button type="submit" class="btn btn-success"><i class="bi bi-eye-fill"></i></button>
+                            </div>
+                        </div> 
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-lg-12 col-xl-12">
+                                <hr class="bg-success" style="height: 5px;">
+                            </div>
+                        </div> 
+                    </div>            
                 </div>
-                <div class="row justify-content-center">
-                    <div class="col-12 col-lg-12 col-xl-12">
-                        <hr class="bg-primary" style="height: 5px;">
-                    </div>
-                </div>--> 
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <div class="table-responsive p-2">
-                            <table class="table table-dark table-striped table-bordered mb-2" id="tablaPersonal" style="width: 100%">
-                                <thead>
-                                    <tr class="text-center">
-                                        <th>Nombre personal</th>
-                                        <th>Actividad</th>
-                                        <th>Cantidad</th>
-                                        <th>Valor total</th>
-                                        <th>Fecha</th>
-                                        <th>Borrar</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                  
-                                    ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>            
+            </div>
         </div>
         <!-- Jquery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
