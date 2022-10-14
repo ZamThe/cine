@@ -2,7 +2,5 @@
 /node_modules
 /vendor
 /src/database/database.php
-composer.json
-composer.lock 
 package.json
 package-lock.json
