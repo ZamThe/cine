@@ -34,7 +34,7 @@
         //Capturar cedula
         $cedula = $_POST['cedula'];
         //Traer datos
-        $traerLaboresPersonal = $connect->prepare("SELECT pl.id, ps.nombre as nombrePersonal, lb.nombre_labor as nombreLabor, pl.cantidad, pl.valor_total, pl.fecha_realizacion as fecha FROM personal_labores pl INNER JOIN personal ps ON pl.id_personal = ps.id INNER JOIN labores lb ON pl.id_labor = lb.id WHERE ps.identificacion = '$cedula'");
+        $traerLaboresPersonal = $connect->prepare("SELECT pl.id, ps.nombre as nombrePersonal, lb.nombre_labor as nombreLabor, pl.cantidad, pl.valor_total, pl.fecha_realizacion as fecha, pl.valor_individual FROM personal_labores pl INNER JOIN personal ps ON pl.id_personal = ps.id INNER JOIN labores lb ON pl.id_labor = lb.id WHERE ps.identificacion = '$cedula'");
         if($traerLaboresPersonal->execute()){
             $laboresPersonal = $traerLaboresPersonal->fetchAll(PDO::FETCH_ASSOC);
         }
@@ -122,6 +122,7 @@
                                         <th>Nombre personal</th>
                                         <th>Actividad</th>
                                         <th>Cantidad</th>
+                                        <th>Valor individual</th>
                                         <th>Valor total</th>
                                         <th>Fecha realización</th>
                                     </tr>
@@ -133,6 +134,7 @@
                                                 <td>".$lb['nombrePersonal']."</td>
                                                 <td>".$lb['nombreLabor']."</td>
                                                 <td>".$lb['cantidad']."</td>
+                                                <td>".$fmt->formatCurrency($lb['valor_individual'], 'COP')."</td>
                                                 <td>".$fmt->formatCurrency($lb['valor_total'], 'COP')."</td>
                                                 <td>".$lb['fecha']."</td>
                                             </tr>";

@@ -28,7 +28,7 @@
     }
 
     //Traer los registros de personal_labores 
-    $traerPersonalLabores = $connect->prepare("SELECT pl.id, ps.nombre as nombrePersonal, lb.nombre_labor as nombreLabor, pl.cantidad, pl.valor_total, pl.fecha_realizacion as fecha FROM personal_labores pl INNER JOIN personal ps ON pl.id_personal = ps.id INNER JOIN labores lb ON pl.id_labor = lb.id");
+    $traerPersonalLabores = $connect->prepare("SELECT pl.id, ps.nombre as nombrePersonal, lb.nombre_labor as nombreLabor, pl.cantidad, pl.valor_total, pl.fecha_realizacion as fecha, pl.valor_individual FROM personal_labores pl INNER JOIN personal ps ON pl.id_personal = ps.id INNER JOIN labores lb ON pl.id_labor = lb.id");
     if($traerPersonalLabores->execute()){
         $guardarPersonalLabores = $traerPersonalLabores->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -128,6 +128,7 @@
                                         <th>Nombre personal</th>
                                         <th>Actividad</th>
                                         <th>Cantidad</th>
+                                        <th>Valor individual</th>
                                         <th>Valor total</th>
                                         <th>Fecha</th>
                                         <th>Borrar</th>
@@ -140,6 +141,7 @@
                                             <td>".$personalLabor['nombrePersonal']."</td>
                                             <td>".$personalLabor['nombreLabor']."</td>
                                             <td>".$personalLabor['cantidad']."</td>
+                                            <td>".$fmt->formatCurrency($personalLabor['valor_individual'], 'COP')."</td>
                                             <td>".$fmt->formatCurrency($personalLabor['valor_total'], 'COP')."</td>
                                             <td>".$personalLabor['fecha']."</td>
                                             <td><a href='assets/borrarLaborPersonal.php?idLaborPersonal=".$personalLabor['id']."'<i class='bi bi-x-circle-fill'></i></a></td>
