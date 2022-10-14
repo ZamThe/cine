@@ -43,11 +43,17 @@
             $timestampFechaIngreso = strtotime($guardarPersonal[$i]['fecha_ingreso']);
 
             //Calcular diferencia
-            $diferencia = $timestampFechaActual - $timestampFechaIngreso;
+            /*$diferencia = $timestampFechaActual - $timestampFechaIngreso;
             $noches = $diferencia / (3600 * 24);
-            $diasPasados = $noches + 1;
+            $diasPasados = $noches + 1;*/
 
-            $guardarPersonal[$i]['antiguedad'] = $diasPasados;
+            $date1 = new DateTime($fechaActual);
+            $date2 = new DateTime($guardarPersonal[$i]['fecha_ingreso']);
+            $diasPasados = $date1->diff($date2);
+            // will output 2 days
+            //echo $diff->days . ' days ';
+
+            $guardarPersonal[$i]['antiguedad'] = $diasPasados->format('%d días');
         }
     }
 
@@ -171,7 +177,7 @@
                                             <td valign="middle" align="center">'.$personal['nombreCargo'].'</td>
                                             <td valign="middle" align="center">'.$personal['tipoContrato'].'</td>
                                             <td valign="middle" align="center">'.$fmt->formatCurrency($personal['salario'], 'COP').'</td>
-                                            <td valign="middle" align="center">'.$personal['antiguedad'].' días'.'</td>
+                                            <td valign="middle" align="center">'.$personal['antiguedad'].'</td>
                                             <td valign="middle" align="center">'.$personal['talla_buso'].'</td>
                                             <td valign="middle" align="center">'.$personal['talla_pantalon'].'</td>
                                             <td valign="middle" align="center">'.$personal['talla_botas'].'</td>
