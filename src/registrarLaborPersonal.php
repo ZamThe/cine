@@ -135,7 +135,7 @@
                             <div class="row justify-content-center align-items-center">
                                 <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-4" style="overflow:hidden">
                                     <label for="" class="form-label text-white">Seleccionar personal</label>
-                                    <select class="form-select" aria-label="Default select example" id="seleccionarPersonal" name="personal">
+                                    <select class="form-select" aria-label="Default select example" id="seleccionarPersonal" name="personal" required>
                                         <option selected disabled>Seleccione un personal</option>
                                         <?php
                                             foreach ($personal as $ps) {
@@ -146,11 +146,11 @@
                                 </div>
                                 <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-4">
                                     <label for="" class="form-label text-white">Identificación</label>
-                                    <input type="text" name="identificacion" id="identificacion" class="form-control" value="" placeholder="Identificación" readonly>
+                                    <input type="text" name="identificacion" id="identificacion" class="form-control" value="" placeholder="Identificación" readonly required>
                                 </div>
                                 <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-4">
                                 <label for="" class="form-label text-white">Cargo</label>
-                                    <input type="text" name="cargo" id="cargo" class="form-control" value="" placeholder="Cargo" readonly>
+                                    <input type="text" name="cargo" id="cargo" class="form-control" value="" placeholder="Cargo" readonly required>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
@@ -161,7 +161,7 @@
                             <div class="row justify-content-center align-items-center mt-3">
                                 <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-4">
                                     <label for="" class="form-label text-white">Seleccionar labor</label>
-                                    <select class="form-select" aria-label="Default select example" id="seleccionarLabor" name="labor">
+                                    <select class="form-select" aria-label="Default select example" id="seleccionarLabor" name="labor" required>
                                         <option selected disabled>Seleccione una labor</option>
                                         <?php
                                             foreach ($labores as $lb) {
@@ -172,12 +172,12 @@
                                 </div>
                                 <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-4">
                                     <label for="" class="form-label text-white">Unidad de medida</label>
-                                    <input type="text" name="unidad_medida" id="unidad_medida" class="form-control" value="" placeholder="Unidad de medida" readonly>
+                                    <input type="text" name="unidad_medida" id="unidad_medida" class="form-control" value="" placeholder="Unidad de medida" required readonly>
                                 </div>
                                 <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-4">
                                     <label for="" class="form-label text-white">Valor individual</label>
-                                    <input type="text" name="valor_labor" id="valor_labor" class="form-control" value="" placeholder="Valor de labor individual" readonly>
-                                    <input type="hidden" name="valor_laborOculto" id="valor_laborOculto" class="form-control" value="" readonly>
+                                    <input type="text" name="valor_labor" id="valor_labor" class="form-control" value="" placeholder="Valor de labor individual" required readonly>
+                                    <input type="hidden" name="valor_laborOculto" id="valor_laborOculto" class="form-control" value="" required readonly>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
@@ -188,16 +188,16 @@
                             <div class="row justify-content-center align-items-center mt-3">
                                 <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-4">
                                     <label for="" class="form-label text-white">Seleccionar fecha</label>
-                                    <input type="date" name="fecha" id="fecha" class="form-control">
+                                    <input type="date" name="fecha" id="fecha" class="form-control" required>
                                 </div>
                                 <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-4">
                                     <label for="" class="form-label text-white">Cantidad</label>
-                                    <input type="text" name="cantidadActividades" id="cantidadActividades" class="form-control" value="" placeholder="Cantidad">
+                                    <input type="text" name="cantidadActividades" id="cantidadActividades" class="form-control" value="" placeholder="Cantidad" required>
                                 </div>
                                 <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-4">
                                     <label for="" class="form-label text-white">Valor total</label>
-                                    <input type="text" name="" id="valorTotal" class="form-control" value="" placeholder="Valor total" readonly>
-                                    <input type="hidden" name="valorTotalOculto" id="valorTotalOculto">
+                                    <input type="text" name="" id="valorTotal" class="form-control" value="" placeholder="Valor total" readonly required>
+                                    <input type="hidden" name="valorTotalOculto" id="valorTotalOculto" required>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
@@ -240,7 +240,7 @@
                     style: 'currency',
                     currency: 'COP',
                     minimumFractionDigits: 0,
-                    maximumFractionDigits: 1
+                    maximumFractionDigits: 0
                 });
 
                 //Funciónn para formatear valores
