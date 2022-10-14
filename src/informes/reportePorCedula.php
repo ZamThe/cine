@@ -62,7 +62,7 @@
         <meta name="keywords" content="Agricola del Caribe, Control de actividades, Control de erradicadores">
         <title>Control de actividades - Agricola del Caribe</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/img/AGRICONTROL.ico"/>
+        <link rel="icon" type="image/x-icon" href="../assets/img/AGRICONTROL.ico"/>
         <!-- CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <!-- Bs icons -->
@@ -108,6 +108,9 @@
                     </div>
                     <div class="col-10 col-sm-10 col-md-10 col-lg-4 col-xl-3 text-center">
                         <input type="text" placeholder="Salario en labores" class="form-control" value="<?php echo $salarioLabores; ?>" readonly>
+                    </div>
+                    <div class="col-10 col-sm-10 col-md-10 col-lg-4 col-xl-1 text-center bg-white rounded">
+                        <a href="reportePorCedulaPdf.php?cedula=<?php echo $cedula; ?>"><i class="bi bi-filetype-pdf text-success fs-4"></i></a>
                     </div>
                 </div>
                 <div class="row justify-content-center align-items-center">
