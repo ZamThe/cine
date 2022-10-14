@@ -104,7 +104,7 @@
                                 </div>
                             </div>            
                         </form>
-                        <div class="row justify-content-center">
+                        <!--<div class="row justify-content-center">
                             <div class="col-12 col-lg-12 col-xl-12">
                                 <hr class="bg-success" style="height: 5px;">
                             </div>
@@ -151,7 +151,7 @@
                             <div class="col-12 col-lg-12 col-xl-12">
                                 <hr class="bg-success" style="height: 5px;">
                             </div>
-                        </div> 
+                        </div> -->
                     </div>            
                 </div>
             </div>

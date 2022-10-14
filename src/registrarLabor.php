@@ -120,7 +120,13 @@
                                 <div class="col-10 col-xl-6 p-2">
                                     <div class="form-group">
                                         <label for="unidad_medida" class="form-label text-white">Unidad de medida <b class="text-danger">*</b></label>
-                                        <input id="unidad_medida" name="unidad_medida" type="text" class="form-control" required/>
+                                        <select id="unidad_medida" name="unidad_medida" class="form-select">
+                                            <option value="HRA">HRA</option>
+                                            <option value="UND">UND</option>
+                                            <option value="JOR">JOR</option>
+                                            <option value="MTS">MTS</option>
+                                        </select>
+                                        <!--<input id="unidad_medida" name="unidad_medida" type="text" class="form-control" required/>-->
                                     </div>
                                 </div>
                                 <div class="col-10 col-xl-6 p-2">

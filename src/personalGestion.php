@@ -33,7 +33,9 @@
 
         //Cantidad resultados
         $contarResultados = count($guardarPersonal);
-
+        echo '<br><br><br>';
+        echo $fechaActual;
+        echo strtotime($guardarPersonal[0]['fecha_ingreso']);
         /*echo $guardarPersonal[0]['fecha_ingreso'];
         echo $fechaActual;*/
         for ($i=0; $i < $contarResultados; $i++) { 
