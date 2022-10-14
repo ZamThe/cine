@@ -26,6 +26,10 @@
         //print_r($usuario);
     }
 
+    
+    //Instanciar formateador de numeros 
+    $fmt = new \NumberFormatter('es_CO', \NumberFormatter::CURRENCY);
+
     //Traer todos los registros de labores
     $traerLabores = $connect->prepare("SELECT * FROM labores");
     if($traerLabores->execute()) {
@@ -44,7 +48,7 @@
         <meta name="keywords" content="Agricola del Caribe, Control de actividades, Control de erradicadores">
         <title>Control de actividades - Agricola del Caribe</title>
         <!-- Favicon-->
-        <!--<link rel="icon" type="image/x-icon" href="img/logoSolo.ico"/>-->
+        <link rel="icon" type="image/x-icon" href="assets/img/AGRICONTROL.ico"/>
         <!-- CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <!--<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">-->
@@ -138,7 +142,7 @@
                                             echo '</tr>
                                             <td valign="middle" align="center">'.$labor['nombre_labor'].'</td>
                                             <td valign="middle" align="center">'.$labor['unidad_medida'].'</td>
-                                            <td valign="middle" align="center">'.$labor['precio_labor'].'</td>
+                                            <td valign="middle" align="center">'.$fmt->formatCurrency($labor['precio_labor'], 'COP').'</td>
                                             <td valign="middle" align="center"><a href="assets/editarLabor.php?idLabor='.$labor['id'].'"><i class="bi bi-pencil-square"></i></a></td>
                                             <td valign="middle" align="center"><a href="assets/borrarLabor.php?idLabor='.$labor['id'].'"<i class="bi bi-x-circle-fill"></i></a></td>
                                             </tr>
