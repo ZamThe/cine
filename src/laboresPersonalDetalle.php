@@ -47,7 +47,6 @@
         <meta name="author" content="Mateo Guio" />
         <meta name="keywords" content="Agricola del Caribe, Control de actividades, Control de erradicadores">
         <title>Control de actividades - Agricola del Caribe</title>
-        <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/img/AGRICONTROL.ico"/>
         <!-- CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -94,7 +93,7 @@
                             <h6 class="h6 text-white">Busqueda de personal por cedula</h6>
                         </div>
                         <form action="informes/reportePorCedula.php" method="POST">
-                            <div class="row justify-content-center mt-3">
+                            <div class="row justify-content-center mt-3 mb-3">
                                 <div class="col-10 col-sm-10 col-md-5 col-lg-4 col-xl-4 text-center">
                                     <input type="text" class="form-control" name="cedula" placeholder="Ingrese una cedula">
                                     <input type="hidden" name="reportePorSoloCedula" value="1">

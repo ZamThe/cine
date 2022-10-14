@@ -142,7 +142,7 @@
                                             <td>".$personalLabor['cantidad']."</td>
                                             <td>".$fmt->formatCurrency($personalLabor['valor_total'], 'COP')."</td>
                                             <td>".$personalLabor['fecha']."</td>
-                                            <td><i class='bi bi-x-circle-fill'></i></td>
+                                            <td><a href='assets/borrarLaborPersonal.php?idLaborPersonal=".$personalLabor['id']."'<i class='bi bi-x-circle-fill'></i></a></td>
                                         </tr>";
                                     }
                                     ?>
