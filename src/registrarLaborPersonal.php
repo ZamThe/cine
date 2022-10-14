@@ -205,6 +205,17 @@
                                     <hr class="bg-success" style="width: 100%; height: 4px; opacity: 1;">
                                 </div>
                             </div>
+                            <div class="row justify-content-start align-items-center mt-3">
+                                <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-4">
+                                    <label for="" class="form-label text-white">No. Lote</label>
+                                    <input type="text" name="numeroLote" id="numeroLote" class="form-control" placeholder="Número de lote" required>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-xl-12">
+                                    <hr class="bg-success" style="width: 100%; height: 4px; opacity: 1;">
+                                </div>
+                            </div>
                             <div class="row justify-content-center align-items-center mb-2">
                                 <div class="col-12 col-xl-4">
                                     <input class="btn btn-success btn-submit form-control" name="guardarLaborPersonal" type="submit" value="Guardar">
