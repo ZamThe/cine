@@ -29,6 +29,8 @@
     
     //Instanciar formateador de numeros 
     $fmt = new \NumberFormatter('es_CO', \NumberFormatter::CURRENCY);
+    $fmt->setTextAttribute(\NumberFormatter::CURRENCY_CODE, 'COP');
+    $fmt->setAttribute(\NumberFormatter::MAX_FRACTION_DIGITS, 0);
 
     //Traer todos los registros de labores
     $traerLabores = $connect->prepare("SELECT * FROM labores");

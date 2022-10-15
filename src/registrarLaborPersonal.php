@@ -43,9 +43,11 @@
         $valorTotal = $_POST["valorTotalOculto"];
         //Capturar fecha de realización
         $fechaRealizacion = $_POST["fecha"];
+        //Capturar numero de lote 
+        $numeroLote = $_POST['numeroLote'];
 
         //Preparar sentencia 
-        $relacionarLaborPersonal = $connect->prepare("INSERT INTO personal_labores (id_personal,id_labor,valor_individual,cantidad,valor_total,fecha_realizacion) VALUEs ('$idPersonal','$idLabor','$valorIndividual','$cantidad','$valorTotal','$fecha')");
+        $relacionarLaborPersonal = $connect->prepare("INSERT INTO personal_labores (id_personal,id_labor,valor_individual,cantidad,valor_total,fecha_realizacion,lote) VALUEs ('$idPersonal','$idLabor','$valorIndividual','$cantidad','$valorTotal','$fecha','$numeroLote')");
         if($relacionarLaborPersonal->execute()){
             echo "<script>location.href='laboresPersonalGestion.php';</script>";
         }
@@ -129,7 +131,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-sm-12 col-xl-10">
-                    <div class="bg-dark overflow-hidden shadow-sm sm:rounded-lg p-3 rounded-3 opacity9">
+                    <div class="bg-dark overflow-hidden shadow-sm sm:rounded-lg p-3 rounded-3 opacity9 mb-3">
                         <!-- div class="p-6 bg-white border-b border-gray-200" -->
                         <form action="" method="post" enctype="multipart/form-data">
                             <div class="row justify-content-center align-items-center">
@@ -209,6 +211,16 @@
                                 <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-4">
                                     <label for="" class="form-label text-white">No. Lote</label>
                                     <input type="text" name="numeroLote" id="numeroLote" class="form-control" placeholder="Número de lote" required>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-xl-12">
+                                    <hr class="bg-success" style="width: 100%; height: 4px; opacity: 1;">
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-xl-12">
+                                    <img src="assets/img/fincaPandora.webp" class="img-fluid" alt="">
                                 </div>
                             </div>
                             <div class="row justify-content-center">
