@@ -23,7 +23,7 @@
     $traerDatosUsuario = $connect->prepare("SELECT * FROM users WHERE id = '$idUsuario'");
     if($traerDatosUsuario->execute()){
         $usuario = $traerDatosUsuario->fetch(PDO::FETCH_ASSOC);
-        //print_r($usuario);
+        //print_r($usuario)
     }
 
     //Traer todos los registros del personal 
@@ -129,13 +129,38 @@
         </div>
         <div class="container">
             <div class="bg-dark overflow-hidden shadow-sm sm:rounded-lg opacity9 mb-3 rounded">
-                <div class="row justify-content-around mt-3">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
-                        <a href="registrarPersonal.php">
-                            <button type="button" class="btn btn-success">Registrar personal</button>
-                        </a>
-                    </div>
-                </div>            
+                <?php 
+                    switch ($permisos) {
+                        case '1':
+                            echo '
+                            <div class="row justify-content-around mt-3">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
+                                    <a href="registrarPersonal.php">
+                                        <button type="button" class="btn btn-success">Registrar personal</button>
+                                    </a>
+                                </div>
+                            </div> ';          
+                            break;
+                        case '2':
+                            echo '
+                            <div class="row justify-content-around mt-3">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
+                                    <a href="registrarPersonal.php">
+                                        <button type="button" class="btn btn-success">Registrar personal</button>
+                                    </a>
+                                </div>
+                            </div> ';           
+                            break;
+                        case '3':
+                            //Auditor no tiene permiso
+                            break;
+                        default:
+                            # code...
+                            break;
+                    }
+                
+                ?> 
+               
                 <div class="row justify-content-center">
                     <div class="col-12 col-lg-12 col-xl-12">
                         <hr class="bg-success" style="height: 5px;">
@@ -166,39 +191,122 @@
                             <table class="table table-dark table-striped table-bordered mb-2" id="tablaPersonal" style="width: 100%">
                                 <thead>
                                     <tr>
-                                        <th>Nombre</th>
-                                        <th>Tipo identificación</th>
-                                        <th>Identifiación</th>
-                                        <th>Cargo</th>
-                                        <th>Tipo Contrato</th>
-                                        <th>Salario</th>
-                                        <th>Antiguedad</th>
-                                        <th>T.Buso</th>
-                                        <th>T.Pantalon</th>
-                                        <th>T.Botas</th>
-                                        <th>Editar</th>
-                                        <th>Borrar</th>
+                                        <?php
+                                        
+                                        switch ($permisos) {
+                                            case '1':
+                                                echo '
+                                                <th>Nombre</th>
+                                                <th>Tipo identificación</th>
+                                                <th>Identifiación</th>
+                                                <th>Cargo</th>
+                                                <th>Tipo Contrato</th>
+                                                <th>Salario</th>
+                                                <th>Antiguedad</th>
+                                                <th>T.Buso</th>
+                                                <th>T.Pantalon</th>
+                                                <th>T.Botas</th>
+                                                <th>Editar</th>
+                                                <th>Borrar</th>
+                                                ';
+                                                break;
+                                            case '2':
+                                                echo '
+                                                <th>Nombre</th>
+                                                <th>Tipo identificación</th>
+                                                <th>Identifiación</th>
+                                                <th>Cargo</th>
+                                                <th>Tipo Contrato</th>
+                                                <th>Salario</th>
+                                                <th>Antiguedad</th>
+                                                <th>T.Buso</th>
+                                                <th>T.Pantalon</th>
+                                                <th>T.Botas</th>
+                                                ';
+                                                break;
+                                            case '3':
+                                                echo '
+                                                <th>Nombre</th>
+                                                <th>Tipo identificación</th>
+                                                <th>Identifiación</th>
+                                                <th>Cargo</th>
+                                                <th>Tipo Contrato</th>
+                                                <th>Salario</th>
+                                                <th>Antiguedad</th>
+                                                <th>T.Buso</th>
+                                                <th>T.Pantalon</th>
+                                                <th>T.Botas</th>
+                                                ';
+                                                break;
+                                            default:
+                                                # code...
+                                                break;
+                                        }
+                                        ?>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                        <?php
-                                        foreach ($guardarPersonal as $personal) {
-                                            echo '</tr>
-                                            <td valign="middle" align="center">'.$personal['nombrePersonal'].'</td>
-                                            <td valign="middle" align="center">'.$personal['tipoIdentificacion'].'</td>
-                                            <td valign="middle" align="center">'.$personal['identificacion'].'</td>
-                                            <td valign="middle" align="center">'.$personal['nombreCargo'].'</td>
-                                            <td valign="middle" align="center">'.$personal['tipoContrato'].'</td>
-                                            <td valign="middle" align="center">'.$fmt->formatCurrency($personal['salario'], 'COP').'</td>
-                                            <td valign="middle" align="center">'.$personal['antiguedad'].'</td>
-                                            <td valign="middle" align="center">'.$personal['talla_buso'].'</td>
-                                            <td valign="middle" align="center">'.$personal['talla_pantalon'].'</td>
-                                            <td valign="middle" align="center">'.$personal['talla_botas'].'</td>
-                                            <td valign="middle" align="center"><a href="assets/editarPersonal.php?idPersonal='.$personal['id'].'"><i class="bi bi-pencil-square"></i></a></td>
-                                            <td valign="middle" align="center"><a href="assets/borrarPersonal.php?idPersonal='.$personal['id'].'"<i class="bi bi-x-circle-fill"></i></a></td>
-                                            </tr>
-                                            ';
+                                        <?php 
+
+                                        //Administrador
+                                        if($permisos == '1'){
+                                            foreach ($guardarPersonal as $personal) {
+                                                echo '</tr>
+                                                <td valign="middle" align="center">'.$personal['nombrePersonal'].'</td>
+                                                <td valign="middle" align="center">'.$personal['tipoIdentificacion'].'</td>
+                                                <td valign="middle" align="center">'.$personal['identificacion'].'</td>
+                                                <td valign="middle" align="center">'.$personal['nombreCargo'].'</td>
+                                                <td valign="middle" align="center">'.$personal['tipoContrato'].'</td>
+                                                <td valign="middle" align="center">'.$fmt->formatCurrency($personal['salario'], 'COP').'</td>
+                                                <td valign="middle" align="center">'.$personal['antiguedad'].'</td>
+                                                <td valign="middle" align="center">'.$personal['talla_buso'].'</td>
+                                                <td valign="middle" align="center">'.$personal['talla_pantalon'].'</td>
+                                                <td valign="middle" align="center">'.$personal['talla_botas'].'</td>
+                                                <td valign="middle" align="center"><a href="assets/editarPersonal.php?idPersonal='.$personal['id'].'"><i class="bi bi-pencil-square"></i></a></td>
+                                                <td valign="middle" align="center"><a href="assets/borrarPersonal.php?idPersonal='.$personal['id'].'"<i class="bi bi-x-circle-fill"></i></a></td>
+                                                </tr>
+                                                ';
+                                            }
                                         }
+
+                                        //Coordinador
+                                        if($permisos == '2'){
+                                            foreach ($guardarPersonal as $personal) {
+                                                echo '</tr>
+                                                <td valign="middle" align="center">'.$personal['nombrePersonal'].'</td>
+                                                <td valign="middle" align="center">'.$personal['tipoIdentificacion'].'</td>
+                                                <td valign="middle" align="center">'.$personal['identificacion'].'</td>
+                                                <td valign="middle" align="center">'.$personal['nombreCargo'].'</td>
+                                                <td valign="middle" align="center">'.$personal['tipoContrato'].'</td>
+                                                <td valign="middle" align="center">'.$fmt->formatCurrency($personal['salario'], 'COP').'</td>
+                                                <td valign="middle" align="center">'.$personal['antiguedad'].'</td>
+                                                <td valign="middle" align="center">'.$personal['talla_buso'].'</td>
+                                                <td valign="middle" align="center">'.$personal['talla_pantalon'].'</td>
+                                                <td valign="middle" align="center">'.$personal['talla_botas'].'</td>
+                                                </tr>
+                                                ';
+                                            }
+                                        }
+
+                                        //Auditor
+                                        if($permisos == '3'){
+                                            foreach ($guardarPersonal as $personal) {
+                                                echo '</tr>
+                                                <td valign="middle" align="center">'.$personal['nombrePersonal'].'</td>
+                                                <td valign="middle" align="center">'.$personal['tipoIdentificacion'].'</td>
+                                                <td valign="middle" align="center">'.$personal['identificacion'].'</td>
+                                                <td valign="middle" align="center">'.$personal['nombreCargo'].'</td>
+                                                <td valign="middle" align="center">'.$personal['tipoContrato'].'</td>
+                                                <td valign="middle" align="center">'.$fmt->formatCurrency($personal['salario'], 'COP').'</td>
+                                                <td valign="middle" align="center">'.$personal['antiguedad'].'</td>
+                                                <td valign="middle" align="center">'.$personal['talla_buso'].'</td>
+                                                <td valign="middle" align="center">'.$personal['talla_pantalon'].'</td>
+                                                <td valign="middle" align="center">'.$personal['talla_botas'].'</td>
+                                                </tr>
+                                                ';
+                                            }
+                                        }
+
                                         ?>
                                 </tbody>
                             </table>
