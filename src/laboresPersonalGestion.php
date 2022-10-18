@@ -55,6 +55,8 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
         <!-- Select2 -->
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <!-- Data Tables -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
         <!-- Main css -->
         <link rel="stylesheet" href="css/styles.css">
     </head>
@@ -87,7 +89,7 @@
             <p class="text-white fw-bold fs-6 p-3">Gestión labores - personal</p>
         </div>
         <div class="container">
-            <div class="bg-dark overflow-hidden shadow-sm sm:rounded-lg opacity9">
+            <div class="bg-dark overflow-hidden shadow-sm sm:rounded-lg opacity9 mt-3 rounded">
                 <div class="row justify-content-around mt-3">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
                         <a href="registrarLaborPersonal.php">
@@ -122,7 +124,7 @@
                 <div class="row justify-content-center align-items-center">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="table-responsive p-2">
-                            <table class="table table-dark table-striped table-bordered mb-2" id="tablaPersonal" style="width: 100%">
+                            <table class="table table-dark table-striped table-bordered mb-2" id="tablaPersonalLabores" style="width: 100%">
                                 <thead>
                                     <tr class="text-center">
                                         <th>Nombre personal</th>
@@ -168,10 +170,15 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <!-- Numeros a letras -->
         <script src="js/numeroALetras.js"></script>
+        <!-- Data tables -->
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
         <!-- link rel="stylesheet" href="{{ asset('css/app.css') }}" -->
         <script type="text/javascript">
 
-            //Definir formatter de pesos
+        window.addEventListener("load", function(event) {
+
+            //Instanciar formateador de numeros
             const formatterPeso = new Intl.NumberFormat('es-CO',
             {
                 style: 'currency',
@@ -180,15 +187,30 @@
                 maximumFractionDigits: 2
             });
 
-            //Funcion que formatea valores a pesos
+            //Funciónn para formatear valores
             function formatear_valores_pesos (valor)
             {
                 return formatterPeso.format(valor);
             }
 
-            window.addEventListener("load", function(event) {
-
-            });
+            //Inicializar data table
+            let tablaPersonalLabores = $("#tablaPersonalLabores").DataTable({
+                /*columns: [
+                {data: "idRequerimiento", title: 'Nombre'},
+                {data: "departamento", title: 'Tipo identificación'},
+                {data: "municipio", title: 'Indetificación'},
+                {data: "pax", title: 'Cargo'},
+                {data: "paxDesayuno", title: 'Tipo contrato'},
+                {data: "paxAlmuerzo", title: 'Salario'},
+                {data: "paxCena", title: 'Antiguedad'},
+                {data: "dias", title: 'Talla buso'},
+                {data: "precioTotal", title: 'Talla Pantalón'},
+                {data: "fechaRadicacion", title: 'Talla botas'},
+                {data: "editar", title: 'Editar'},
+                {data: "borrar", title: 'Borrar'},
+                ],*/
+            })
+        });
 
 
             //Inicializar data table

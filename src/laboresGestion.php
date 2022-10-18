@@ -60,6 +60,8 @@
         <!-- Select2 Bower -->
         <!-- <link href="../bower_components/select2/dist/css/select2.min.css" rel="stylesheet" /> -->
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+        <!-- Data Tables -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
         <!-- Main css -->
         <link rel="stylesheet" href="css/styles.css">
     </head>
@@ -92,7 +94,7 @@
             <p class="text-white fw-bold fs-6 p-3">Gestión labores</p>
         </div>
         <div class="container">
-            <div class="bg-dark overflow-hidden shadow-sm sm:rounded-lg opacity9">
+            <div class="bg-dark overflow-hidden shadow-sm sm:rounded-lg opacity9 mb-3 rounded">
                 <div class="row justify-content-around mt-3">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
                         <a href="registrarLabor.php">
@@ -127,7 +129,7 @@
                 <div class="row justify-content-center align-items-center">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="table-responsive p-2">
-                            <table class="table table-dark table-striped table-bordered mb-2" id="tablaPersonal" style="width: 100%">
+                            <table class="table table-dark table-striped table-bordered mb-2" id="tablaLabores" style="width: 100%">
                                 <thead>
                                     <tr class="text-center">
                                         <th>Nombre</th>
@@ -138,7 +140,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
                                         <?php
                                         foreach ($labores as $labor) {
                                             echo '</tr>
@@ -151,7 +152,6 @@
                                             ';
                                         }
                                         ?>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -169,26 +169,49 @@
         <!-- JavaScript Bundle with Popper -->
         <!--<link rel="stylesheet" href="../node_modules/bootstrap/dist/js/bootstrap.min.js">-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-         <!-- Sweet alert -->
+        <!-- Sweet alert -->
+        <!-- Data tables -->
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
         <!--<script src="../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>-->
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script type="text/javascript">
 
-            //Definir formatter de pesos
-            const formatterPeso = new Intl.NumberFormat('es-CO',
-            {
-                style: 'currency',
-                currency: 'COP',
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
+            window.addEventListener("load", function(event) {
+
+                //Instanciar formateador de numeros
+                const formatterPeso = new Intl.NumberFormat('es-CO',
+                {
+                    style: 'currency',
+                    currency: 'COP',
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+
+                //Funciónn para formatear valores
+                function formatear_valores_pesos (valor)
+                {
+                    return formatterPeso.format(valor);
+                }
+
+                //Inicializar data table
+                let tablaLabores = $("#tablaLabores").DataTable({
+                    /*columns: [
+                    {data: "idRequerimiento", title: 'Nombre'},
+                    {data: "departamento", title: 'Tipo identificación'},
+                    {data: "municipio", title: 'Indetificación'},
+                    {data: "pax", title: 'Cargo'},
+                    {data: "paxDesayuno", title: 'Tipo contrato'},
+                    {data: "paxAlmuerzo", title: 'Salario'},
+                    {data: "paxCena", title: 'Antiguedad'},
+                    {data: "dias", title: 'Talla buso'},
+                    {data: "precioTotal", title: 'Talla Pantalón'},
+                    {data: "fechaRadicacion", title: 'Talla botas'},
+                    {data: "editar", title: 'Editar'},
+                    {data: "borrar", title: 'Borrar'},
+                    ],*/
+                })
             });
-
-            //Funcion que formatea valores a pesos
-            function formatear_valores_pesos (valor)
-            {
-                return formatterPeso.format(valor);
-            }
-
             //Inicializar data table
             /*let tablaAuto = $("#tablaPersonal").DataTable({
                 columnDefs: [

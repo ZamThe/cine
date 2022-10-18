@@ -43,6 +43,7 @@
         $nombre_labor = $_POST['nombre_labor'];
         $unidad_medida = $_POST['unidad_medida'];
         $precio_labor = $_POST['precio_labor'];
+        echo $unidad_medida;
 
         /*//Debug values 
         echo 'Nombre: '.$nombre.'<br>';
@@ -80,7 +81,7 @@
         <meta name="keywords" content="Agricola del Caribe, Control de actividades, Control de erradicadores">
         <title>Control de actividades - Agricola del Caribe</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/img/AGRICONTROL.ico"/>
+        <link rel="icon" type="image/x-icon" href="img/AGRICONTROL.ico"/>
         <!-- CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <!--<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">-->
@@ -146,7 +147,7 @@
                                     <div class="form-group">
                                         <label for="unidad_medida" class="form-label text-white">Unidad de medida <b class="text-danger">*</b></label>
                                         <select id="unidad_medida" name="unidad_medida" class="form-select" required>
-                                            <option value="<?php echo $datosLabor['unidad_medida'] ?>" selected></option>
+                                            <option class="text-dark" value="<?php echo $datosLabor['unidad_medida'] ?>" selected disabled><?php echo $datosLabor['unidad_medida'] ?></option>
                                             <option value="HRA">HRA</option>
                                             <option value="UND">UND</option>
                                             <option value="JOR">JOR</option>

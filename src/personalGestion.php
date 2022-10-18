@@ -54,6 +54,18 @@
             //echo $diff->days . ' days ';
 
             $guardarPersonal[$i]['antiguedad'] = $diasPasados->format('%d días');
+
+            if(empty($guardarPersonal[$i]['talla_buso'])){
+                $guardarPersonal[$i]['talla_buso'] = 'No registra';
+            }
+
+            if(empty($guardarPersonal[$i]['talla_botas'])){
+                $guardarPersonal[$i]['talla_botas'] = 'No registra';
+            }
+
+            if(empty($guardarPersonal[$i]['talla_pantalon'])){
+                $guardarPersonal[$i]['talla_pantalon'] = 'No registra';
+            }
         }
     }
 
@@ -83,7 +95,7 @@
         <!-- <link href="../bower_components/select2/dist/css/select2.min.css" rel="stylesheet" /> -->
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
         <!-- Data Tables -->
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
         <!-- Main css -->
         <link rel="stylesheet" href="css/styles.css">
     </head>
@@ -116,7 +128,7 @@
             <p class="text-white fw-bold fs-6 p-3">Personal Gestión</p>
         </div>
         <div class="container">
-            <div class="bg-dark overflow-hidden shadow-sm sm:rounded-lg opacity9">
+            <div class="bg-dark overflow-hidden shadow-sm sm:rounded-lg opacity9 mb-3 rounded">
                 <div class="row justify-content-around mt-3">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
                         <a href="registrarPersonal.php">
@@ -169,7 +181,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
                                         <?php
                                         foreach ($guardarPersonal as $personal) {
                                             echo '</tr>
@@ -189,7 +200,6 @@
                                             ';
                                         }
                                         ?>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -209,45 +219,44 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
         <!-- Data tables -->
         <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
         <script type="text/javascript">
 
-            //Definir formatter de pesos
-            const formatterPeso = new Intl.NumberFormat('es-CO',
-            {
-                style: 'currency',
-                currency: 'COP',
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
+            window.addEventListener("load", function(event) {
+
+                //Instanciar formateador de numeros
+                const formatterPeso = new Intl.NumberFormat('es-CO',
+                {
+                    style: 'currency',
+                    currency: 'COP',
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+
+                //Funciónn para formatear valores
+                function formatear_valores_pesos (valor)
+                {
+                    return formatterPeso.format(valor);
+                }
+
+                //Inicializar data table
+                let tablaPersonal = $("#tablaPersonal").DataTable({
+                    /*columns: [
+                    {data: "idRequerimiento", title: 'Nombre'},
+                    {data: "departamento", title: 'Tipo identificación'},
+                    {data: "municipio", title: 'Indetificación'},
+                    {data: "pax", title: 'Cargo'},
+                    {data: "paxDesayuno", title: 'Tipo contrato'},
+                    {data: "paxAlmuerzo", title: 'Salario'},
+                    {data: "paxCena", title: 'Antiguedad'},
+                    {data: "dias", title: 'Talla buso'},
+                    {data: "precioTotal", title: 'Talla Pantalón'},
+                    {data: "fechaRadicacion", title: 'Talla botas'},
+                    {data: "editar", title: 'Editar'},
+                    {data: "borrar", title: 'Borrar'},
+                    ],*/
+                })
             });
-
-            //Funcion que formatea valores a pesos
-            function formatear_valores_pesos (valor)
-            {
-                return formatterPeso.format(valor);
-            }
-
-            //Inicializar data table
-            /*let tablaAuto = $("#tablaPersonal").DataTable({
-                columnDefs: [
-                    {"targets": [6], data: null},
-                ],
-                columns: [
-                    {data: "idRequerimiento", title: 'ID Aut.'},
-                    {data: "departamento", title: 'Departamento'},
-                    {data: "municipio", title: 'Municipio'},
-                    {data: "pax", title: 'Pax Aloja'},
-                    {data: "paxDesayuno", title: 'Pax D'},
-                    {data: "paxAlmuerzo", title: 'Pax A'},
-                    {data: "paxCena", title: 'Pax C'},
-                    {data: "dias", title: 'Días'},
-                    {data: "precioTotal", title: 'Precio'},
-                    {data: "fechaRadicacion", title: 'Fecha radicado'},
-                    {data: "fechaCheckin", title: 'Fecha inicio'},
-                    {data: "fechaCheckout", title: 'Fecha fín'},
-                    {data: $(this), title: 'Operaciones'}
-                ],
-                paging: false
-            })*/
 
             //Funcion que llena la tabla con los parametros de fechas y estado
             /*function llenarTabla () {
