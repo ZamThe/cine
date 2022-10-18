@@ -45,9 +45,11 @@
         $fechaRealizacion = $_POST["fecha"];
         //Capturar numero de lote 
         $numeroLote = $_POST['numeroLote'];
+        //Capturar id usuario que programo
+        $idProgramador = $usuario['id'];
 
         //Preparar sentencia 
-        $relacionarLaborPersonal = $connect->prepare("INSERT INTO personal_labores (id_personal,id_labor,valor_individual,cantidad,valor_total,fecha_realizacion,lote) VALUEs ('$idPersonal','$idLabor','$valorIndividual','$cantidad','$valorTotal','$fecha','$numeroLote')");
+        $relacionarLaborPersonal = $connect->prepare("INSERT INTO personal_labores (id_personal,id_labor,valor_individual,cantidad,valor_total,fecha_realizacion,lote,id_programador) VALUEs ('$idPersonal','$idLabor','$valorIndividual','$cantidad','$valorTotal','$fecha','$numeroLote','$idProgramador')");
         if($relacionarLaborPersonal->execute()){
             echo "<script>location.href='laboresPersonalGestion.php';</script>";
         }
