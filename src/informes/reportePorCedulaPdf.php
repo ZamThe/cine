@@ -109,18 +109,56 @@
                             <table class="table table-dark table-striped table-bordered mb-2" id="tablaPersonal" style="width: 100%">
                                 <thead>
                                     <tr class="text-center">
-                                        <th>Nombre personal</th>
-                                        <th>Actividad</th>
-                                        <th>Lote</th>
-                                        <th>U.medida</th>
-                                        <th>Cantidad</th>
-                                        <th>Valor Individual</th>
-                                        <th>Valor total</th>
-                                        <th>Fecha realización</th>
+                                        <?php
+                                        
+                                        switch ($permisos) {
+                                            case '1':
+                                                echo '
+                                                <th>Nombre personal</th>
+                                                <th>Actividad</th>
+                                                <th>Lote</th>
+                                                <th>U.medida</th>
+                                                <th>Cantidad</th>
+                                                <th>Valor Individual</th>
+                                                <th>Valor total</th>
+                                                <th>Fecha realización</th>
+                                                ';
+                                                break;
+                                            case '2':
+                                                echo '
+                                                <th>Nombre personal</th>
+                                                <th>Actividad</th>
+                                                <th>Lote</th>
+                                                <th>U.medida</th>
+                                                <th>Cantidad</th>
+                                                <th>Fecha realización</th>
+                                                ';
+                                                break;
+                                            case '3':
+                                                echo '
+                                                <th>Nombre personal</th>
+                                                <th>Actividad</th>
+                                                <th>Lote</th>
+                                                <th>U.medida</th>
+                                                <th>Cantidad</th>
+                                                <th>Valor Individual</th>
+                                                <th>Valor total</th>
+                                                <th>Fecha realización</th>
+                                                ';
+                                                break;
+                                            default:
+                                                # code...
+                                                break;
+                                        }
+                                        ?>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody style="text-center">
-                                    <?php
+                                    <?php 
+
+                                    //Administrador
+                                    if($permisos == '1'){
                                         foreach ($laboresPersonal as $lb) {
                                             echo "<tr class='text-center' style='text-center'>
                                                 <td style='text-center'>".$lb['nombrePersonal']."</td>
@@ -133,6 +171,38 @@
                                                 <td style='text-center'>".$lb['fecha']."</td>
                                             </tr>";
                                         }
+                                    }
+
+                                    //Coordinador
+                                    if($permisos == '2'){
+                                        foreach ($laboresPersonal as $lb) {
+                                            echo "<tr class='text-center' style='text-center'>
+                                            <td style='text-center'>".$lb['nombrePersonal']."</td>
+                                            <td style='text-center'>".$lb['nombreLabor']."</td>
+                                            <td style='text-center'>".$lb['lote']."</td>
+                                            <td style='text-center'>".$lb['unidad_medida']."</td>
+                                            <td style='text-center'>".$lb['cantidad']."</td>
+                                            <td style='text-center'>".$lb['fecha']."</td>
+                                        </tr>";
+                                        }
+                                    }
+
+                                    //Auditor
+                                    if($permisos == '3'){
+                                        foreach ($laboresPersonal as $lb) {
+                                            echo "<tr class='text-center' style='text-center'>
+                                                <td style='text-center'>".$lb['nombrePersonal']."</td>
+                                                <td style='text-center'>".$lb['nombreLabor']."</td>
+                                                <td style='text-center'>".$lb['lote']."</td>
+                                                <td style='text-center'>".$lb['unidad_medida']."</td>
+                                                <td style='text-center'>".$lb['cantidad']."</td>
+                                                <td style='text-center'>".$fmt->formatCurrency($lb['valor_individual'], 'COP')."</td>
+                                                <td style='text-center'>".$fmt->formatCurrency($lb['valor_total'], 'COP')."</td>
+                                                <td style='text-center'>".$lb['fecha']."</td>
+                                            </tr>";
+                                        }
+                                    }
+
                                     ?>
                                 </tbody>
                             </table>

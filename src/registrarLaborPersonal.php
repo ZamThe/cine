@@ -179,30 +179,17 @@
                                     <input type="text" name="unidad_medida" id="unidad_medida" class="form-control" value="" placeholder="Unidad de medida" required readonly>
                                 </div>
                                 <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-4">
-                                    <label for="" class="form-label text-white">Valor individual</label>
-                                    <input type="text" name="valor_labor" id="valor_labor" class="form-control" value="" placeholder="Valor de labor individual" required readonly>
-                                    <input type="hidden" name="valor_laborOculto" id="valor_laborOculto" class="form-control" value="" required readonly>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="col-12 col-xl-12">
-                                    <hr class="bg-success" style="width: 100%; height: 4px; opacity: 1;">
-                                </div>
-                            </div>
-                            <div class="row justify-content-center align-items-center mt-3">
-                                <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-4">
-                                    <label for="" class="form-label text-white">Seleccionar fecha</label>
-                                    <input type="date" name="fecha" id="fecha" class="form-control" required>
-                                </div>
-                                <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-4">
                                     <label for="" class="form-label text-white">Cantidad</label>
                                     <input type="text" name="cantidadActividades" id="cantidadActividades" class="form-control" value="" placeholder="Cantidad" required>
                                 </div>
-                                <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-4">
-                                    <label for="" class="form-label text-white">Valor total</label>
-                                    <input type="text" name="" id="valorTotal" class="form-control" value="" placeholder="Valor total" readonly required>
-                                    <input type="hidden" name="valorTotalOculto" id="valorTotalOculto" required>
-                                </div>
+                                <!-- Input oculto con el valor en pesos -->
+                                <input type="hidden" name="valor_labor" id="valor_labor" class="form-control" value="" placeholder="Valor de labor individual" required readonly>
+                                <!-- Input oculto con valor formateado -->
+                                <input type="hidden" name="valor_laborOculto" id="valor_laborOculto" class="form-control" value="" required readonly>
+                                <!--<div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-4">
+                                    <label for="" class="form-label text-white">Valor individual</label>
+                                    
+                                </div>-->
                             </div>
                             <div class="row justify-content-center">
                                 <div class="col-12 col-xl-12">
@@ -211,9 +198,17 @@
                             </div>
                             <div class="row justify-content-start align-items-center mt-3">
                                 <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-4">
+                                    <label for="" class="form-label text-white">Seleccionar fecha</label>
+                                    <input type="date" name="fecha" id="fecha" class="form-control" required>
+                                </div>
+                                <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-4">
                                     <label for="" class="form-label text-white">No. Lote</label>
                                     <input type="text" name="numeroLote" id="numeroLote" class="form-control" placeholder="Número de lote" required>
                                 </div>
+                                <!-- Input oculto con el valor en pesos -->
+                                <input type="hidden" name="" id="valorTotal" class="form-control" value="" placeholder="Valor total" readonly required>
+                                <!-- Input oculto con valor formateado -->
+                                <input type="hidden" name="valorTotalOculto" id="valorTotalOculto" required>
                             </div>
                             <div class="row justify-content-center">
                                 <div class="col-12 col-xl-12">

@@ -90,21 +90,22 @@
         </div>
         <div class="container">
             <div class="bg-dark overflow-hidden shadow-sm sm:rounded-lg opacity9 mt-3 rounded">
-               
                 <?php 
+                echo $permisos;
                     switch ($permisos) {
                         case '1':
                             echo '
-                            <div class="row justify-content-around mt-3">
+                            <div class="row justify-content-around">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
                                     <a href="registrarLaborPersonal.php">
                                         <button type="button" class="btn btn-success" id="btnModalRelacionar">Registrar labor a personal</button>
                                     </a>
                                 </div>
                             </div>';
+                            break;  
                         case '2':
                             echo '
-                            <div class="row justify-content-around mt-3">
+                            <div class="row justify-content-around">
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
                                     <a href="registrarLaborPersonal.php">
                                         <button type="button" class="btn btn-success" id="btnModalRelacionar">Registrar labor a personal</button>
@@ -161,8 +162,8 @@
                                                 <th>Lote</th>
                                                 <th>Cantidad</th>
                                                 <th>Valor individual</th>
-                                                <th>Fecha</th>
                                                 <th>Valor total</th>
+                                                <th>Fecha</th>
                                                 ';
                                                 break;
                                             case '2':
@@ -171,9 +172,7 @@
                                                 <th>Actividad</th>
                                                 <th>Lote</th>
                                                 <th>Cantidad</th>
-                                                <th>Valor individual</th>
                                                 <th>Fecha</th>
-                                                <th>Valor total</th>
                                                 ';
                                                 break;
                                             case '3':
@@ -221,8 +220,6 @@
                                             <td>".$personalLabor['nombreLabor']."</td>
                                             <td>".$personalLabor['lote']."</td>
                                             <td>".$personalLabor['cantidad']."</td>
-                                            <td>".$fmt->formatCurrency($personalLabor['valor_individual'], 'COP')."</td>
-                                            <td>".$fmt->formatCurrency($personalLabor['valor_total'], 'COP')."</td>
                                             <td>".$personalLabor['fecha']."</td>
                                             </tr>";
                                         }

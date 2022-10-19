@@ -38,9 +38,12 @@
         echo strtotime($guardarPersonal[0]['fecha_ingreso']);
         /*echo $guardarPersonal[0]['fecha_ingreso'];
         echo $fechaActual;*/
+
         for ($i=0; $i < $contarResultados; $i++) { 
             $timestampFechaActual = strtotime($fechaActual);
             $timestampFechaIngreso = strtotime($guardarPersonal[$i]['fecha_ingreso']);
+
+            //echo $guardarPersonal[$i]['talla_botas'];
 
             //Calcular diferencia
             /*$diferencia = $timestampFechaActual - $timestampFechaIngreso;
@@ -57,14 +60,20 @@
 
             if(empty($guardarPersonal[$i]['talla_buso'])){
                 $guardarPersonal[$i]['talla_buso'] = 'No registra';
+            }else{
+                $guardarPersonal[$i]['talla_buso'] = $guardarPersonal[$i]['talla_buso'];
             }
 
             if(empty($guardarPersonal[$i]['talla_botas'])){
                 $guardarPersonal[$i]['talla_botas'] = 'No registra';
+            }else {
+                $guardarPersonal[$i]['talla_botas'] = $guardarPersonal[$i]['talla_botas'];
             }
 
             if(empty($guardarPersonal[$i]['talla_pantalon'])){
                 $guardarPersonal[$i]['talla_pantalon'] = 'No registra';
+            }else{
+                $guardarPersonal[$i]['talla_pantalon'] = $guardarPersonal[$i]['talla_pantalon'];
             }
         }
     }

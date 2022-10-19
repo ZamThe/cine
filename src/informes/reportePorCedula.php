@@ -126,17 +126,53 @@
                             <table class="table table-dark table-striped table-bordered mb-2" id="tablaLaboresPorCedula" style="width: 100%">
                                 <thead>
                                     <tr class="text-center">
-                                        <th>Nombre personal</th>
-                                        <th>Actividad</th>
-                                        <th>Lote</th>
-                                        <th>Cantidad</th>
-                                        <th>Valor individual</th>
-                                        <th>Valor total</th>
-                                        <th>Fecha realización</th>
+                                        <?php
+                                        
+                                        switch ($permisos) {
+                                            case '1':
+                                                echo '
+                                                <th>Nombre personal</th>
+                                                <th>Actividad</th>
+                                                <th>Lote</th>
+                                                <th>Cantidad</th>
+                                                <th>Valor individual</th>
+                                                <th>Valor total</th>
+                                                <th>Fecha realización</th>
+                                                ';
+                                                break;
+                                            case '2':
+                                                echo '
+                                                <th>Nombre personal</th>
+                                                <th>Actividad</th>
+                                                <th>Lote</th>
+                                                <th>Cantidad</th>
+                                                <th>Fecha realización</th>
+                                                ';
+                                                break;
+                                            case '3':
+                                                echo '
+                                                <th>Nombre personal</th>
+                                                <th>Actividad</th>
+                                                <th>Lote</th>
+                                                <th>Cantidad</th>
+                                                <th>Valor individual</th>
+                                                <th>Valor total</th>
+                                                <th>Fecha realización</th>
+                                                ';
+                                                break;
+                                            default:
+                                                # code...
+                                                break;
+                                        }
+                                        ?>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php
+                                    <?php 
+
+                                    //Administrador
+                                    if($permisos == '1'){
                                         foreach ($laboresPersonal as $lb) {
                                             echo "<tr class='text-center'>
                                                 <td>".$lb['nombrePersonal']."</td>
@@ -148,6 +184,36 @@
                                                 <td>".$lb['fecha']."</td>
                                             </tr>";
                                         }
+                                    }
+
+                                    //Coordinador
+                                    if($permisos == '2'){
+                                        foreach ($laboresPersonal as $lb) {
+                                            echo "<tr class='text-center'>
+                                                <td>".$lb['nombrePersonal']."</td>
+                                                <td>".$lb['nombreLabor']."</td>
+                                                <td>".$lb['lote']."</td>
+                                                <td>".$lb['cantidad']."</td>
+                                                <td>".$lb['fecha']."</td>
+                                            </tr>";
+                                        }
+                                    }
+
+                                    //Auditor
+                                    if($permisos == '3'){
+                                        foreach ($laboresPersonal as $lb) {
+                                            echo "<tr class='text-center'>
+                                                <td>".$lb['nombrePersonal']."</td>
+                                                <td>".$lb['nombreLabor']."</td>
+                                                <td>".$lb['lote']."</td>
+                                                <td>".$lb['cantidad']."</td>
+                                                <td>".$fmt->formatCurrency($lb['valor_individual'], 'COP')."</td>
+                                                <td>".$fmt->formatCurrency($lb['valor_total'], 'COP')."</td>
+                                                <td>".$lb['fecha']."</td>
+                                            </tr>";
+                                        }
+                                    }
+
                                     ?>
                                 </tbody>
                             </table>
