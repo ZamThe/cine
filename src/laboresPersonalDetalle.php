@@ -33,6 +33,12 @@
         $guardarPersonalLabores = $traerPersonalLabores->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    //Traer personal 
+    $traerPersonal = $connect->prepare("SELECT * FROM personal ORDER BY nombre ASC");
+    if($traerPersonal->execute()){
+        $guardarPersonal = $traerPersonal->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     //Instanciar formateador de numeros 
     $fmt = new \NumberFormatter('es_CO', \NumberFormatter::CURRENCY);
 
@@ -56,6 +62,17 @@
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
         <!-- Main css -->
         <link rel="stylesheet" href="css/styles.css">
+        <style>
+            .select2-selection__rendered {
+                line-height: 35px !important;
+            }
+            .select2-container .select2-selection--single {
+                height: 36px !important;
+            }
+            .select2-selection__arrow {
+                height: 36px !important;
+            }
+        </style>
     </head>
     <body class="bg-main">
         <nav class="navbar navbar-expand-lg bg-dark navbar-light border-bottom border-4 opacity9 w-100">
@@ -95,7 +112,16 @@
                         <form action="informes/reportePorCedula.php" method="POST">
                             <div class="row justify-content-center mt-3 mb-3">
                                 <div class="col-10 col-sm-10 col-md-5 col-lg-4 col-xl-4 text-center">
-                                    <input type="text" class="form-control" name="cedula" placeholder="Ingrese una cedula">
+                                    <select id="seleccionarCedula" class="form-select" name="cedula">
+                                        <?php
+                                        
+                                            foreach ($guardarPersonal as $gp) {
+                                                echo '<option value="'.$gp['identificacion'].'">'.$gp['identificacion'].' - '.$gp['nombre'].'</option>';
+                                            }
+
+                                        ?>
+                                    </select>
+                                    <!-- <input type="text" class="form-control" name="cedula" placeholder="Ingrese una cedula">-->
                                     <input type="hidden" name="reportePorSoloCedula" value="1">
                                 </div>
                                 <div class="col-10 col-sm-10 col-md-5 col-lg-4 col-xl-1 text-center">
@@ -186,6 +212,8 @@
 
             window.addEventListener("load", function(event) {
 
+                //Activar select2
+                $("#seleccionarCedula").select2()
             });
 
 
