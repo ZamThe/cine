@@ -38,9 +38,10 @@
         $nombre_valor = $_POST['nombre_labor'];
         $unidad_medida = $_POST['unidad_medida'];
         $precio_labor = $_POST['precio_labor'];
+        $codigoLabor = $_POST['codigo_labor'];
 
         //Guardar registro
-        $guardarLabor = $connect->prepare("INSERT INTO labores (nombre_labor,unidad_medida,precio_labor) VALUES ('$nombre_valor','$unidad_medida','$precio_labor')");
+        $guardarLabor = $connect->prepare("INSERT INTO labores (codigo_labor,nombre_labor,unidad_medida,precio_labor) VALUES ('$codigoLabor','$nombre_valor','$unidad_medida','$precio_labor')");
         if($guardarLabor->execute()){
             echo "<script>location.href='laboresGestion.php';</script>";
         }
@@ -112,6 +113,12 @@
                                         <input id="codigo_labor" name="codigo_labor" type="text" class="form-control" required/>
                                     </div>
                                 </div>-->
+                                <div class="col-10 col-xl-6 p-2">
+                                    <div class="form-group">
+                                        <label for="nombre_labor" class="form-label text-white">Codigo labor <b class="text-danger">*</b></label>
+                                        <input id="codigo_labor" name="codigo_labor" type="text" class="form-control" required/>
+                                    </div>
+                                </div>
                                 <div class="col-10 col-xl-6 p-2">
                                     <div class="form-group">
                                         <label for="nombre_labor" class="form-label text-white">Nombre <b class="text-danger">*</b></label>

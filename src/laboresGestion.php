@@ -106,6 +106,7 @@
                                     </a>
                                 </div>
                             </div>';
+                            break;
                         case '2':
                             echo '
                             <div class="row justify-content-around mt-3">
@@ -160,6 +161,7 @@
                                         switch ($permisos) {
                                             case '1':
                                                 echo '
+                                                <th>Código</th>
                                                 <th>Nombre</th>
                                                 <th>Unidad medida</th>
                                                 <th>Precio</th>
@@ -169,6 +171,7 @@
                                                 break;
                                             case '2':
                                                 echo '
+                                                <th>Código</th>
                                                 <th>Nombre</th>
                                                 <th>Unidad medida</th>
                                                 <th>Precio</th>
@@ -176,6 +179,7 @@
                                                 break;
                                             case '3':
                                                 echo '
+                                                <th>Código</th>
                                                 <th>Nombre</th>
                                                 <th>Unidad medida</th>
                                                 <th>Precio</th>
@@ -196,7 +200,8 @@
                                     if($permisos == '1'){
                                         foreach ($labores as $labor) {
                                             echo '</tr>
-                                            <td valign="middle" align="center">'.$labor['nombre_labor'].'</td>
+                                            <td valign="middle" align="center">'.$labor['codigo_labor'].'</td>
+                                            <td valign="middle" align="center">'.utf8_decode($labor['nombre_labor']).'</td>
                                             <td valign="middle" align="center">'.$labor['unidad_medida'].'</td>
                                             <td valign="middle" align="center">'.$fmt->formatCurrency($labor['precio_labor'], 'COP').'</td>
                                             <td valign="middle" align="center"><a href="assets/editarLabor.php?idLabor='.$labor['id'].'"><i class="bi bi-pencil-square"></i></a></td>
@@ -210,7 +215,8 @@
                                     if($permisos == '2'){
                                         foreach ($labores as $labor) {
                                             echo '</tr>
-                                            <td valign="middle" align="center">'.$labor['nombre_labor'].'</td>
+                                            <td valign="middle" align="center">'.$labor['codigo_labor'].'</td>
+                                            <td valign="middle" align="center">'.utf8_decode($labor['nombre_labor']).'</td>
                                             <td valign="middle" align="center">'.$labor['unidad_medida'].'</td>
                                             <td valign="middle" align="center">'.$fmt->formatCurrency($labor['precio_labor'], 'COP').'</td>
                                             </tr>
@@ -222,6 +228,7 @@
                                     if($permisos == '3'){
                                         foreach ($labores as $labor) {
                                             echo '</tr>
+                                            <td valign="middle" align="center">'.$labor['codigo_labor'].'</td>
                                             <td valign="middle" align="center">'.$labor['nombre_labor'].'</td>
                                             <td valign="middle" align="center">'.$labor['unidad_medida'].'</td>
                                             <td valign="middle" align="center">'.$fmt->formatCurrency($labor['precio_labor'], 'COP').'</td>

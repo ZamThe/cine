@@ -137,6 +137,12 @@
                                 </div>-->
                                 <div class="col-10 col-xl-6 p-2">
                                     <div class="form-group">
+                                        <label for="codigo_labor" class="form-label text-white">Nombre <b class="text-danger">*</b></label>
+                                        <input id="codigo_labor" name="codigo_labor" type="text" class="form-control" placeholder="Nombre de la labor" value="<?php echo $datosLabor['codigo_labor'] ?>" required/>
+                                    </div>
+                                </div>
+                                <div class="col-10 col-xl-6 p-2">
+                                    <div class="form-group">
                                         <label for="nombre_labor" class="form-label text-white">Nombre <b class="text-danger">*</b></label>
                                         <input id="nombre_labor" name="nombre_labor" type="text" class="form-control" placeholder="Nombre de la labor" value="<?php echo $datosLabor['nombre_labor'] ?>" required/>
                                     </div>

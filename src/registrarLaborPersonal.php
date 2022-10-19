@@ -169,7 +169,7 @@
                                         <option selected disabled>Seleccione una labor</option>
                                         <?php
                                             foreach ($labores as $lb) {
-                                                echo "<option value=".$lb['id'].">".$lb['nombre_labor']."</option>";
+                                                echo "<option value=".$lb['id'].">".$lb['codigo_labor']." - ".$lb['nombre_labor']."</option>";
                                             }
                                         ?>
                                     </select>
