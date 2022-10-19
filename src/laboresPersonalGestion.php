@@ -164,6 +164,7 @@
                                                 <th>Valor individual</th>
                                                 <th>Valor total</th>
                                                 <th>Fecha</th>
+                                                <th>Borrar</th>
                                                 ';
                                                 break;
                                             case '2':
@@ -184,7 +185,6 @@
                                                 <th>Valor individual</th>
                                                 <th>Valor total</th>
                                                 <th>Fecha</th>
-                                                <th>Borrar</th>
                                                 ';
                                                 break;
                                             default:
@@ -208,6 +208,7 @@
                                             <td>".$fmt->formatCurrency($personalLabor['valor_individual'], 'COP')."</td>
                                             <td>".$fmt->formatCurrency($personalLabor['valor_total'], 'COP')."</td>
                                             <td>".$personalLabor['fecha']."</td>
+                                            <td><a href='assets/borrarLaborPersonal.php?idLaborPersonal=".$personalLabor['id']."'<i class='bi bi-x-circle-fill'></i></a></td>
                                             </tr>";
                                         }
                                     }
@@ -236,7 +237,6 @@
                                             <td>".$fmt->formatCurrency($personalLabor['valor_individual'], 'COP')."</td>
                                             <td>".$fmt->formatCurrency($personalLabor['valor_total'], 'COP')."</td>
                                             <td>".$personalLabor['fecha']."</td>
-                                            <td><a href='assets/borrarLaborPersonal.php?idLaborPersonal=".$personalLabor['id']."'<i class='bi bi-x-circle-fill'></i></a></td>
                                             </tr>";
                                         }
                                     }
