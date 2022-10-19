@@ -90,13 +90,37 @@
         </div>
         <div class="container">
             <div class="bg-dark overflow-hidden shadow-sm sm:rounded-lg opacity9 mt-3 rounded">
-                <div class="row justify-content-around mt-3">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
-                        <a href="registrarLaborPersonal.php">
-                            <button type="button" class="btn btn-success" id="btnModalRelacionar">Registrar labor a personal</button>
-                        </a>
-                    </div>
-                </div>            
+               
+                <?php 
+                    switch ($permisos) {
+                        case '1':
+                            echo '
+                            <div class="row justify-content-around mt-3">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
+                                    <a href="registrarLaborPersonal.php">
+                                        <button type="button" class="btn btn-success" id="btnModalRelacionar">Registrar labor a personal</button>
+                                    </a>
+                                </div>
+                            </div>';
+                        case '2':
+                            echo '
+                            <div class="row justify-content-around mt-3">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
+                                    <a href="registrarLaborPersonal.php">
+                                        <button type="button" class="btn btn-success" id="btnModalRelacionar">Registrar labor a personal</button>
+                                    </a>
+                                </div>
+                            </div>';        
+                            break;
+                        case '3':
+                            //Auditor no tiene permiso
+                            break;
+                        default:
+                            # code...
+                            break;
+                    }
+                
+                ?>             
                 <div class="row justify-content-center">
                     <div class="col-12 col-lg-12 col-xl-12">
                         <hr class="bg-success" style="height: 5px;">
