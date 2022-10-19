@@ -215,9 +215,9 @@
                                     <hr class="bg-success" style="width: 100%; height: 4px; opacity: 1;">
                                 </div>
                             </div>
-                            <div class="row justify-content-center">
-                                <div class="col-12 col-xl-12">
-                                    <img src="assets/img/fincaPandora.webp" class="img-fluid" alt="">
+                            <div class="row justify-content-center align-items-center mb-2">
+                                <div class="col-12 col-xl-4">
+                                    <input class="btn btn-success btn-submit form-control" name="guardarLaborPersonal" type="submit" value="Guardar">
                                 </div>
                             </div>
                             <div class="row justify-content-center">
@@ -225,9 +225,9 @@
                                     <hr class="bg-success" style="width: 100%; height: 4px; opacity: 1;">
                                 </div>
                             </div>
-                            <div class="row justify-content-center align-items-center mb-2">
-                                <div class="col-12 col-xl-4">
-                                    <input class="btn btn-success btn-submit form-control" name="guardarLaborPersonal" type="submit" value="Guardar">
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-xl-12">
+                                    <img src="assets/img/fincaPandora.webp" class="img-fluid" alt="">
                                 </div>
                             </div>
                         </form>
