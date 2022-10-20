@@ -85,7 +85,7 @@
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
                         <li><a class="dropdown-item text-light fs-6 me-3" href="../laboresPersonalDetalle.php"><i class="bi bi-arrow-left-square-fill fs-5"></i> Atras</a></li>
                         <li><a class="dropdown-item text-light fs-6 me-3" href="#"><i class="bi bi-person-circle fs-5"></i> <?php echo ' '.$usuario['name']; ?> </a></li>
-                        <li><a class="dropdown-item text-light fs-6 me-3" href="logout.php"><i class="bi bi-door-open-fill fs-5"></i> Salir</a></li>
+                        <li><a class="dropdown-item text-light fs-6 me-3" href="../logout.php"><i class="bi bi-door-open-fill fs-5"></i> Salir</a></li>
                         <!--<li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-person-circle text-white fs-4"></i>
@@ -109,7 +109,30 @@
                         <label for="" class="form label text-white">VALOR TOTAL LABORES REALIZADAS</label>
                     </div>
                     <div class="col-10 col-sm-10 col-md-10 col-lg-4 col-xl-3 text-center">
-                        <input type="text" placeholder="Salario en labores" class="form-control" value="<?php echo $salarioLabores; ?>" readonly>
+                        <?php
+                        
+                            switch ($permisos) {
+                                case '1':
+                                    echo '
+                                    <input type="text" placeholder="Salario en labores" class="form-control" value="'.$salarioLabores.'" readonly>                                    
+                                    ';
+                                    break;
+                                case '2':
+                                    echo '
+                                    <input type="text" placeholder="Salario en labores" class="form-control" value="" readonly>                                    
+                                    ';
+                                    break;
+                                case '3':
+                                    echo '
+                                    <input type="text" placeholder="Salario en labores" class="form-control" value="'.$salarioLabores.'" readonly>                                    
+                                    ';
+                                    break;
+                                default:
+                                    # code...
+                                    break;
+                            }
+
+                        ?>
                     </div>
                     <div class="col-10 col-sm-10 col-md-10 col-lg-4 col-xl-1 text-center bg-white rounded">
                         <a href="reportePorCedulaPdf.php?cedula=<?php echo $cedula; ?>"><i class="bi bi-filetype-pdf text-success fs-4"></i></a>

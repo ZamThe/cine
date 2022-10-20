@@ -100,7 +100,31 @@
                         <label for="" class="form label text-white">VALOR TOTAL LABORES REALIZADAS</label>
                     </div>
                     <div class="col-10 col-sm-10 col-md-10 col-lg-4 col-xl-3 text-center">
-                        <input type="text" placeholder="Salario en labores" class="form-control" value="<?php echo $salarioLabores; ?>" readonly>
+                        <?php
+                            
+                            switch ($permisos) {
+                                case '1':
+                                    echo '
+                                    <input type="text" placeholder="Salario en labores" class="form-control" value="'.$salarioLabores.'" readonly>                                  
+                                    ';
+                                    break;
+                                case '2':
+                                    echo '
+                                    <input type="text" placeholder="Salario en labores" class="form-control" value="" readonly>                                  
+                                    ';
+                                    break;
+                                case '3':
+                                    echo '
+                                    <input type="text" placeholder="Salario en labores" class="form-control" value="'.$salarioLabores.'" readonly>                           
+                                    ';
+                                    break;
+                                default:
+                                    # code...
+                                    break;
+                            }
+
+                        ?>
+
                     </div>
                 </div>
                 <div class="row justify-content-center align-items-center">
