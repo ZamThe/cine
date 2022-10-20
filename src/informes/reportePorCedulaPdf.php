@@ -170,6 +170,18 @@
                                                 <th>Fecha realización</th>
                                                 ';
                                                 break;
+                                            case '4':
+                                                echo '
+                                                <th>Nombre personal</th>
+                                                <th>Actividad</th>
+                                                <th>Lote</th>
+                                                <th>U.medida</th>
+                                                <th>Cantidad</th>
+                                                <th>Valor Individual</th>
+                                                <th>Valor total</th>
+                                                <th>Fecha realización</th>
+                                                ';
+                                                break;
                                             default:
                                                 # code...
                                                 break;
@@ -213,6 +225,22 @@
 
                                     //Auditor
                                     if($permisos == '3'){
+                                        foreach ($laboresPersonal as $lb) {
+                                            echo "<tr class='text-center' style='text-center'>
+                                                <td style='text-center'>".$lb['nombrePersonal']."</td>
+                                                <td style='text-center'>".$lb['nombreLabor']."</td>
+                                                <td style='text-center'>".$lb['lote']."</td>
+                                                <td style='text-center'>".$lb['unidad_medida']."</td>
+                                                <td style='text-center'>".$lb['cantidad']."</td>
+                                                <td style='text-center'>".$fmt->formatCurrency($lb['valor_individual'], 'COP')."</td>
+                                                <td style='text-center'>".$fmt->formatCurrency($lb['valor_total'], 'COP')."</td>
+                                                <td style='text-center'>".$lb['fecha']."</td>
+                                            </tr>";
+                                        }
+                                    }
+
+                                    //Auditor
+                                    if($permisos == '4'){
                                         foreach ($laboresPersonal as $lb) {
                                             echo "<tr class='text-center' style='text-center'>
                                                 <td style='text-center'>".$lb['nombrePersonal']."</td>

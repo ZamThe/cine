@@ -120,6 +120,16 @@
                         case '3':
                             //Auditor no tiene permiso
                             break;
+                        case '4':
+                            echo '
+                            <div class="row justify-content-around mt-3">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
+                                    <a href="registrarLabor.php">
+                                        <button type="button" class="btn btn-success">Registrar labor</button>
+                                    </a>
+                                </div>
+                            </div>';         
+                            break;
                         default:
                             # code...
                             break;
@@ -185,6 +195,15 @@
                                                 <th>Precio</th>
                                                 ';
                                                 break;
+                                            case '4':
+                                                echo '
+                                                <th>Código</th>
+                                                <th>Nombre</th>
+                                                <th>Unidad medida</th>
+                                                <th>Precio</th>
+                                                <th>Editar</th>
+                                                ';
+                                                break;
                                             default:
                                                 # code...
                                                 break;
@@ -232,6 +251,20 @@
                                             <td valign="middle" align="center">'.$labor['nombre_labor'].'</td>
                                             <td valign="middle" align="center">'.$labor['unidad_medida'].'</td>
                                             <td valign="middle" align="center">'.$fmt->formatCurrency($labor['precio_labor'], 'COP').'</td>
+                                            </tr>
+                                            ';
+                                        }
+                                    }
+
+                                    //Operador
+                                    if($permisos == '4'){
+                                        foreach ($labores as $labor) {
+                                            echo '</tr>
+                                            <td valign="middle" align="center">'.$labor['codigo_labor'].'</td>
+                                            <td valign="middle" align="center">'.$labor['nombre_labor'].'</td>
+                                            <td valign="middle" align="center">'.$labor['unidad_medida'].'</td>
+                                            <td valign="middle" align="center">'.$fmt->formatCurrency($labor['precio_labor'], 'COP').'</td>
+                                            <td valign="middle" align="center"><a href="assets/editarLabor.php?idLabor='.$labor['id'].'"><i class="bi bi-pencil-square"></i></a></td>
                                             </tr>
                                             ';
                                         }

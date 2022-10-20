@@ -127,6 +127,11 @@
                                     <input type="text" placeholder="Salario en labores" class="form-control" value="'.$salarioLabores.'" readonly>                                    
                                     ';
                                     break;
+                                case '4':
+                                    echo '
+                                    <input type="text" placeholder="Salario en labores" class="form-control" value="'.$salarioLabores.'" readonly>                                    
+                                    ';
+                                    break;
                                 default:
                                     # code...
                                     break;
@@ -183,6 +188,17 @@
                                                 <th>Fecha realización</th>
                                                 ';
                                                 break;
+                                            case '4':
+                                                echo '
+                                                <th>Nombre personal</th>
+                                                <th>Actividad</th>
+                                                <th>Lote</th>
+                                                <th>Cantidad</th>
+                                                <th>Valor individual</th>
+                                                <th>Valor total</th>
+                                                <th>Fecha realización</th>
+                                                ';
+                                                break;
                                             default:
                                                 # code...
                                                 break;
@@ -224,6 +240,21 @@
 
                                     //Auditor
                                     if($permisos == '3'){
+                                        foreach ($laboresPersonal as $lb) {
+                                            echo "<tr class='text-center'>
+                                                <td>".$lb['nombrePersonal']."</td>
+                                                <td>".$lb['nombreLabor']."</td>
+                                                <td>".$lb['lote']."</td>
+                                                <td>".$lb['cantidad']."</td>
+                                                <td>".$fmt->formatCurrency($lb['valor_individual'], 'COP')."</td>
+                                                <td>".$fmt->formatCurrency($lb['valor_total'], 'COP')."</td>
+                                                <td>".$lb['fecha']."</td>
+                                            </tr>";
+                                        }
+                                    }
+
+                                    //Auditor
+                                    if($permisos == '4'){
                                         foreach ($laboresPersonal as $lb) {
                                             echo "<tr class='text-center'>
                                                 <td>".$lb['nombrePersonal']."</td>

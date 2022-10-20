@@ -156,7 +156,28 @@
                         ';
                         break;
                     case '4':
-                        # code...
+                        echo '
+                        <div class="col-10 col-sm-10 col-md-6 col-lg-3 col-xl-3 mt-1">
+                            <a href="personalGestion.php" class="text-white btn bg-success bg-gradient p-4 mt-2 mb-2 main-buttons" style="text-decoration:none;width: 100%;border-radius: 10px;border: 2px solid">
+                                Personal
+                            </a>
+                        </div>
+                        <div class="col-10 col-sm-10 col-md-6 col-lg-3 col-xl-3 mt-1">
+                            <a href="laboresGestion.php" class="text-white btn bg-success bg-gradient p-4 mt-2 mb-2 main-buttons" style="text-decoration:none;width: 100%;border-radius: 10px;border: 2px solid">
+                                Labores/actividades
+                            </a>
+                        </div>
+                        <div class="col-10 col-sm-10 col-md-6 col-lg-3 col-xl-3 mt-1">
+                            <a href="laboresPersonalGestion.php" class="text-white btn bg-success bg-gradient p-4 mt-2 mb-2 main-buttons" style="text-decoration:none;width: 100%;border-radius: 10px;border: 2px solid">
+                                Administrar labores
+                            </a>
+                        </div>
+                        <div class="col-10 col-sm-10 col-md-6 col-lg-3 col-xl-3 mt-1">
+                            <a href="laboresPersonalDetalle.php" class="text-white btn bg-success bg-gradient p-4 mt-2 mb-2 main-buttons" style="text-decoration:none;width: 100%;border-radius: 10px;border: 2px solid">
+                                Detalle labores
+                            </a>
+                        </div>
+                        ';
                         break;
                     default:
                         # code...

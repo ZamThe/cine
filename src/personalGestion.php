@@ -163,6 +163,16 @@
                         case '3':
                             //Auditor no tiene permiso
                             break;
+                        case '4':
+                            echo '
+                            <div class="row justify-content-around mt-3">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
+                                    <a href="registrarPersonal.php">
+                                        <button type="button" class="btn btn-success">Registrar personal</button>
+                                    </a>
+                                </div>
+                            </div> ';     
+                            break;
                         default:
                             # code...
                             break;
@@ -247,6 +257,21 @@
                                                 <th>T.Botas</th>
                                                 ';
                                                 break;
+                                            case '4':
+                                                echo '
+                                                <th>Nombre</th>
+                                                <th>Tipo identificación</th>
+                                                <th>Identifiación</th>
+                                                <th>Cargo</th>
+                                                <th>Tipo Contrato</th>
+                                                <th>Salario</th>
+                                                <th>Antiguedad</th>
+                                                <th>T.Buso</th>
+                                                <th>T.Pantalon</th>
+                                                <th>T.Botas</th>
+                                                <th>Editar</th>
+                                                ';
+                                                break;
                                             default:
                                                 # code...
                                                 break;
@@ -311,6 +336,26 @@
                                                 <td valign="middle" align="center">'.$personal['talla_buso'].'</td>
                                                 <td valign="middle" align="center">'.$personal['talla_pantalon'].'</td>
                                                 <td valign="middle" align="center">'.$personal['talla_botas'].'</td>
+                                                </tr>
+                                                ';
+                                            }
+                                        }
+
+                                        //Auditor
+                                        if($permisos == '4'){
+                                            foreach ($guardarPersonal as $personal) {
+                                                echo '</tr>
+                                                <td valign="middle" align="center">'.$personal['nombrePersonal'].'</td>
+                                                <td valign="middle" align="center">'.$personal['tipoIdentificacion'].'</td>
+                                                <td valign="middle" align="center">'.$personal['identificacion'].'</td>
+                                                <td valign="middle" align="center">'.$personal['nombreCargo'].'</td>
+                                                <td valign="middle" align="center">'.$personal['tipoContrato'].'</td>
+                                                <td valign="middle" align="center">'.$fmt->formatCurrency($personal['salario'], 'COP').'</td>
+                                                <td valign="middle" align="center">'.$personal['antiguedad'].'</td>
+                                                <td valign="middle" align="center">'.$personal['talla_buso'].'</td>
+                                                <td valign="middle" align="center">'.$personal['talla_pantalon'].'</td>
+                                                <td valign="middle" align="center">'.$personal['talla_botas'].'</td>
+                                                <td valign="middle" align="center"><a href="assets/editarPersonal.php?idPersonal='.$personal['id'].'"><i class="bi bi-pencil-square"></i></a></td>
                                                 </tr>
                                                 ';
                                             }

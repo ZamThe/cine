@@ -116,6 +116,9 @@
                         case '3':
                             //Auditor no tiene permiso
                             break;
+                        case '4':
+                            //Operador no registrar actividades, le coresponde al coordionador
+                            break;
                         default:
                             # code...
                             break;
@@ -187,6 +190,17 @@
                                                 <th>Fecha</th>
                                                 ';
                                                 break;
+                                            case '4':
+                                                echo '
+                                                <th>Nombre personal</th>
+                                                <th>Actividad</th>
+                                                <th>Lote</th>
+                                                <th>Cantidad</th>
+                                                <th>Valor individual</th>
+                                                <th>Valor total</th>
+                                                <th>Fecha</th>
+                                                ';
+                                                break;
                                             default:
                                                 # code...
                                                 break;
@@ -228,6 +242,21 @@
 
                                     //Auditor
                                     if($permisos == '3'){
+                                        foreach ($guardarPersonalLabores as $personalLabor) {
+                                            echo "<tr class='text-center'>
+                                            <td>".$personalLabor['nombrePersonal']."</td>
+                                            <td>".$personalLabor['nombreLabor']."</td>
+                                            <td>".$personalLabor['lote']."</td>
+                                            <td>".$personalLabor['cantidad']."</td>
+                                            <td>".$fmt->formatCurrency($personalLabor['valor_individual'], 'COP')."</td>
+                                            <td>".$fmt->formatCurrency($personalLabor['valor_total'], 'COP')."</td>
+                                            <td>".$personalLabor['fecha']."</td>
+                                            </tr>";
+                                        }
+                                    }
+
+                                    //Operador
+                                    if($permisos == '4'){
                                         foreach ($guardarPersonalLabores as $personalLabor) {
                                             echo "<tr class='text-center'>
                                             <td>".$personalLabor['nombrePersonal']."</td>
