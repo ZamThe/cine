@@ -28,7 +28,7 @@
     }
 
     //Traer los registros de personal_labores 
-    $traerPersonalLabores = $connect->prepare("SELECT pl.id, ps.nombre as nombrePersonal, lb.nombre_labor as nombreLabor, pl.cantidad, pl.valor_total, pl.fecha_realizacion as fecha, pl.valor_individual, pl.lote FROM personal_labores pl INNER JOIN personal ps ON pl.id_personal = ps.id INNER JOIN labores lb ON pl.id_labor = lb.id");
+    $traerPersonalLabores = $connect->prepare("SELECT pl.id, ps.nombre as nombrePersonal, lb.nombre_labor as nombreLabor, pl.cantidad, pl.valor_total, pl.fecha_realizacion as fecha, pl.valor_individual, pl.lote, pl.observacion FROM personal_labores pl INNER JOIN personal ps ON pl.id_personal = ps.id INNER JOIN labores lb ON pl.id_labor = lb.id");
     if($traerPersonalLabores->execute()){
         $guardarPersonalLabores = $traerPersonalLabores->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -166,6 +166,7 @@
                                                 <th>Cantidad</th>
                                                 <th>Valor individual</th>
                                                 <th>Valor total</th>
+                                                <th>Observacion</th>
                                                 <th>Fecha</th>
                                                 <th>Borrar</th>
                                                 ';
@@ -177,6 +178,7 @@
                                                 <th>Lote</th>
                                                 <th>Cantidad</th>
                                                 <th>Fecha</th>
+                                                <th>Observacion</th>
                                                 ';
                                                 break;
                                             case '3':
@@ -188,6 +190,8 @@
                                                 <th>Valor individual</th>
                                                 <th>Valor total</th>
                                                 <th>Fecha</th>
+                                                <th>Observacion</th>
+                                                <th>Borrar</th>
                                                 ';
                                                 break;
                                             case '4':
@@ -199,12 +203,13 @@
                                                 <th>Valor individual</th>
                                                 <th>Valor total</th>
                                                 <th>Fecha</th>
+                                                <th>Observacion</th>
                                                 ';
                                                 break;
                                             default:
                                                 # code...
                                                 break;
-                                        }
+                                         }
                                         ?>
                                     </tr>
                                 </thead>
@@ -222,6 +227,7 @@
                                             <td>".$fmt->formatCurrency($personalLabor['valor_individual'], 'COP')."</td>
                                             <td>".$fmt->formatCurrency($personalLabor['valor_total'], 'COP')."</td>
                                             <td>".$personalLabor['fecha']."</td>
+                                            <td>".$personalLabor['observacion']."</td>
                                             <td><a href='assets/borrarLaborPersonal.php?idLaborPersonal=".$personalLabor['id']."'<i class='bi bi-x-circle-fill'></i></a></td>
                                             </tr>";
                                         }
@@ -236,6 +242,7 @@
                                             <td>".$personalLabor['lote']."</td>
                                             <td>".$personalLabor['cantidad']."</td>
                                             <td>".$personalLabor['fecha']."</td>
+                                            <td>".$personalLabor['observacion']."</td>
                                             </tr>";
                                         }
                                     }
@@ -251,6 +258,8 @@
                                             <td>".$fmt->formatCurrency($personalLabor['valor_individual'], 'COP')."</td>
                                             <td>".$fmt->formatCurrency($personalLabor['valor_total'], 'COP')."</td>
                                             <td>".$personalLabor['fecha']."</td>
+                                            <td>".$personalLabor['observacion']."</td>
+                                            <td><a href='assets/borrarLaborPersonal.php?idLaborPersonal=".$personalLabor['id']."'<i class='bi bi-x-circle-fill'></i></a></td>
                                             </tr>";
                                         }
                                     }
@@ -266,6 +275,7 @@
                                             <td>".$fmt->formatCurrency($personalLabor['valor_individual'], 'COP')."</td>
                                             <td>".$fmt->formatCurrency($personalLabor['valor_total'], 'COP')."</td>
                                             <td>".$personalLabor['fecha']."</td>
+                                            <td>".$personalLabor['observacion']."</td>
                                             </tr>";
                                         }
                                     }

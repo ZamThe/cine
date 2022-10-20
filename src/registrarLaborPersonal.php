@@ -47,9 +47,11 @@
         $numeroLote = $_POST['numeroLote'];
         //Capturar id usuario que programo
         $idProgramador = $usuario['id'];
+        //Capturar observacion
+        $observacion = $_POST['observacion'];
 
         //Preparar sentencia 
-        $relacionarLaborPersonal = $connect->prepare("INSERT INTO personal_labores (id_personal,id_labor,valor_individual,cantidad,valor_total,fecha_realizacion,lote,id_programador) VALUEs ('$idPersonal','$idLabor','$valorIndividual','$cantidad','$valorTotal','$fecha','$numeroLote','$idProgramador')");
+        $relacionarLaborPersonal = $connect->prepare("INSERT INTO personal_labores (id_personal,id_labor,valor_individual,cantidad,valor_total,fecha_realizacion,lote,id_programador,observacion) VALUEs ('$idPersonal','$idLabor','$valorIndividual','$cantidad','$valorTotal','$fecha','$numeroLote','$idProgramador','$observacion')");
         if($relacionarLaborPersonal->execute()){
             echo "<script>location.href='laboresPersonalGestion.php';</script>";
         }
@@ -163,7 +165,7 @@
                                 </div>
                             </div>
                             <div class="row justify-content-center align-items-center mt-3">
-                                <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-4">
+                                <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-4" style="overflow:hidden">
                                     <label for="" class="form-label text-white">Seleccionar labor</label>
                                     <select class="form-select" aria-label="Default select example" id="seleccionarLabor" name="labor" required>
                                         <option selected disabled>Seleccione una labor</option>
@@ -196,14 +198,18 @@
                                     <hr class="bg-success" style="width: 100%; height: 4px; opacity: 1;">
                                 </div>
                             </div>
-                            <div class="row justify-content-start align-items-center mt-3">
-                                <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-4">
+                            <div class="row justify-content-center align-items-center mt-3">
+                                <div class="col-10 col-sm-10 col-md-8 col-lg-4 col-xl-3">
                                     <label for="" class="form-label text-white">Seleccionar fecha</label>
                                     <input type="date" name="fecha" id="fecha" class="form-control" required>
                                 </div>
-                                <div class="col-10 col-sm-10 col-md-8 col-lg-5 col-xl-4">
+                                <div class="col-10 col-sm-10 col-md-8 col-lg-4 col-xl-3">
                                     <label for="" class="form-label text-white">No. Lote</label>
                                     <input type="text" name="numeroLote" id="numeroLote" class="form-control" placeholder="Número de lote" required>
+                                </div>
+                                <div class="col-10 col-sm-10 col-md-8 col-lg-4 col-xl-6">
+                                    <label for="observacion" class="form-label text-white">Observación</label>
+                                    <input type="text" name="observacion" id="observacion" class="form-control" placeholder="Observación" maxlength="150">
                                 </div>
                                 <!-- Input oculto con el valor en pesos -->
                                 <input type="hidden" name="" id="valorTotal" class="form-control" value="" placeholder="Valor total" readonly required>
@@ -215,7 +221,7 @@
                                     <hr class="bg-success" style="width: 100%; height: 4px; opacity: 1;">
                                 </div>
                             </div>
-                            <div class="row justify-content-center align-items-center mb-2">
+                            <div class="row justify-content-center align-items-center ">
                                 <div class="col-12 col-xl-4">
                                     <input class="btn btn-success btn-submit form-control" name="guardarLaborPersonal" type="submit" value="Guardar">
                                 </div>
@@ -237,7 +243,7 @@
         </div>
         <!-- Jquery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-        <!-- Select2 -->
+        <!-- Select2 -->    
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <!-- JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
@@ -250,10 +256,10 @@
 
             window.addEventListener("load", function(event) {
 
-                function financial(x) {
-                    return Number.parseFloat(x).toFixed(2);
-                }
-
+                 function financial(x) {         
+                     return Number.parseFloat(x).toFixed(2);
+                 }
+ 
                 //Instanciar formateador de numeros
                 const formatterPeso = new Intl.NumberFormat('es-CO',
                 {

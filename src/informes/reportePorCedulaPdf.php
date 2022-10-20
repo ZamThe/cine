@@ -42,7 +42,7 @@
     $fmt = new \NumberFormatter('es_CO', \NumberFormatter::CURRENCY);
 
     //Traer datos
-    $traerLaboresPersonal = $connect->prepare("SELECT pl.id, ps.nombre as nombrePersonal, lb.nombre_labor as nombreLabor, pl.cantidad, pl.valor_total, pl.fecha_realizacion as fecha, lb.unidad_medida, pl.valor_individual, pl.lote FROM personal_labores pl INNER JOIN personal ps ON pl.id_personal = ps.id INNER JOIN labores lb ON pl.id_labor = lb.id WHERE ps.identificacion = '$cedula'");
+    $traerLaboresPersonal = $connect->prepare("SELECT pl.id, ps.nombre as nombrePersonal, lb.nombre_labor as nombreLabor, pl.cantidad, pl.valor_total, pl.fecha_realizacion as fecha, lb.unidad_medida, pl.valor_individual, pl.lote, pl.observacion FROM personal_labores pl INNER JOIN personal ps ON pl.id_personal = ps.id INNER JOIN labores lb ON pl.id_labor = lb.id WHERE ps.identificacion = '$cedula'");
     if($traerLaboresPersonal->execute()){
         $laboresPersonal = $traerLaboresPersonal->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -146,6 +146,7 @@
                                                 <th>Valor Individual</th>
                                                 <th>Valor total</th>
                                                 <th>Fecha realización</th>
+                                                <th>Observacion</th>
                                                 ';
                                                 break;
                                             case '2':
@@ -156,6 +157,7 @@
                                                 <th>U.medida</th>
                                                 <th>Cantidad</th>
                                                 <th>Fecha realización</th>
+                                                <th>Observacion</th>
                                                 ';
                                                 break;
                                             case '3':
@@ -168,6 +170,7 @@
                                                 <th>Valor Individual</th>
                                                 <th>Valor total</th>
                                                 <th>Fecha realización</th>
+                                                <th>Observacion</th>
                                                 ';
                                                 break;
                                             case '4':
@@ -180,6 +183,7 @@
                                                 <th>Valor Individual</th>
                                                 <th>Valor total</th>
                                                 <th>Fecha realización</th>
+                                                <th>Observacion</th>
                                                 ';
                                                 break;
                                             default:
@@ -205,6 +209,7 @@
                                                 <td style='text-center'>".$fmt->formatCurrency($lb['valor_individual'], 'COP')."</td>
                                                 <td style='text-center'>".$fmt->formatCurrency($lb['valor_total'], 'COP')."</td>
                                                 <td style='text-center'>".$lb['fecha']."</td>
+                                                <td style='text-center'>".$lb['observacion']."</td>
                                             </tr>";
                                         }
                                     }
@@ -219,6 +224,7 @@
                                             <td style='text-center'>".$lb['unidad_medida']."</td>
                                             <td style='text-center'>".$lb['cantidad']."</td>
                                             <td style='text-center'>".$lb['fecha']."</td>
+                                            <td style='text-center'>".$lb['observacion']."</td>
                                         </tr>";
                                         }
                                     }
@@ -235,6 +241,7 @@
                                                 <td style='text-center'>".$fmt->formatCurrency($lb['valor_individual'], 'COP')."</td>
                                                 <td style='text-center'>".$fmt->formatCurrency($lb['valor_total'], 'COP')."</td>
                                                 <td style='text-center'>".$lb['fecha']."</td>
+                                                <td style='text-center'>".$lb['observacion']."</td>
                                             </tr>";
                                         }
                                     }
@@ -251,6 +258,7 @@
                                                 <td style='text-center'>".$fmt->formatCurrency($lb['valor_individual'], 'COP')."</td>
                                                 <td style='text-center'>".$fmt->formatCurrency($lb['valor_total'], 'COP')."</td>
                                                 <td style='text-center'>".$lb['fecha']."</td>
+                                                <td style='text-center'>".$lb['observacion']."</td>
                                             </tr>";
                                         }
                                     }
