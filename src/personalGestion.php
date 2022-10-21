@@ -270,6 +270,7 @@
                                                 <th>T.Pantalon</th>
                                                 <th>T.Botas</th>
                                                 <th>Editar</th>
+                                                <th>Borrar</th>
                                                 ';
                                                 break;
                                             default:
@@ -356,6 +357,7 @@
                                                 <td valign="middle" align="center">'.$personal['talla_pantalon'].'</td>
                                                 <td valign="middle" align="center">'.$personal['talla_botas'].'</td>
                                                 <td valign="middle" align="center"><a href="assets/editarPersonal.php?idPersonal='.$personal['id'].'"><i class="bi bi-pencil-square"></i></a></td>
+                                                <td valign="middle" align="center"><a href="assets/borrarPersonal.php?idPersonal='.$personal['id'].'"<i class="bi bi-x-circle-fill"></i></a></td>
                                                 </tr>
                                                 ';
                                             }
