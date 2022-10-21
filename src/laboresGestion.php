@@ -108,14 +108,7 @@
                             </div>';
                             break;
                         case '2':
-                            echo '
-                            <div class="row justify-content-around mt-3">
-                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
-                                    <a href="registrarLabor.php">
-                                        <button type="button" class="btn btn-success">Registrar labor</button>
-                                    </a>
-                                </div>
-                            </div>';         
+                           
                             break;
                         case '3':
                             //Auditor no tiene permiso
