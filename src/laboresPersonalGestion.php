@@ -117,7 +117,14 @@
                             //Auditor no tiene permiso
                             break;
                         case '4':
-                            //Operador no registrar actividades, le coresponde al coordionador
+                            echo '
+                            <div class="row justify-content-around">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
+                                    <a href="registrarLaborPersonal.php">
+                                        <button type="button" class="btn btn-success" id="btnModalRelacionar">Registrar labor a personal</button>
+                                    </a>
+                                </div>
+                            </div>';    
                             break;
                         default:
                             # code...
