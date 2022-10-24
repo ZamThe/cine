@@ -118,6 +118,11 @@
                                     <input type="text" placeholder="Salario en labores" class="form-control" value="'.$salarioLabores.'" readonly>                           
                                     ';
                                     break;
+                                case '4':
+                                    echo '
+                                    <input type="text" placeholder="Salario en labores" class="form-control" value="'.$salarioLabores.'" readonly>                           
+                                    ';
+                                    break;
                                 default:
                                     # code...
                                     break;
