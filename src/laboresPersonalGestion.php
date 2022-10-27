@@ -173,8 +173,8 @@
                                                 <th>Cantidad</th>
                                                 <th>Valor individual</th>
                                                 <th>Valor total</th>
-                                                <th>Observacion</th>
                                                 <th>Fecha</th>
+                                                <th>Observacion</th>
                                                 <th>Borrar</th>
                                                 ';
                                                 break;
