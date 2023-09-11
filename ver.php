@@ -68,6 +68,7 @@ $stmt = $pdo->query($sql);
                 <td>
                     <button onclick="confirmDelete(<?php echo $row['id_pelicula']; ?>)">Eliminar</button>
                     <button id="confirmButton_<?php echo $row['id_pelicula']; ?>" style="display:none;" onclick="deleteRow(<?php echo $row['id_pelicula']; ?>)">Confirmar</button>
+                    <a href="detalles.php?id=<?php echo $row['id_pelicula']; ?>" target="_blank">Detalles</a>
                 </td>
                 
             </tr>
