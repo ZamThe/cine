@@ -44,9 +44,7 @@
         <div class="blog-post">
         <h2>Halo</h2>
             <img class="blog-image" src="img/halo.jpg" alt="Imagen 3">
-            <p class="blog-description">Halo es una serie de televisión de ciencia ficción militar y videojuegos estadounidense desarrollada por Kyle Killen y Steven Kane para Paramount+, basada en la franquicia de videojuegos del mismo nombre. Está producida por Amblin Television, 343 Industries, Showtime Networks, One Big Picture y Chapter Eleven, y sigue una guerra del siglo 26 entre el UNSC y el Covenant, una alianza teocrático-militar de varias razas alienígenas avanzadas.
-
-                                .</p>
+            <p class="blog-description">Halo es una serie de televisión de ciencia ficción militar y videojuegos estadounidense desarrollada por Kyle Killen y Steven Kane para Paramount+, basada en la franquicia de videojuegos del mismo nombre. Está producida por Amblin Television, 343 Industries, Showtime Networks, One Big Picture y Chapter Eleven, y sigue una guerra del siglo 26 entre el UNSC y el Covenant, una alianza teocrático-militar de varias razas alienígenas avanzadas.</p>
                                 <a href="crear.php">Ver AHORA</a>
                             </div>
     </div>

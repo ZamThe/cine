@@ -2,12 +2,7 @@
 // Función para crear un nuevo director
 function crearDirector($id_director, $nombre, $fecha_nacimiento, $descripcion) {
     // Establece la conexión a la base de datos
-    $conexion = new mysqli("localhost", "root", "", "cine");
-
-    // Verifica si hay errores de conexión
-    if ($conexion->connect_error) {
-        die("Error de conexión a la base de datos: " . $conexion->connect_error);
-    }
+    include 'conexion.php';
 
     // Escapar las entradas del usuario para evitar SQL Injection
     $id_director = $conexion->real_escape_string($id_director);
@@ -24,8 +19,7 @@ function crearDirector($id_director, $nombre, $fecha_nacimiento, $descripcion) {
         echo "Error al crear el director: " . $conexion->error;
     }
 
-    // Cierra la conexión a la base de datos
-    $conexion->close();
+   
 }
 
 // Ejemplo de uso:

@@ -12,25 +12,10 @@
 <li><a href="index.php">Inicio</a></li>
 <li><a href="catalogo_peliculas.php">Ver peliculas</a></li>
 <li><a href="series.php">Ver series</a></li>
-
-        <li><a href="login.php">Login</a></li>
-       
+        <li><a href="login.php">Login</a></li>  
     </ul>
 <?php
-$host = "localhost";
-$dbname = "cine";
-$username = "root";
-$password = "";
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Error de conexión a la base de datos: " . $e->getMessage());
-}
-
-
-
+include 'conexion.php';
 if(isset($_GET['eliminar_id'])){
     // Realiza la eliminación en la base de datos aquí
     $id_a_eliminar = $_GET['eliminar_id'];
@@ -82,6 +67,7 @@ $stmt = $pdo->query($sql);
                     <button onclick="confirmDelete(<?php echo $row['id_pelicula']; ?>)">Eliminar</button>
                     <button id="confirmButton_<?php echo $row['id_pelicula']; ?>" style="display:none;" onclick="deleteRow(<?php echo $row['id_pelicula']; ?>)">Confirmar</button>
                 </td>
+                
             </tr>
         <?php } ?>
     </table>
@@ -97,5 +83,6 @@ $stmt = $pdo->query($sql);
             window.location.href = "eliminar.php?eliminar_id=" + id;
         }
     </script>
+
 
 ?>

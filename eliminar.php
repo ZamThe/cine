@@ -14,18 +14,7 @@
 </head>
 
 <?php
-$host = "localhost";
-$dbname = "cine";
-$username = "root";
-$password = "";
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Error de conexión a la base de datos: " . $e->getMessage());
-}
-
+include 'conexion.php';
 // Operación CREATE (Crear una nueva película)
 if (isset($_POST['crear'])) {
     $nombre = $_POST['nombre'];

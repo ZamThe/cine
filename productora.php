@@ -1,17 +1,5 @@
 <?php
-
-$host = "localhost";
-$usuario = "root";
-$contrasena = "";
-$base_de_datos = "cine";
-
-$conexion = new mysqli($host, $usuario, $contrasena, $base_de_datos);
-
-if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
-}
-
-
+include 'conexion.php';
 $id_productora = "";
 $Nombre_pro = "";
 $Fecha = "";
@@ -51,11 +39,7 @@ if (isset($_POST['guardar'])) {
         $stmt->close();
     }
 }
-
-
-
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>

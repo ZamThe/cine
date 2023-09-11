@@ -9,17 +9,7 @@
     <link rel="stylesheet" type="text/css" href="styles.css"> <!-- Enlaza tu archivo CSS externo aquí -->
 </head>
 <?php
-$host = "localhost";
-$dbname = "cine";
-$username = "root";
-$password = "";
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Error de conexión a la base de datos: " . $e->getMessage());
-}
+include 'conexion.php';
 
 // Operación CREATE (Crear una nueva película)
 if (isset($_POST['crear'])) {
@@ -28,21 +18,40 @@ if (isset($_POST['crear'])) {
     $descripcion = $_POST['descripcion'];
     $duracion = $_POST['duracion'];
 
-    $sql = "INSERT INTO cartelera (Nombre, Genero, Descripcion, Duracion) VALUES (:nombre, :genero, :descripcion, :duracion)";
-    $stmt = $pdo->prepare($sql);
+    // Manejar la imagen
+    $imagen = $_FILES['imagen'];
 
-    $stmt->bindParam(':nombre', $nombre);
-    $stmt->bindParam(':genero', $genero);
-    $stmt->bindParam(':descripcion', $descripcion);
-    $stmt->bindParam(':duracion', $duracion);
+    // Verificar si se cargó una imagen
+    if ($imagen['error'] === 0) {
+        // Ruta donde se almacenará la imagen (puedes personalizarla)
+        $ruta_imagen = "img" . $imagen['name'];
 
-    if ($stmt->execute()) {
-        echo "Película creada con éxito.";
+        // Mover la imagen cargada al directorio de destino
+        if (move_uploaded_file($imagen['tmp_name'], $ruta_imagen)) {
+            // La imagen se cargó correctamente, ahora puedes insertar la película en la base de datos
+            $sql = "INSERT INTO cartelera (Nombre, Genero, Descripcion, Duracion, Imagen) VALUES (:nombre, :genero, :descripcion, :duracion, :imagen)";
+            $stmt = $pdo->prepare($sql);
+
+            $stmt->bindParam(':nombre', $nombre);
+            $stmt->bindParam(':genero', $genero);
+            $stmt->bindParam(':descripcion', $descripcion);
+            $stmt->bindParam(':duracion', $duracion);
+            $stmt->bindParam(':imagen', $ruta_imagen); // Almacena la ruta de la imagen en la base de datos
+
+            if ($stmt->execute()) {
+                echo "Película creada con éxito.";
+            } else {
+                echo "Error al crear la película.";
+            }
+        } else {
+            echo "Error al cargar la imagen.";
+        }
     } else {
-        echo "Error al crear la película.";
+        echo "No se seleccionó ninguna imagen.";
     }
 }
 ?>
+
 <!-- Formulario para crear una nueva película -->
 <div class="image-and-text">
         <img src="img/logo.png" alt="Imagen">
@@ -59,16 +68,15 @@ if (isset($_POST['crear'])) {
         </ul>
     </li>
     <li class="submenu">
-        <a href="#">Ver</a>
+        <a href="ver.php">Ver</a>
         <ul class="sub-menu">
             <li><a href="ver.php">Ver opción 1</a></li>
             <li><a href="ver.php">Ver opción 2</a></li>
         </ul>
     </li>
 </ul>
-<body>
 <h2>Crear Película</h2>
-<form method="POST" action="">
+<form method="POST" action="" enctype="multipart/form-data">
     <label for="nombre">Nombre:</label>
     <input type="text" name="nombre" required><br>
 
@@ -80,9 +88,30 @@ if (isset($_POST['crear'])) {
 
     <label for="duracion">Duración:</label>
     <input type="text" name="duracion" required><br>
+    
     <label for="imagen">Imagen:</label>
     <input type="file" name="imagen" accept="image/*"><br>
+
+    <!-- Agrega el dropdown para los directores -->
+    <label for="director">Director:</label>
+    <select name="director">
+        <?php
+        // Consulta para obtener la lista de directores desde la tabla director
+        $sqlDirectores = "SELECT * FROM director";
+        $stmtDirectores = $pdo->query($sqlDirectores);
+
+        // Itera a través de los directores y crea las opciones del dropdown
+        while ($rowDirector = $stmtDirectores->fetch(PDO::FETCH_ASSOC)) {
+            $id_director = $rowDirector['id_director'];
+            $nombre_director = $rowDirector['Nombre_director'];
+            echo "<option value='$id_director'>$nombre_director</option>";
+        }
+        ?>
+    </select><br>
+
     <input type="submit" name="crear" value="Crear Película">
 </form>
+
+
 </body>
 </html>
