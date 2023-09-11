@@ -2,22 +2,12 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/styles.css">
 <style>
-
-    
-/* Estilo para el título */
-
-
-
 </style>
 <head>
     <meta charset="UTF-8">
     <title>Crear Película</title>
     <link rel="stylesheet" type="text/css" href="styles.css"> <!-- Enlaza tu archivo CSS externo aquí -->
 </head>
-
-
-
-
 <?php
 $host = "localhost";
 $dbname = "cine";
@@ -52,13 +42,7 @@ if (isset($_POST['crear'])) {
         echo "Error al crear la película.";
     }
 }
-
-// Operación READ (Leer todas las películas)
-
-
-
 ?>
-
 <!-- Formulario para crear una nueva película -->
 <div class="image-and-text">
         <img src="img/logo.png" alt="Imagen">
@@ -82,9 +66,7 @@ if (isset($_POST['crear'])) {
         </ul>
     </li>
 </ul>
-
 <body>
-
 <h2>Crear Película</h2>
 <form method="POST" action="">
     <label for="nombre">Nombre:</label>
@@ -101,19 +83,6 @@ if (isset($_POST['crear'])) {
     <label for="imagen">Imagen:</label>
     <input type="file" name="imagen" accept="image/*"><br>
     <input type="submit" name="crear" value="Crear Película">
-
 </form>
-
-
-
-
-
-
-
-
-
-<!-- Formulario para eliminar una película por ID -->
-
 </body>
-
 </html>

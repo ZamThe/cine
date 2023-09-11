@@ -10,7 +10,12 @@
 </head>
 <br>
 <body>
+<div class="image-and-text">
+        <img src="img/logo.png" alt="Imagen">
+        <h2>El señor de las PELICULAS</h2>
+    </div>
 <ul class="menu">
+    
 <li><a href="index.php">Inicio</a></li>
         <li><a href="crear.php">Crear</a></li>
         <li><a href="eliminar.php">Eliminar</a></li>
@@ -60,6 +65,7 @@ $stmt->execute();
     <title>Inicio de Sesión</title>
 </head>
 <body>
+    <br>
 <div id="login-form-wrap">
     <h2>Login</h2>
     <form id="login-form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">

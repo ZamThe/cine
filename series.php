@@ -1,9 +1,4 @@
 <html>
-
-
-
-
-
 <head>
     <meta charset="UTF-8">
     <title>Crear Película</title>
@@ -19,13 +14,8 @@
     <li><a href="index.php">Inicio</a></li>
 <li><a href="catalogo_peliculas.php">Ver peliculas</a></li>
 <li><a href="series.php">Ver series</a></li>
-
-        <li><a href="login.php">Login</a></li>
-       
-       
-        
+<li><a href="login.php">Login</a></li>        
     </ul>
-
     <body>
         <br>    
     <div class="slider-container">
@@ -43,11 +33,7 @@
         <div class="blog-post">
         <h2>The last of us</h2>
             <img class="blog-image" src="img/last.jpg" alt="Imagen 1">
-            <p class="blog-description">The Last of Us es una serie de televisión estadounidense postapocalíptica que se estrenó el 15 de enero de 2023 a través de HBO. Basada en el videojuego de 2013 del mismo nombre desarrollado por Naughty Dog, la serie sigue a Joel (Pedro Pascal), un contrabandista encargado de escoltar a la adolescente Ellie (Bella Ramsey) a través de un Estados Unidos postapocalíptico. También cuenta con Tommy (Gabriel Luna), el hermano menor de Joel y exsoldado.
-
-
-
-</p>
+            <p class="blog-description">The Last of Us es una serie de televisión estadounidense postapocalíptica que se estrenó el 15 de enero de 2023 a través de HBO. Basada en el videojuego de 2013 del mismo nombre desarrollado por Naughty Dog, la serie sigue a Joel (Pedro Pascal), un contrabandista encargado de escoltar a la adolescente Ellie (Bella Ramsey) a través de un Estados Unidos postapocalíptico. También cuenta con Tommy (Gabriel Luna), el hermano menor de Joel y exsoldado.</p>
         </div>
         <div class="blog-post">
         <h2>Sout Park</h2>
@@ -63,8 +49,6 @@
                                 .</p>
                                 <a href="crear.php">Ver AHORA</a>
                             </div>
-    
-        <!-- Repite estos divs para más entradas -->
     </div>
     <div class="blog-entry">
     
@@ -88,7 +72,6 @@
                                 <a href="crear.php">Ver AHORA</a>
                             </div>
     
-        <!-- Repite estos divs para más entradas -->
     </div>
 
 <script src="scrip/files.js"></script>

@@ -1,9 +1,4 @@
 <html>
-
-
-
-
-
 <head>
     <meta charset="UTF-8">
     <title>Crear Película</title>
@@ -21,10 +16,7 @@
 <li><a href="series.php">Ver series</a></li>
 
         <li><a href="login.php">Login</a></li>
-       
-        
-    </ul>
-
+</ul>
     <body>
         <br>    
     <div class="slider-container">
@@ -34,10 +26,8 @@
             <img src="img/elemental.jpg" alt="Imagen 3">
             <img src="img/mk.jpg" alt="Imagen 4">
         </div>
-    </div>
-  
+    </div> 
 </main>
-
 <h1>Peliculas</h1>
     <div class="blog-entry">
         <div class="blog-post">
@@ -59,22 +49,13 @@
                                 Poco después, subtítulos muestran el desastre causado por la infección mortal del virus mutante: la cuarentena del Reino Unido, la muerte de los infectados por inanición, y la posterior llegada del ejército de Estados Unidos junto con fuerzas de la OTAN a Londres, para comenzar la repoblación 28 semanas después de los acontecimientos narrados.</p>
                                 <a href="Entradas/entrada_2.php">Ver AHORA</a>
                             </div>
-                            
-    
-        <!-- Repite estos divs para más entradas -->
     </div>
-
     <h1>Series</h1>
-
     <div class="blog-entry">
         <div class="blog-post">
         <h2>The last of us</h2>
             <img class="blog-image" src="img/last.jpg" alt="Imagen 1">
-            <p class="blog-description">The Last of Us es una serie de televisión estadounidense postapocalíptica que se estrenó el 15 de enero de 2023 a través de HBO. Basada en el videojuego de 2013 del mismo nombre desarrollado por Naughty Dog, la serie sigue a Joel (Pedro Pascal), un contrabandista encargado de escoltar a la adolescente Ellie (Bella Ramsey) a través de un Estados Unidos postapocalíptico. También cuenta con Tommy (Gabriel Luna), el hermano menor de Joel y exsoldado.
-
-
-
-</p>
+            <p class="blog-description">The Last of Us es una serie de televisión estadounidense postapocalíptica que se estrenó el 15 de enero de 2023 a través de HBO. Basada en el videojuego de 2013 del mismo nombre desarrollado por Naughty Dog, la serie sigue a Joel (Pedro Pascal), un contrabandista encargado de escoltar a la adolescente Ellie (Bella Ramsey) a través de un Estados Unidos postapocalíptico. También cuenta con Tommy (Gabriel Luna), el hermano menor de Joel y exsoldado.</p>
         </div>
         <div class="blog-post">
         <h2>Sout Park</h2>

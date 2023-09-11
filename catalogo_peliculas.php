@@ -1,9 +1,4 @@
 <html>
-
-
-
-
-
 <head>
     <meta charset="UTF-8">
     <title>Crear Película</title>
@@ -19,13 +14,8 @@
     <li><a href="index.php">Inicio</a></li>
 <li><a href="catalogo_peliculas.php">Ver peliculas</a></li>
 <li><a href="series.php">Ver series</a></li>
-
         <li><a href="login.php">Login</a></li>
-       
-       
-        
     </ul>
-
     <body>
         <br>    
     <div class="slider-container">
@@ -35,10 +25,8 @@
             <img src="img/elemental.jpg" alt="Imagen 3">
             <img src="img/mk.jpg" alt="Imagen 4">
         </div>
-    </div>
-  
+    </div>  
 </main>
-
 <h1>Peliculas</h1>
     <div class="blog-entry">
         <div class="blog-post">
@@ -60,12 +48,7 @@
                                 Poco después, subtítulos muestran el desastre causado por la infección mortal del virus mutante: la cuarentena del Reino Unido, la muerte de los infectados por inanición, y la posterior llegada del ejército de Estados Unidos junto con fuerzas de la OTAN a Londres, para comenzar la repoblación 28 semanas después de los acontecimientos narrados.</p>
                                 <a href="crear.php">Ver AHORA</a>
                             </div>
-    
-        <!-- Repite estos divs para más entradas -->
     </div>
-
-    
-
 <script src="scrip/files.js"></script>
 </body>
 <footer>
