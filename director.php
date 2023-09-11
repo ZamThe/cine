@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h2>El señor de las PELICULAS</h2>
     </div>
 <ul class="menu">
-    <li><a href="index.php">Inicio</a></li>
+    <li><a href="Admin.php">Inicio</a></li>
     <li><a href="crear.php">Crear productora</a></li>
     <li class="submenu">
         <a href="director.php">Crear   Directores</a>
@@ -57,13 +57,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </ul>
     </li>
     <li class="submenu">
-        <a href="#">Ver</a>
+        <a href="ver.php">Ver</a>
         <ul class="sub-menu">
             <li><a href="ver.php">Ver opción 1</a></li>
             <li><a href="ver.php">Ver opción 2</a></li>
         </ul>
     </li>
 </ul>
+<br>
+<div id="login-form-wrap">
 <h2>Crear Director</h2>
 <br>
     <form method="post" action="">
@@ -75,11 +77,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
         <input type="date" name="fecha_nacimiento" required><br>
-
+<br>
         <label for="descripcion">Descripción:</label>
         <textarea name="descripcion" required></textarea><br>
 
         <input type="submit" name="submit" value="Guardar">
     </form>
+</div>
 </body>
 </html>

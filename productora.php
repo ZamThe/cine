@@ -43,6 +43,7 @@ if (isset($_POST['guardar'])) {
 <!DOCTYPE html>
 <html>
 <head>
+    
     <title>Formulario de Productora</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
@@ -53,23 +54,24 @@ if (isset($_POST['guardar'])) {
         <h2>El señor de las PELICULAS</h2>
     </div>
 <ul class="menu">
-    <li><a href="index.php">Inicio</a></li>
+<li><a href="Admin.php">Inicio</a></li>
     <li><a href="productora.php">Crear productora</a></li>
     <li class="submenu">
         <a href="director.php">Crear Directores</a>
         <ul class="sub-menu">
-            <li><a href="eliminar.php">Eliminar opción 1</a></li>
-            <li><a href="eliminar.php">Eliminar opción 2</a></li>
         </ul>
     </li>
     <li class="submenu">
-        <a href="#">Ver</a>
+        <a href="ver.php">Ver</a>
         <ul class="sub-menu">
             <li><a href="ver.php">Ver opción 1</a></li>
             <li><a href="ver.php">Ver opción 2</a></li>
         </ul>
     </li>
 </ul>
+<br>
+<div id="login-form-wrap">
+    
     <h2>Formulario de Productora</h2>
     <form action="" method="post">
         <input type="hidden" name="id_productora" value="<?php echo $id_productora; ?>">
@@ -78,13 +80,13 @@ if (isset($_POST['guardar'])) {
 
         <label for="Fecha">Fecha:</label>
         <input type="date" name="Fecha" required value="<?php echo $Fecha; ?>"><br>
-
+<br>
         <label for="Descripcion">Descripción:</label>
         <textarea name="Descripcion" required><?php echo $Descripcion; ?></textarea><br>
 
         <input type="submit" name="guardar" value="Guardar">
     </form>
-
+</div>
     
 </body>
 </html>

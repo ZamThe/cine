@@ -15,13 +15,12 @@
         <h2>El señor de las PELICULAS</h2>
     </div>
 <ul class="menu">
-    
 <li><a href="index.php">Inicio</a></li>
-        <li><a href="crear.php">Crear</a></li>
-        <li><a href="eliminar.php">Eliminar</a></li>
-        
-        <li><a href="#">Ver</a></li>
-    </ul>
+<li><a href="catalogo_peliculas.php">Ver peliculas</a></li>
+<li><a href="series.php">Ver series</a></li>
+
+        <li><a href="login.php">Login</a></li>
+</ul>
 <!-- partial:index.partial.html -->
 <?php
 // Incluir la conexión a la base de datos
@@ -67,11 +66,13 @@ $stmt->execute();
 <body>
     <br>
 <div id="login-form-wrap">
-    <h2>Login</h2>
+    <h2>Ingresar</h2>
     <form id="login-form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <p>
+
+        <p>Nombre
             <input type="text" id="username" name="username" placeholder="Username" required>
         </p>
+        <p>Contraseña</p>
         <p>
             <input type="password" id="password" name="password" placeholder="Password" required>
         </p>

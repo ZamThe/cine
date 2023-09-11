@@ -64,7 +64,7 @@ if (isset($_POST['eliminar'])) {
 <br>
 <ul class="menu">
 <ul class="menu">
-<li><a href="index.php">Inicio</a></li>
+<li><a href="Admin.php">Inicio</a></li>
         <li><a href="crear.php">Crear</a></li>
         <li><a href="eliminar.php">Eliminar</a></li>
         
@@ -73,13 +73,16 @@ if (isset($_POST['eliminar'])) {
     </ul>
 
 <!-- Formulario para eliminar una película por ID -->
+<br>
+<div id="login-form-wrap">
 <h2>Eliminar Película</h2>
 <form method="POST" action="">
     <label for="idEliminar">ID de la Película a Eliminar:</label>
     <input type="number" name="idEliminar" required><br>
-
+<br>
     <input type="submit" name="eliminar" value="Eliminar Película">
 </form>
+</div>
 </body>
 
 </html>

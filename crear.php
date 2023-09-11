@@ -58,7 +58,8 @@ if (isset($_POST['crear'])) {
         <h2>El señor de las PELICULAS</h2>
     </div>
 <ul class="menu">
-    <li><a href="index.php">Inicio</a></li>
+    <li><a href="Admin.php">Inicio</a></li>
+    <li> <a href="crea_serie.php">Crea Serie</a></li>
     <li><a href="productora.php">Crear productora</a></li>
     <li class="submenu">
         <a href="director.php">Crear Directores</a>
@@ -75,6 +76,8 @@ if (isset($_POST['crear'])) {
         </ul>
     </li>
 </ul>
+<br>
+<div id="login-form-wrap">
 <h2>Crear Película</h2>
 <form method="POST" action="" enctype="multipart/form-data">
     <label for="nombre">Nombre:</label>
@@ -93,7 +96,7 @@ if (isset($_POST['crear'])) {
     <input type="file" name="imagen" accept="image/*"><br>
 
     <!-- Agrega el dropdown para los directores -->
-    <label for="director">Director:</label>
+    <br><label for="director">Director:</label>
     <select name="director">
         <?php
         // Consulta para obtener la lista de directores desde la tabla director
@@ -109,9 +112,9 @@ if (isset($_POST['crear'])) {
         ?>
     </select><br>
 
-    <input type="submit" name="crear" value="Crear Película">
+<br><input type="submit" name="crear" value="Crear Película">
 </form>
-
+    </div>
 
 </body>
 </html>
