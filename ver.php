@@ -10,10 +10,11 @@
     </div>
 <ul class="menu">
 <li><a href="index.php">Inicio</a></li>
-        <li><a href="crear.php">Crear</a></li>
-        <li><a href="eliminar.php">Eliminar</a></li>
-        
-        <li><a href="#">Ver</a></li>
+<li><a href="catalogo_peliculas.php">Ver peliculas</a></li>
+<li><a href="series.php">Ver series</a></li>
+
+        <li><a href="login.php">Login</a></li>
+       
     </ul>
 <?php
 $host = "localhost";

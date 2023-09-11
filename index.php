@@ -18,7 +18,7 @@
     <main>
 <li><a href="index.php">Inicio</a></li>
 <li><a href="catalogo_peliculas.php">Ver peliculas</a></li>
-<li><a href="series.php">Ver peliculas</a></li>
+<li><a href="series.php">Ver series</a></li>
 
         <li><a href="login.php">Login</a></li>
        
@@ -59,6 +59,7 @@
                                 Poco después, subtítulos muestran el desastre causado por la infección mortal del virus mutante: la cuarentena del Reino Unido, la muerte de los infectados por inanición, y la posterior llegada del ejército de Estados Unidos junto con fuerzas de la OTAN a Londres, para comenzar la repoblación 28 semanas después de los acontecimientos narrados.</p>
                                 <a href="Entradas/entrada_2.php">Ver AHORA</a>
                             </div>
+                            
     
         <!-- Repite estos divs para más entradas -->
     </div>

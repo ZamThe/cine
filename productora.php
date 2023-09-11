@@ -52,6 +52,8 @@ if (isset($_POST['guardar'])) {
     }
 }
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -98,6 +100,8 @@ if (isset($_POST['guardar'])) {
 
         <input type="submit" name="guardar" value="Guardar">
     </form>
+
+    
 </body>
 </html>
 

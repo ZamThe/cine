@@ -44,7 +44,7 @@ $stmt->execute();
     // Comprobar si se encontró un usuario válido
     if ($stmt->rowCount() == 1) {
         // Usuario válido, redireccionar a la página de inicio
-        header("location: inicio.php"); // Reemplaza "inicio.php" con la página a la que deseas redirigir
+        header("location: Admin.php"); 
         exit();
     } else {
         // Usuario o contraseña incorrectos
