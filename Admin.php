@@ -15,7 +15,6 @@
 <li><a href="crear.php">Crear</a></li>
 <li><a href="eliminar.php">Eliminar</a></li>
 <li><a href="ver.php">Ver</a></li>
-<li><a href="login.php">Login</a></li>
 <li><a href="index.php">Salir</a></li>
 
     </ul>
@@ -55,7 +54,7 @@
 <script src="scrip/files.js"></script>
 </body>
 <footer>
-        &copy; 2023 El serñor de las peliculas  
+        &copy; 2023 El señor de las peliculas  
     </footer>
 
 </html>

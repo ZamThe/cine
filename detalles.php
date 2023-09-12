@@ -4,23 +4,6 @@
     <meta charset="UTF-8">
     <title>Detalles de la Película</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <style>
-      /* Estilos para el contenedor */
-      .text-container {
-            background-color: #f2f2f2; /* Color de fondo */
-            padding: 20px; /* Espacio de relleno */
-            border: 1px solid #ddd; /* Borde */
-            border-radius: 5px; /* Bordes redondeados */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra */
-            text-align: center; /* Alineación del texto */
-        }
-        
-        /* Estilos para el texto dentro del contenedor */
-        .text-container p {
-            font-size: 16px; /* Tamaño de fuente */
-            color: #333; /* Color del texto */
-        }
-    </style>
 </head>
 <body>
     <div class="image-and-text">
@@ -28,7 +11,7 @@
         <h2>El señor de las PELICULAS</h2>
     </div>
     <ul class="menu">
-    <li><a href="index.php">Inicio</a></li>
+    <li><a href="Admin.php">Inicio</a></li>
 <li><a href="crear.php">Crear</a></li>
 <li><a href="eliminar.php">Eliminar</a></li>
 <li><a href="ver.php">Ver</a></li>

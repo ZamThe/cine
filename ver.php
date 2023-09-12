@@ -13,7 +13,6 @@
 <li><a href="crear.php">Crear</a></li>
 <li><a href="eliminar.php">Eliminar</a></li>
 <li><a href="ver.php">Ver</a></li>
-<li><a href="login.php">Login</a></li>
     </ul>
     </ul>
 <?php

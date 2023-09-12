@@ -18,15 +18,8 @@
 <li><a href="index.php">Inicio</a></li>
 <li><a href="catalogo_peliculas.php">Ver peliculas</a></li>
 <li><a href="series.php">Ver series</a></li>
-
-        <li><a href="login.php">Login</a></li>
+<li><a href="login.php">Login</a></li>
 </ul>
-
-
-
-
-
-
 <?php
 // Incluir la conexión a la base de datos
 include 'conexion.php';
