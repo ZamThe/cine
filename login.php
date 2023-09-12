@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>HTML5 Login Form with validation Example</title>
+  <title>Login</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="./style.css">
 <link rel="stylesheet" type="text/css" href="css/styles.css">
@@ -21,7 +21,12 @@
 
         <li><a href="login.php">Login</a></li>
 </ul>
-<!-- partial:index.partial.html -->
+
+
+
+
+
+
 <?php
 // Incluir la conexión a la base de datos
 include 'conexion.php';

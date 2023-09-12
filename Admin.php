@@ -11,7 +11,7 @@
 <ul class="menu">
     <body>
     <main>
-<li><a href="index.php">Inicio</a></li>
+<li><a href="Admin.php">Inicio</a></li>
 <li><a href="crear.php">Crear</a></li>
 <li><a href="eliminar.php">Eliminar</a></li>
 <li><a href="ver.php">Ver</a></li>

@@ -90,7 +90,7 @@ if (isset($_POST['crear'])) {
     <textarea name="descripcion" required></textarea><br>
 
     <label for="duracion">Duración:</label>
-    <input type="text" name="duracion" required><br>
+    <input type="number" name="duracion" required><br>
     
     <label for="imagen">Imagen:</label>
     <input type="file" name="imagen" accept="image/*"><br>
@@ -110,6 +110,25 @@ if (isset($_POST['crear'])) {
             echo "<option value='$id_director'>$nombre_director</option>";
         }
         ?>
+    </select><br>
+    <br><label for="productora">Productora:</label>
+    <select name="productora">
+    <?php
+    // Consulta para obtener la lista de productoras desde la tabla productora
+    $sqlproductora = "SELECT * FROM productora";
+    $stmtproductora = $pdo->query($sqlproductora);
+
+    // Itera a través de las productoras y crea las opciones del dropdown
+    while ($rowproductora = $stmtproductora->fetch(PDO::FETCH_ASSOC)) {
+        $id_productora = $rowproductora['id_productora'];
+        $Nombre_pro = $rowproductora['Nombre_pro']; // Corrección aquí
+        echo "<option value='$id_productora'>$Nombre_pro</option>";
+    }
+    ?>
+</select>
+
+
+
     </select><br>
 
 <br><input type="submit" name="crear" value="Crear Película">

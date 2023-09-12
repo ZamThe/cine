@@ -6,7 +6,7 @@
 </head>
 <div class="image-and-text">
         <img src="img/logo.png" alt="Imagen">
-        <h2>El señor de las PELICULAS</h2>
+        <h2>El señor de las SERIES</h2>
     </div>
 <ul class="menu">
     <body>
