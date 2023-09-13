@@ -10,21 +10,15 @@
         <img src="img/logo.png" alt="Imagen">
         <h2>El señor de las SERIES</h2>
     </div>
-    <ul class="menu">
-        <li><a href="Admin.php">Inicio</a></li>
-        <li> <a href="crear.php">Crea Peliculas</a></li>
-        <li><a href="productora.php">Crear productora</a></li>
-        <li class="submenu">
-            <a href="director.php">Crear Directores</a>
-        </li>
-        <li class="submenu">
-            <a href="ver.php">Ver</a>
-            <ul class="sub-menu">
-                <li><a href="ver.php">Ver opción 1</a></li>
-                <li><a href="ver.php">Ver opción 2</a></li>
-            </ul>
-        </li>
-    </ul>
+    <nav>
+<ul class="dropdown">
+        	<li class="drop"><a href="Admin.php">Inicio</a></li>
+        	<li class="drop"><a href="crear.php">Crear Peliculas</a></li>
+        	<li class="drop"><a href="#">Ver series</a></li>
+        	<li><a href="Index.php">Salir</a>
+        	</li>
+        </ul>
+</nav> 
     <br>
     <div id="login-form-wrap">
         <h2>Crear Serie</h2>

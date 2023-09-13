@@ -8,16 +8,15 @@
         <img src="img/logo.png" alt="Imagen">
         <h2>ADMINISTRADOR</h2>
     </div>
-<ul class="menu">
-    <body>
-    <main>
-<li><a href="Admin.php">Inicio</a></li>
-<li><a href="crear.php">Crear</a></li>
-<li><a href="eliminar.php">Eliminar</a></li>
-<li><a href="ver.php">Ver</a></li>
-<li><a href="index.php">Salir</a></li>
-
-    </ul>
+    <nav>
+<ul class="dropdown">
+        	<li class="drop"><a href="Admin.php">Inicio</a></li>
+        	<li class="drop"><a href="crear.php">Crear Pelicula/Serie</a></li>
+        	<li class="drop"><a href="productora.php">Crear otros</a></li>
+        	<li><a href="Index.php">Salir</a>
+        	</li>
+        </ul>
+</nav> 
     <body>
         <br>    
     <div class="slider-container">

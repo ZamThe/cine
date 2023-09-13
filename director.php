@@ -53,24 +53,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <img src="img/logo.png" alt="Imagen">
         <h2>El señor de las PELICULAS</h2>
     </div>
-<ul class="menu">
-    <li><a href="Admin.php">Inicio</a></li>
-    <li><a href="crear.php">Crear productora</a></li>
-    <li class="submenu">
-        <a href="director.php">Crear   Directores</a>
-        <ul class="sub-menu">
-            <li><a href="eliminar.php">Eliminar opción 1</a></li>
-            <li><a href="eliminar.php">Eliminar opción 2</a></li>
+    <nav>
+    <ul class="dropdown">
+        	<li class="drop"><a href="Admin.php">Inicio</a></li>
+        	<li class="drop"><a href="productora.php">Crear Productora</a></li>   	
+        	<li><a href="Index.php">Salir</a>
+        	</li>
         </ul>
-    </li>
-    <li class="submenu">
-        <a href="ver.php">Ver</a>
-        <ul class="sub-menu">
-            <li><a href="ver.php">Ver opción 1</a></li>
-            <li><a href="ver.php">Ver opción 2</a></li>
-        </ul>
-    </li>
-</ul>
+</nav> 
 <br>
 <div id="login-form-wrap">
 <h2>Crear Director</h2>
@@ -83,8 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="text" name="nombre" required><br>
 
         <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
-        <input type="date" name="fecha_nacimiento" required><br>
-<br>
+        <input type="date" name="fecha_nacimiento" required><br><br>
         <label for="descripcion">Descripción:</label>
         <textarea name="descripcion" required></textarea><br>
 

@@ -8,13 +8,15 @@
         <img src="img/logo.png" alt="Imagen">
         <h2>El señor de las PELICULAS</h2>
     </div>
-<ul class="menu">
-<li><a href="Admin.php">Inicio</a></li>
-<li><a href="crear.php">Crear</a></li>
-<li><a href="eliminar.php">Eliminar</a></li>
-<li><a href="ver.php">Ver</a></li>
-    </ul>
-    </ul>
+    <nav>
+    <ul class="dropdown">
+        	<li class="drop"><a href="Admin.php">Inicio</a></li>
+        	<li class="drop"><a href="crear.php">regresar</a></li>
+        	<li class="drop"><a href="eliminar.php">Eliminar pelicula</a></li>
+        	<li><a href="Index.php">Salir</a>
+        	</li>
+        </ul>
+</nav> 
 <?php
 include 'conexion.php';
 if(isset($_GET['eliminar_id'])){

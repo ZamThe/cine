@@ -90,6 +90,7 @@ $stmt->execute();
         <!-- Enlace para crear una cuenta -->
     </div>
 </div>
+<script src="scrip/files.js" ></script>
 </body>
 </html>
 

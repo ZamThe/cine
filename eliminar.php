@@ -36,14 +36,15 @@ if (isset($_POST['eliminar'])) {
         <h2>El señor de las PELICULAS</h2>
     </div>
 <br>
-<ul class="menu">
-<ul class="menu">
-<li><a href="Admin.php">Inicio</a></li>
-        <li><a href="crear.php">Crear</a></li>
-        <li><a href="eliminar.php">Eliminar</a></li>
-        <li><a href="ver.php">Ver</a></li>
-</ul>
-</ul>
+<nav>
+    <ul class="dropdown">
+        	<li class="drop"><a href="Admin.php">Inicio</a></li>
+        	<li class="drop"><a href="ver.php">Regresar</a></li>
+        	<li class="drop"><a href="crear.php">Crear pelicula</a></li>
+        	<li><a href="Index.php">Salir</a>
+        	</li>
+        </ul>
+</nav> 
 <!-- Formulario para eliminar una película por ID -->
 <br>
 <div id="login-form-wrap">

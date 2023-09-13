@@ -59,25 +59,15 @@ if (isset($_POST['crear'])) {
         <img src="img/logo.png" alt="Imagen">
         <h2>El señor de las PELICULAS</h2>
     </div>
-<ul class="menu">
-    <li><a href="Admin.php">Inicio</a></li>
-    <li> <a href="crea_serie.php">Crea Serie</a></li>
-    <li><a href="productora.php">Crear productora</a></li>
-    <li class="submenu">
-        <a href="director.php">Crear Directores</a>
-        <ul class="sub-menu">
-            <li><a href="eliminar.php">Eliminar opción 1</a></li>
-            <li><a href="eliminar.php">Eliminar opción 2</a></li>
+    <nav>
+<ul class="dropdown">
+        	<li class="drop"><a href="Admin.php">Inicio</a></li>
+        	<li class="drop"><a href="crea_serie.php">Crear Serie</a></li>
+        	<li class="drop"><a href="ver.php">Ver Peliculas</a></li>
+        	<li><a href="Index.php">Salir</a>
+        	</li>
         </ul>
-    </li>
-    <li class="submenu">
-        <a href="ver.php">Ver</a>
-        <ul class="sub-menu">
-            <li><a href="ver.php">Ver opción 1</a></li>
-            <li><a href="ver.php">Ver opción 2</a></li>
-        </ul>
-    </li>
-</ul>
+</nav> 
 <br>
 <div id="login-form-wrap">
 <h2>Crear Película</h2>

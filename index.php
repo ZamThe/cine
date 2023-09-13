@@ -10,7 +10,7 @@
     </div>
     <nav>
 <ul class="dropdown">
-        	<li class="drop"><a href="index.php">Inicio</a></li>
+        	<li class="drop"><a href="index.php">inicio</a></li>
         	<li class="drop"><a href="catalogo_peliculas.php">Ver peliculas</a></li>
         	<li class="drop"><a href="series.php">Ver series</a>
         	<ul class="sub_menu">
@@ -103,7 +103,7 @@
         <!-- Repite estos divs para más entradas -->
     </div>
 
-<script src="scrip/files.js"></script>
+<script src="scrip/files.js" > </script>
 </body>
 <footer>
         &copy; 2023 El señor de las peliculas.com
