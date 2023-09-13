@@ -15,9 +15,7 @@
         	<li class="drop"><a href="index.php">Inicio</a></li>
         	<li class="drop"><a href="catalogo_peliculas.php">Ver peliculas</a></li>
         	<li class="drop"><a href="series.php">Ver series</a>
-        	<ul class="sub_menu">
-        			<li><a href="">Login</a></li>
-        		</ul>
+        	<ul class="sub_menu"></ul>
         	</li>
         	<li><a href="login.php">Login</a>
         	</li>
