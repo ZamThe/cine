@@ -2,6 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Crear Película</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <div class="image-and-text">
@@ -58,7 +59,7 @@
 <script src="scrip/files.js"></script>
 </body>
 <footer>
-        &copy; 2023 El serñor de las peliculas  
+        &copy; 2023 El señor de las peliculas  
     </footer>
 
 </html>

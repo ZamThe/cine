@@ -1,4 +1,63 @@
+<script>
+var maxHeight = 400;
 
+$(function(){
+
+    $(".dropdown > li").hover(function() {
+    
+         var $container = $(this),
+             $list = $container.find("ul"),
+             $anchor = $container.find("a"),
+             height = $list.height() * 1.1,       // make sure there is enough room at the bottom
+             multiplier = height / maxHeight;     // needs to move faster if list is taller
+        
+        // need to save height here so it can revert on mouseout            
+        $container.data("origHeight", $container.height());
+        
+        // so it can retain it's rollover color all the while the dropdown is open
+        $anchor.addClass("hover");
+        
+        // make sure dropdown appears directly below parent list item    
+        $list
+            .show()
+            .css({
+                paddingTop: $container.data("origHeight")
+            });
+        
+        // don't do any animation if list shorter than max
+        if (multiplier > 1) {
+            $container
+                .css({
+                    height: maxHeight,
+                    overflow: "hidden"
+                })
+                .mousemove(function(e) {
+                    var offset = $container.offset();
+                    var relativeY = ((e.pageY - offset.top) * multiplier) - ($container.data("origHeight") * multiplier);
+                    if (relativeY > $container.data("origHeight")) {
+                        $list.css("top", -relativeY + $container.data("origHeight"));
+                    };
+                });
+        }
+        
+    }, function() {
+    
+        var $el = $(this);
+        
+        // put things back to normal
+        $el
+            .height($(this).data("origHeight"))
+            .find("ul")
+            .css({ top: 0 })
+            .hide()
+            .end()
+            .find("a")
+            .removeClass("hover");
+    
+    });  
+    
+});
+</script>
 <style>
     body{
   margin: 0px;
@@ -123,47 +182,13 @@ ul.dropdown ul li a:hover{
         		<ul class="sub_menu">
 							<li><a href="#">Lorem</a></li>
 							<li><a href="#">Ipsum</a></li>
-							<li><a href="#">Dolor</a></li>
-							<li><a href="#">Lipsum</a></li>
-							<li><a href="#">Consectetur </a></li>
-							<li><a href="#">Duis</a></li>
-							<li><a href="#">Sed</a></li>
-							<li><a href="#">Natus</a></li>
-							<li><a href="#">Excepteur</a></li>
-							<li><a href="#">Voluptas</a></li>
-							<li><a href="#">Voluptate</a></li>
-							<li><a href="#">Malorum</a></li>
-							<li><a href="#">Bonorum</a></li>
-							<li><a href="#">Nemo</a></li>
-							<li><a href="#">Quisquam</a></li>
-							<li><a href="#">Adipisci </a></li>
-							<li><a href="#">Excepteur</a></li>
-							<li><a href="#">Consectetur </a></li>
-							<li><a href="#">Duis</a></li>
-							<li><a href="#">Voluptate</a></li>
-							<li><a href="#">Ipsum</a></li>
-							<li><a href="#">Dolor</a></li>
-							<li><a href="#">Lipsum</a></li>
-        		</ul>
+			</ul>
         	</li>
         	<li class="drop"><a href="#">Kinda Tall Menu</a>
         		<ul class="sub_menu">
         			<li><a href="#">Lorem</a></li>
 							<li><a href="#">Ipsum</a></li>
-							<li><a href="#">Dolor</a></li>
-							<li><a href="#">Lipsum</a></li>
-							<li><a href="#">Consectetur </a></li>
-							<li><a href="#">Duis</a></li>
-							<li><a href="#">Sed</a></li>
-							<li><a href="#">Natus</a></li>
-							<li><a href="#">Excepteur</a></li>
-							<li><a href="#">Voluptas</a></li>
-							<li><a href="#">Voluptate</a></li>
-							<li><a href="#">Malorum</a></li>
-							<li><a href="#">Bonorum</a></li>
-							<li><a href="#">Nemo</a></li>
-							<li><a href="#">Quisquam</a></li>
-							
+							<li><a href="#">Dolor</a></li>				
         		</ul>
         	</li>
         	<li class="drop"><a href="#">Average Menu</a>
@@ -171,71 +196,10 @@ ul.dropdown ul li a:hover{
         			<li><a href="#">Lorem</a></li>
 							<li><a href="#">Ipsum</a></li>
 							<li><a href="#">Dolor</a></li>
-							<li><a href="#">Lipsum</a></li>
-							<li><a href="#">Consectetur </a></li>
+
         		</ul>
         	</li>
         	<li><a href="#">No Menu</a>
         	</li>
         </ul>
 </nav> 
-<script>
-var maxHeight = 400;
-
-$(function(){
-
-    $(".dropdown > li").hover(function() {
-    
-         var $container = $(this),
-             $list = $container.find("ul"),
-             $anchor = $container.find("a"),
-             height = $list.height() * 1.1,       // make sure there is enough room at the bottom
-             multiplier = height / maxHeight;     // needs to move faster if list is taller
-        
-        // need to save height here so it can revert on mouseout            
-        $container.data("origHeight", $container.height());
-        
-        // so it can retain it's rollover color all the while the dropdown is open
-        $anchor.addClass("hover");
-        
-        // make sure dropdown appears directly below parent list item    
-        $list
-            .show()
-            .css({
-                paddingTop: $container.data("origHeight")
-            });
-        
-        // don't do any animation if list shorter than max
-        if (multiplier > 1) {
-            $container
-                .css({
-                    height: maxHeight,
-                    overflow: "hidden"
-                })
-                .mousemove(function(e) {
-                    var offset = $container.offset();
-                    var relativeY = ((e.pageY - offset.top) * multiplier) - ($container.data("origHeight") * multiplier);
-                    if (relativeY > $container.data("origHeight")) {
-                        $list.css("top", -relativeY + $container.data("origHeight"));
-                    };
-                });
-        }
-        
-    }, function() {
-    
-        var $el = $(this);
-        
-        // put things back to normal
-        $el
-            .height($(this).data("origHeight"))
-            .find("ul")
-            .css({ top: 0 })
-            .hide()
-            .end()
-            .find("a")
-            .removeClass("hover");
-    
-    });  
-    
-});
-</script>
