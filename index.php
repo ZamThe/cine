@@ -8,15 +8,19 @@
         <img src="img/logo.png" alt="Imagen">
         <h2>El señor de las PELICULAS</h2>
     </div>
-<ul class="menu">
-    <body>
-    <main>
-<li><a href="index.php">Inicio</a></li>
-<li><a href="catalogo_peliculas.php">Ver peliculas</a></li>
-<li><a href="series.php">Ver series</a></li>
-
-        <li><a href="login.php">Login</a></li>
-</ul>
+    <nav>
+<ul class="dropdown">
+        	<li class="drop"><a href="index.php">Inicio</a></li>
+        	<li class="drop"><a href="catalogo_peliculas.php">Ver peliculas</a></li>
+        	<li class="drop"><a href="series.php">Ver series</a>
+        	<ul class="sub_menu">
+        			<li><a href="">Login</a></li>
+        		</ul>
+        	</li>
+        	<li><a href="login.php">Login</a>
+        	</li>
+        </ul>
+</nav> 
     <body>
         <br>    
     <div class="slider-container">
