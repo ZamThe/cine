@@ -11,7 +11,7 @@
     <nav>
     <ul class="dropdown">
         	<li class="drop"><a href="Admin.php">Inicio</a></li>
-        	<li class="drop"><a href="crear.php">regresar</a></li>
+        	<li class="drop"><a href="crear.php">Regresar</a></li>
         	<li class="drop"><a href="eliminar.php">Eliminar pelicula</a></li>
         	<li><a href="Index.php">Salir</a>
         	</li>
