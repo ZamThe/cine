@@ -15,32 +15,6 @@
 
 <?php
 include 'conexion.php';
-// Operación CREATE (Crear una nueva película)
-if (isset($_POST['crear'])) {
-    $nombre = $_POST['nombre'];
-    $genero = $_POST['genero'];
-    $descripcion = $_POST['descripcion'];
-    $duracion = $_POST['duracion'];
-
-    $sql = "INSERT INTO cartelera (Nombre, Genero, Descripcion, Duracion) VALUES (:nombre, :genero, :descripcion, :duracion)";
-    $stmt = $pdo->prepare($sql);
-
-    $stmt->bindParam(':nombre', $nombre);
-    $stmt->bindParam(':genero', $genero);
-    $stmt->bindParam(':descripcion', $descripcion);
-    $stmt->bindParam(':duracion', $duracion);
-
-    if ($stmt->execute()) {
-        echo "Película creada con éxito.";
-    } else {
-        echo "Error al crear la película.";
-    }
-}
-
-// Operación READ (Leer todas las películas)
-
-
-
 // Operación DELETE (Eliminar una película por ID)
 if (isset($_POST['eliminar'])) {
     $idEliminar = $_POST['idEliminar'];
@@ -67,11 +41,9 @@ if (isset($_POST['eliminar'])) {
 <li><a href="Admin.php">Inicio</a></li>
         <li><a href="crear.php">Crear</a></li>
         <li><a href="eliminar.php">Eliminar</a></li>
-        
         <li><a href="ver.php">Ver</a></li>
-    </ul>
-    </ul>
-
+</ul>
+</ul>
 <!-- Formulario para eliminar una película por ID -->
 <br>
 <div id="login-form-wrap">

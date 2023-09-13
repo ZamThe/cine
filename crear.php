@@ -41,9 +41,9 @@ if (isset($_POST['crear'])) {
             $stmt->bindParam(':imagen', $ruta_imagen); // Almacena la ruta de la imagen en la base de datos
 
             if ($stmt->execute()) {
-                echo "Película creada con éxito.";
+                $mensaje = "Película creada con éxito.";
             } else {
-                echo "Error al crear la película.";
+                $mensaje = "Error al crear la película.";
             }
         } else {
             echo "Error al cargar la imagen.";
@@ -129,15 +129,21 @@ if (isset($_POST['crear'])) {
         echo "<option value='$id_productora'>$Nombre_pro</option>";
     }
     ?>
-</select>
-
-
-
+    </select>
     </select><br>
-
-<br><input type="submit" name="crear" value="Crear Película">
-</form>
+    <br><input type="submit" name="crear" value="Crear Película">
+    </form>
     </div>
+    <script>
+    <?php
+    // Imprime el valor de $mensaje como una variable JavaScript
+    echo "var mensaje = '" . addslashes($mensaje) . "';";
+    ?>
 
+    // Muestra el alert en JavaScript
+    if (mensaje) {
+        alert(mensaje);
+    }
+</script>
 </body>
 </html>
