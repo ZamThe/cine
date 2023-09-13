@@ -16,6 +16,7 @@ if (isset($_POST['crear'])) {
     $nombre = $_POST['nombre'];
     $genero = $_POST['genero'];
     $descripcion = $_POST['descripcion'];
+    $Fecha = $_POST['fecha'];
     $duracion = $_POST['duracion'];
 
     // Manejar la imagen
@@ -29,12 +30,13 @@ if (isset($_POST['crear'])) {
         // Mover la imagen cargada al directorio de destino
         if (move_uploaded_file($imagen['tmp_name'], $ruta_imagen)) {
             // La imagen se cargó correctamente, ahora puedes insertar la película en la base de datos
-            $sql = "INSERT INTO cartelera (Nombre, Genero, Descripcion, Duracion, Imagen) VALUES (:nombre, :genero, :descripcion, :duracion, :imagen)";
+            $sql = "INSERT INTO cartelera (Nombre, Genero, Descripcion, Fecha, Duracion, Imagen) VALUES (:nombre, :genero, :descripcion, :fecha, :duracion, :imagen)";
             $stmt = $pdo->prepare($sql);
 
             $stmt->bindParam(':nombre', $nombre);
             $stmt->bindParam(':genero', $genero);
             $stmt->bindParam(':descripcion', $descripcion);
+            $stmt->bindParam(':fecha', $Fecha);
             $stmt->bindParam(':duracion', $duracion);
             $stmt->bindParam(':imagen', $ruta_imagen); // Almacena la ruta de la imagen en la base de datos
 
@@ -88,6 +90,8 @@ if (isset($_POST['crear'])) {
 
     <label for="descripcion">Descripción:</label>
     <textarea name="descripcion" required></textarea><br>
+    <label for="fecha">Fecha estreno</label>
+        <input type="date" name="fecha" required><br>
 
     <label for="duracion">Duración:</label>
     <input type="number" name="duracion" required><br>
