@@ -73,7 +73,6 @@ $stmt->execute();
 <div id="login-form-wrap">
     <h2>Ingresar</h2>
     <form id="login-form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-
         <p>Nombre
             <input type="text" id="username" name="username" placeholder="Username" required>
         </p>
@@ -94,4 +93,3 @@ $stmt->execute();
 </body>
 </html>
 
-</html>
