@@ -60,6 +60,11 @@ if (isset($_POST['guardar'])) {
     <nav>
 <ul class="dropdown">
         	<li class="drop"><a href="Admin.php">Inicio</a></li>
+            <ul class="sub_menu">
+        			<li><a href="#">Lorem</a></li>
+							<li><a href="#">Ipsum</a></li>
+							<li><a href="#">Dolor</a></li>				
+        		</ul>
         	<li class="drop"><a href="director.php">Crear directores</a></li>   	
         	<li><a href="Index.php">Salir</a>
         	</li>
