@@ -1,12 +1,7 @@
 <html>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/styles.css">
-<style>
-/* Estilo para el título */
 
-
-
-</style>
 <head>
     <meta charset="UTF-8">
     <title>Crear Película</title>

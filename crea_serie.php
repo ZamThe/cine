@@ -8,7 +8,6 @@
 <body>
     <div class="image-and-text">
         <img src="img/logo.png" alt="Imagen">
-        <h2>El señor de las SERIES</h2>
     </div>
     <nav>
 <ul class="dropdown">

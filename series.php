@@ -6,7 +6,7 @@
 </head>
 <div class="image-and-text">
         <img src="img/logo.png" alt="Imagen">
-        <h2>El señor de las Series</h2>
+    
     </div>
     <body>
     <nav>

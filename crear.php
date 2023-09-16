@@ -57,7 +57,7 @@ if (isset($_POST['crear'])) {
 <!-- Formulario para crear una nueva película -->
 <div class="image-and-text">
         <img src="img/logo.png" alt="Imagen">
-        <h2>El señor de las PELICULAS</h2>
+        
     </div>
     <nav>
 <ul class="dropdown">

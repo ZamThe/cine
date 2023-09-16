@@ -6,7 +6,8 @@
 </head>
 <div class="image-and-text">
         <img src="img/logo.png" alt="Imagen">
-        <h2>ADMINISTRADOR</h2>
+        
+        
     </div>
     <nav>
 <ul class="dropdown">
@@ -17,6 +18,7 @@
         	</li>
         </ul>
 </nav> 
+<h2>ADMINISTRADOR</h2>
     <body>
         <br>    
     <div class="slider-container">
