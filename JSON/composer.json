@@ -1,6 +1,6 @@
 {
-    "name": "vendor/agricola-actividades",
-    "description": "Proyecto para agrcioal del caribe",
+    "name": "login",
+    "description": "login",
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -9,8 +9,8 @@
     },
     "authors": [
         {
-            "name": "Mateo Guio",
-            "email": "amgmworks22@gmail.com"
+            "name": "localhost",
+            "email": "#"
         }
     ],
     "require": {

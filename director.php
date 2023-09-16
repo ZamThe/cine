@@ -28,7 +28,7 @@ function crearDirector($id_director, $nombre, $fecha_nacimiento, $descripcion) {
     $conexion->close();
 }
 
-// Ejemplo de uso:
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_director = $_POST["id_director"];
     $nombre = $_POST["nombre"];

@@ -3,7 +3,7 @@
     session_start();
 
     //Llamar base de datos
-    require 'database/database.php';
+    require '../conexion.php';
 
     //Establecer zona horario y variables de hora/fecha actual
     date_default_timezone_set('America/Bogota');

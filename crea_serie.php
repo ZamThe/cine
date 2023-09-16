@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Crear Serie</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css"> <!-- Enlaza tu archivo CSS externo aquí -->
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
     <div class="image-and-text">
