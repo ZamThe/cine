@@ -1,0 +1,529 @@
+body {
+    background-image: url('../img/font.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+h1{
+    margin: 2em 0px;
+    padding: 0px;
+    color: #fff;
+    text-align: center;
+    font-weight: 100;
+    font-size: 50px;
+  }
+  
+  nav{
+    width: 750px;
+    margin: 1em auto;
+  }
+  
+  ul{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+  }
+  
+  ul.dropdown{ 
+    position: relative; 
+    width: 100%; 
+  }
+  
+  ul.dropdown li{ 
+    font-weight: bold; 
+    float: left; 
+    width: 180px; 
+    position: relative;
+    background: #ecf0f1;
+  }
+  
+  ul.dropdown a:hover{ 
+    color: #000; 
+  }
+  
+  ul.dropdown li a { 
+    display: block; 
+    padding: 20px 8px;
+    color: #34495e; 
+    position: relative; 
+    z-index: 2000; 
+    text-align: center;
+    text-decoration: none;
+    font-weight: 300;
+  }
+  
+  ul.dropdown li a:hover,
+  ul.dropdown li a.hover{ 
+    background: #3498db;
+    position: relative;
+    color: #fff;
+  }
+  
+  
+  ul.dropdown ul{ 
+   display: none;
+   position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 180px; 
+    z-index: 1000;
+  }
+  
+  ul.dropdown ul li { 
+    font-weight: normal; 
+    background: #f6f6f6; 
+    color: #000; 
+    border-bottom: 1px solid #ccc; 
+  }
+  
+  ul.dropdown ul li a{ 
+    display: block; 
+    color: #34495e !important;
+    background: #eee !important;
+  } 
+  
+  ul.dropdown ul li a:hover{
+    display: block; 
+    background: #3498db !important;
+    color: #fff !important;
+  } 
+  
+  .drop > a{
+    position: relative;
+  }
+  
+  .drop > a:after{
+    content:"";
+    position: absolute;
+    right: 10px;
+    top: 40%;
+    border-left: 5px solid transparent;
+    border-top: 5px solid #333;
+    border-right: 5px solid transparent;
+    z-index: 999;
+  }
+  
+  .drop > a:hover:after{
+    content:"";
+     border-left: 5px solid transparent;
+    border-top: 5px solid #fff;
+    border-right: 5px solid transparent;
+  }
+  
+/* Estilos para el logotipo */
+.logo {
+    float: right; /* Coloca el logotipo en la esquina derecha */
+}
+
+.logo img {
+    width: 100px; /* Ajusta el tamaño del logotipo según tus necesidades */
+    height: auto; /* Mantiene la proporción de aspecto */
+    margin-right: 20px; /* Espacio entre el logotipo y los elementos del menú */
+    margin-top: 7px; /* Alinea verticalmente con los elementos del menú */
+}
+/* Estilo para el título */
+h2 {
+    color: #333;
+    font-size: 24px;
+}
+
+/* Estilo para los campos de entrada y etiquetas */
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Estilo para el botón */
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+h2 {
+    color: #333;
+    font-size: 24px;
+}
+
+/* Estilo para los campos de entrada y etiquetas */
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Estilo para el botón */
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  table, th, td {
+    border: 1px solid #ddd;
+  }
+
+  /* Encabezado de la tabla */
+  th {
+    background-color: #333;
+    color: white;
+  }
+
+  /* Estilos para las celdas de datos */
+  td {
+    padding: 8px;
+    /* Aplicar desbordamiento horizontal y vertical con una barra de desplazamiento */
+    overflow-x: auto;
+    overflow-y: auto;
+    /* Establecer una altura máxima para las celdas con desbordamiento */
+    max-height: 100px; /* Ajusta según tu preferencia */
+  }
+
+  /* Estilo para las filas impares (opcional) */
+  tr:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+
+  /* Estilo para las imágenes */
+
+
+  .slider-container {
+    width: 50%; /* Ocupa la mitad de la página */
+    max-width: 800px; /* Ancho máximo para las imágenes */
+    margin: 0 auto; /* Centrar el contenedor horizontalmente */
+    overflow: hidden;
+    position: relative;
+}
+
+.slider {
+    width: 100%;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slider img {
+    width: 100%;
+    height: auto; /* Para mantener la proporción de aspecto */
+}
+
+/* Estilos de los botones de navegación */
+.slider-button {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.slider-button:hover {
+    background-color: #555;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Establece la altura mínima del cuerpo para ocupar al menos el 100% de la altura de la ventana */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilos para el contenido principal */
+main {
+    flex-grow: 1; /* Hace que el contenido principal se expanda para llenar el espacio restante */
+}
+
+/* Estilos para el footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+#login-form-wrap {
+    background-color: #fff;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  form {
+    text-align: left;
+  }
+  
+  input[type="text"],
+  input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  #create-account-wrap {
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.blog-entry {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.blog-post {
+    width: calc(25% - 20px);
+    margin: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.blog-image {
+    width: 100%;
+    height: auto;
+}
+
+.blog-description {
+    margin-top: 10px;
+    font-size: 14px;
+}
+.image-and-text {
+    display: flex;
+    align-items: center; /* Alinea verticalmente */
+}
+
+/* Estilos para la imagen */
+.image-and-text {
+  display: flex; /* Usar flexbox para alinear elementos horizontalmente */
+  align-items: center; /* Centrar verticalmente los elementos */
+  background-color: #5f5f5f57; /* Color de fondo para el contenedor */
+  padding: 30px; /* Ajusta el relleno según tus necesidades */
+}
+
+.image-and-text img {
+  width: 800px; /* Ajusta el ancho de la imagen según tus necesidades */
+  height: auto; /* Permite que la altura se ajuste automáticamente */
+  margin-right: 10px; /* Espacio entre la imagen y el texto */
+  position: absolute;
+}
+
+
+h2 {
+    color: #333;
+    font-size: 24px;
+}
+
+/* Estilo para los campos de entrada y etiquetas */
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Estilo para el botón */
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+/* Estilos para el encabezado */
+header {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* Estilos para las entradas del blog */
+.entrada {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+}
+
+.entrada h2 {
+    color: #333;
+}
+
+.entrada img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+/* Estilos para el pie de página */
+footer {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+/* Estilos para el encabezado */
+header {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* Estilos para las entradas del blog */
+.entrada {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+}
+
+.entrada h2 {
+    color: #333;
+}
+
+.entrada img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+/* Estilos para el pie de página */
+footer {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+/* Estilos para el video de YouTube */
+.entrada iframe {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+/* Estilos para el pie de página */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+}
+     /* Estilos para el contenedor */
+     .text-container {
+        background-color: #f2f2f2; /* Color de fondo */
+        padding: 20px; /* Espacio de relleno */
+        border: 1px solid #ddd; /* Borde */
+        border-radius: 5px; /* Bordes redondeados */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra */
+        text-align: center; /* Alineación del texto */
+    }
+    
+    /* Estilos para el texto dentro del contenedor */
+    .text-container p {
+        font-size: 16px; /* Tamaño de fuente */
+        color: #333; /* Color del texto */
+    }

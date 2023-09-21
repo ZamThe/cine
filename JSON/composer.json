@@ -1,0 +1,19 @@
+{
+    "name": "login",
+    "description": "login",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Vendor\\AgricolaActividades\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "localhost",
+            "email": "#"
+        }
+    ],
+    "require": {
+        "dompdf/dompdf": "^2.0"
+    }
+}
